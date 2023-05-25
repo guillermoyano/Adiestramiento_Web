@@ -25,7 +25,7 @@ public class Tutor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String id;
+    private String idTutor;
     private String nombre;
     private String apellido;
     private Long telefono;

@@ -21,7 +21,7 @@ public class Rutina {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String id;
+    private String idRutina;
     private String paseo;
     private String frecPaseo;
     private String herramientas;
