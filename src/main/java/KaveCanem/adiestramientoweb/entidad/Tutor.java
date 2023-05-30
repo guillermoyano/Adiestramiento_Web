@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import lombok.AccessLevel;
@@ -32,7 +33,7 @@ public class Tutor {
     private String direccion;
     @Temporal(TemporalType.DATE)
     private Date fechaAlta;
-    @OneToMany
+    @OneToOne
     private Perro perro;
 
 }
