@@ -7,28 +7,42 @@ and open the template in the editor.
 <html>
 
 <head>
-  <title>TODO supply a title</title>
+  <title>Tutor Form</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 
 <body>
 
   <div class="container">
 
-    <form action="/tutor/registro" method="POST">
+    <form form action="/tutor/registro" method="POST">
       <div class="form-group">
+        <label for="">Nombre del tutor</label>
         <input type="text" class="form-group" name="nombre" placeholder="Nombre del tutor">
       </div>
-
-
-
+      <div class="form-group">
+        <label for="">Apellido del tutor</label>
+        <input type="text" class="form-group" name="apellido" placeholder="Apellido del tutor">
+      </div>
+      <div class="form-group">
+        <label for="">Teléfono del tutor</label>
+        <input type="number" class="form-group" name="telefono" placeholder="Telefono del tutor">
+      </div>
+      <div class="form-group">
+        <label for="">Fecha</label>
+        <input type="datetime-local" class="form-group" name="fechaAlta" placeholder="Fecha de alta del perro y tutor">
+      </div>
       <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
 
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>

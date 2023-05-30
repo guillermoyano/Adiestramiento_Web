@@ -45,7 +45,7 @@ public class PerroServicio {
         perro.setSalud(salud);
         perro.setCantPerros(cantPerros);
         perro.setRutina(rutina);
-        perro.setImagen(imagen);
+//        perro.setImagen(imagen);
 
         perroRepositorio.save(perro);
     }
@@ -89,7 +89,7 @@ public class PerroServicio {
             perro.setSalud(salud);
             perro.setCantPerros(cantPerros);
             perro.setRutina(rutina);
-            perro.setImagen(imagen);
+//            perro.setImagen(imagen);
 
             perroRepositorio.save(perro);
         }

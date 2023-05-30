@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rutina Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <form form action="/rutina/registro" method="POST">
+            <div class="form-group">
+                <label for="">Paseo</label>
+                <input type="text" class="form-group" name="paseo" placeholder="Cuántas veces por día sale a pasear">
+            </div>
+            <div class="form-group">
+                <label for="">Tiempo de paseo</label>
+                <input type="number" class="form-group" name="frecPaseo" placeholder="Cuánto tiempo dura el paseo">
+            </div>
+            <div class="form-group">
+                <label for="">Herramientas de paseo</label>
+                <input type="text" class="form-group" name="herramientas"
+                    placeholder="Qué usa al salir(pretal/collar fijo/ collar ahorque)">
+            </div>
+            <div class="form-group">
+                <label for="">Qué hace cuando va a pasear?</label>
+                <input type="text" class="form-group" name="salida"
+                    placeholder="Cómo se pone cuando sabe que va a salir?">
+            </div>
+            <div class="form-group">
+                <label for="">Observaciones</label>
+                <textarea rows="1" cols="100" class="form-group" name="observacionesPaseo"
+                    placeholder="Qué hace durante el paseo?"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="">Dónde hace sus necesidades?</label>
+                <input type="text" class="form-group" name="calle" placeholder="Micción/defecación en la calle?">
+            </div>
+            <div class="form-group">
+                <label for="">Disposición de comida</label>
+                <input type="text" class="form-group" name="comida"
+                    placeholder="Tiene a disposición durante todo el día?">
+            </div>
+            <div class="form-group">
+                <label for="">Frecuencia de comida</label>
+                <input type="number" class="form-group" name="frecComida" placeholder="Cuántas veces por día come?">
+            </div>
+            <div class="form-group">
+                <label for="">Observaciones</label>
+                <textarea rows="1" cols="100" class="form-group" name="observacionesComida" placeholder="Qué hacen si no come?"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="">Es juguetón?</label>
+                <input type="text" class="form-group" name="juego" placeholder="Suele juegar?">
+            </div>
+            <div class="form-group">
+                <label for="">Con quién juega?</label>
+                <input type="text" class="form-group" name="juegaCon" placeholder="Solo? con tutor? otros perros?">
+            </div>
+            <div class="form-group">
+                <label for="">Disposición de juguetes</label>
+                <input type="text" class="form-group" name="dispoJuguetes" placeholder="Siempre a disposición?">
+            </div>
+            <div class="form-group">
+                <label for="">Frecuencia de juego</label>
+                <input type="number" class="form-group" name="frecJuego" placeholder="Cuántas veces por día juega?">
+            </div>
+            <div class="form-group">
+                <label for="">Observaciones</label>
+                <textarea rows="1" cols="100" class="form-group" name="observacionesJuego" placeholder="Con qué juguetes juega?"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="">Dónde duerme</label>
+                <input type="text" class="form-group" name="duerme" placeholder="Dónde duerme?">
+            </div>
+            <div class="form-group">
+                <label for="">Cuántas veces por día duerme?</label>
+                <input type="text" class="form-group" name="frecDuerme" placeholder="Cuántas veces por día duerme?">
+            </div>
+            <div class="form-group">
+                <label for="">Dónde pasa el día?</label>
+                <input type="text" class="form-group" name="dondePasaDia" placeholder="Dónde pasa el día?">
+            </div>
+            <div class="form-group">
+                <label for="">Educación previa</label>
+                <input type="text" class="form-group" name="educacionPrevia" placeholder="Tuvo algún tipo de educación">
+            </div>
+            <div class="form-group">
+                <label for="">Motivo de contratación</label>
+                <input type="textarea" class="form-group" name="motivoContratacion" placeholder="Motivo contratación">
+            </div>
+            <div class="form-group">
+                <label for="">Observaciones</label>
+                <textarea rows="1" cols="100" class="form-group" name="observacionesEducacion"
+                    placeholder="Qué educación tuvo y de qué tipo?"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -34,7 +34,7 @@ public class Perro {
     private Integer cantPerros;
     @OneToOne
     private Rutina rutina;
-    @OneToOne
-    private Imagen imagen;
+//    @OneToOne
+//    private Imagen imagen;
 
 }
