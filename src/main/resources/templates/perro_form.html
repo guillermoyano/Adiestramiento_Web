@@ -1,45 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perro Form</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perro Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
-<body>
-    <div class="container">
 
-        <form form action="/tutor/registro" method="POST">
-          <div class="form-group">
-            <label for="">Nombre del perro</label>
-            <input type="text" class="form-group" name="nombre" placeholder="Nombre del can">
-          </div>
-          <div class="form-group">
-            <label for="">Fecha Nacimiento</label>
-            <input type="datetime-local" class="form-group" name="fechaNac" placeholder="Fecha de nacimiento del can">
-          </div>
-          <div class="form-group">
-            <label for="">Raza</label>
-            <input type="text" class="form-group" name="raza" placeholder="Raza del can">
-          </div>
-          <div class="form-group">
-            <label for="">Vive con otros perros?</label>
-            <input type="number" class="form-group" name="cantPerros" placeholder="Cantidad de perros">
-          </div>
-          <div class="form-group">
-            <label for="">Salud? Vacunas? Castrado/a?</label>
-            <input type="text" class="form-group" name="salud" placeholder="Salud del can">
-          </div>
-          
-          <button type="submit" class="btn btn-primary">Enviar</button>
-        </form>
-    
+<body>
+  <div class="container">
+
+    <form form action="/perro/registro" method="POST">
+      <div class="form-group">
+        <label for="">Nombre del perro</label>
+        <input type="text" class="form-group" name="nombre" placeholder="Nombre del can">
       </div>
-    
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous"></script>
+      <div class="form-group">
+        <label for="">Fecha Nacimiento</label>
+        <input type="datetime-local" class="form-group" name="fechaNac" placeholder="Fecha de nacimiento del can">
+      </div>
+      <div class="form-group">
+        <label for="">Raza</label>
+        <input type="text" class="form-group" name="raza" placeholder="Raza del can">
+      </div>
+      <div class="form-group">
+        <label for="">Vive con otros perros?</label>
+        <input type="number" class="form-group" name="cantPerros" placeholder="Cantidad de perros">
+      </div>
+      <div class="form-group">
+        <label for="">Salud? Vacunas? Castrado/a?</label>
+        <input type="text" class="form-group" name="salud" placeholder="Salud del can">
+      </div>
+
+      <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
+        <div class="card-body">
+          <h5 class="card-title">Error</h5>
+          <p class="card-text" th:text="${error}"></p>
+        </div>
+      </div>
+
+      <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
+        <div class="card-body">
+          <h5 class="card-title">Exito!</h5>
+          <p class="card-text" th:text="${exito}"></p>
+        </div>
+      </div>
+
+
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>

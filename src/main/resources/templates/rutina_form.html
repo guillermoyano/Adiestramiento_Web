@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -53,7 +52,8 @@
             </div>
             <div class="form-group">
                 <label for="">Observaciones</label>
-                <textarea rows="1" cols="100" class="form-group" name="observacionesComida" placeholder="Qué hacen si no come?"></textarea>
+                <textarea rows="1" cols="100" class="form-group" name="observacionesComida"
+                    placeholder="Qué hacen si no come?"></textarea>
             </div>
             <div class="form-group">
                 <label for="">Es juguetón?</label>
@@ -73,7 +73,8 @@
             </div>
             <div class="form-group">
                 <label for="">Observaciones</label>
-                <textarea rows="1" cols="100" class="form-group" name="observacionesJuego" placeholder="Con qué juguetes juega?"></textarea>
+                <textarea rows="1" cols="100" class="form-group" name="observacionesJuego"
+                    placeholder="Con qué juguetes juega?"></textarea>
             </div>
             <div class="form-group">
                 <label for="">Dónde duerme</label>
@@ -100,6 +101,23 @@
                 <textarea rows="1" cols="100" class="form-group" name="observacionesEducacion"
                     placeholder="Qué educación tuvo y de qué tipo?"></textarea>
             </div>
+
+            <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
+                <div class="card-body">
+                    <h5 class="card-title">Error</h5>
+                    <p class="card-text" th:text="${error}"></p>
+                </div>
+            </div>
+
+            <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
+                <div class="card-body">
+                    <h5 class="card-title">Exito!</h5>
+                    <p class="card-text" th:text="${exito}"></p>
+                </div>
+            </div>
+
+
+
             <button type="submit" class="btn btn-primary">Enviar</button>
 
     </div>
