@@ -33,7 +33,5 @@ public class Tutor {
     private String direccion;
     @Temporal(TemporalType.DATE)
     private Date fechaAlta;
-    @OneToOne
-    private Perro perro;
 
 }

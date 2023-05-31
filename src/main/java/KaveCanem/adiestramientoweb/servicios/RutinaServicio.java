@@ -29,10 +29,18 @@ public class RutinaServicio {
     public void crearRutina(String paseo, String frecPaseo, String herramientas, String salida, String observacionesPaseo,
             String calle, String comida, String frecComida, String observacionesComida, String juego, String juegaCon,
             String dispoJuguetes, String frecJuego, String observacionesJuego, String duerme, String frecDuerme,
-            String dondePasaDia, String educacionPrevia, String motivoContratacion, String observacionesEducacion) throws MiException {
+            String dondePasaDia, String educacionPrevia, String motivoContratacion, String observacionesEducacion, String idPerro) throws MiException {
 
         validarRutina(paseo, comida, juego, motivoContratacion);
-        
+
+        Optional<Perro> respuestaPerro = perroRepositorio.findById(idPerro);
+
+        Perro perro = new Perro();
+
+        if (respuestaPerro.isPresent()) {
+            perro = respuestaPerro.get();
+        }
+
         Rutina rutina = new Rutina();
 
         rutina.setPaseo(paseo);
@@ -55,6 +63,7 @@ public class RutinaServicio {
         rutina.setEducacionPrevia(educacionPrevia);
         rutina.setMotivoContratacion(motivoContratacion);
         rutina.setObservacionesEducacion(observacionesEducacion);
+        rutina.setPerro(perro);
 
         rutinaRepositorio.save(rutina);
 
@@ -77,10 +86,17 @@ public class RutinaServicio {
             String dondePasaDia, String educacionPrevia, String motivoContratacion, String observacionesEducacion, String idPerro) throws MiException {
 
         validarRutina(paseo, comida, juego, motivoContratacion);
-        
+
         Optional<Rutina> respuesta = rutinaRepositorio.findById(idRutina);
+        Optional<Perro> respuestaPerro = perroRepositorio.findById(idPerro);
 
         Rutina rutina = new Rutina();
+        
+         Perro perro = new Perro();
+
+        if (respuestaPerro.isPresent()) {
+            perro = respuestaPerro.get();
+        }
 
         if (respuesta.isPresent()) {
 
@@ -106,23 +122,24 @@ public class RutinaServicio {
             rutina.setEducacionPrevia(educacionPrevia);
             rutina.setMotivoContratacion(motivoContratacion);
             rutina.setObservacionesEducacion(observacionesEducacion);
+            rutina.setPerro(perro);
 
             rutinaRepositorio.save(rutina);
         }
     }
-    
-    private void validarRutina(String paseo, String comida, String juego, String motivoContratacion) throws MiException{
-        
-        if(paseo == null || paseo.isEmpty()){
+
+    private void validarRutina(String paseo, String comida, String juego, String motivoContratacion) throws MiException {
+
+        if (paseo == null || paseo.isEmpty()) {
             throw new MiException("El paseo no puedo ser nulo o estar vacío");
         }
-        if(comida == null || comida.isEmpty()){
+        if (comida == null || comida.isEmpty()) {
             throw new MiException("La comida no puedo ser nula o estar vacía");
         }
-         if(juego == null || juego.isEmpty()){
+        if (juego == null || juego.isEmpty()) {
             throw new MiException("El juego no puedo ser nulo o estar vacío");
         }
-             if(motivoContratacion == null || motivoContratacion.isEmpty()){
+        if (motivoContratacion == null || motivoContratacion.isEmpty()) {
             throw new MiException("El motivoContratacion no puedo ser nulo o estar vacío");
         }
     }

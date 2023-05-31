@@ -26,11 +26,10 @@ public class TutorServicio {
     private PerroRepositorio perroRepositorio;
 
     @Transactional
-    public void crearTutor(String nombre, String apellido, Long telefono, String direccion, Date fechaAlta, String idPerro) throws MiException {
+    public void crearTutor(String nombre, String apellido, Long telefono, String direccion, Date fechaAlta) throws MiException {
 
         verificarTutor(nombre, apellido, telefono, direccion, fechaAlta);
 
-        Perro perro = perroRepositorio.findById(idPerro).get();
         Tutor tutor = new Tutor();
 
         tutor.setNombre(nombre);
@@ -38,7 +37,6 @@ public class TutorServicio {
         tutor.setTelefono(telefono);
         tutor.setDireccion(direccion);
         tutor.setFechaAlta(fechaAlta);
-        tutor.setPerro(perro);
 
         tutorRepositorio.save(tutor);
 
@@ -55,18 +53,13 @@ public class TutorServicio {
     }
 
     @Transactional
-    public void modificarTutor(String idTutor, String nombre, String apellido, Long telefono, String direccion, Date fechaAlta, String idPerro) throws MiException {
+    public void modificarTutor(String idTutor, String nombre, String apellido, Long telefono, String direccion, Date fechaAlta) throws MiException {
 
         verificarTutor(nombre, apellido, telefono, direccion, fechaAlta);
 
         Optional<Tutor> respuesta = tutorRepositorio.findById(idTutor);
-        Optional<Perro> respuestaPerro = perroRepositorio.findById(idPerro);
 
         Perro perro = new Perro();
-
-        if (respuestaPerro.isPresent()) {
-            perro = respuestaPerro.get();
-        }
 
         if (respuesta.isPresent()) {
             Tutor tutor = respuesta.get();
@@ -75,7 +68,6 @@ public class TutorServicio {
             tutor.setApellido(apellido);
             tutor.setTelefono(telefono);
             tutor.setDireccion(direccion);
-            tutor.setPerro(perro);
 
             tutorRepositorio.save(tutor);
         }

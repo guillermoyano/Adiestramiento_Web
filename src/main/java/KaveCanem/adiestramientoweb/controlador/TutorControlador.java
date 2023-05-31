@@ -34,12 +34,12 @@ public class TutorControlador {
     }
 
     @PostMapping("/registro")
-    public String registro(@RequestParam String nombre, @RequestParam(required = false) String apellido,
-            @RequestParam Long telefono, @RequestParam Date fechaAlta, 
-            @RequestParam(required = false) String idPerro, ModelMap modelo) {
-
+    public String registro(@RequestParam(required = false) String nombre, @RequestParam(required = false) String apellido,
+            @RequestParam(required = false) Long telefono, @RequestParam(required = false) String direccion, @RequestParam(required = false) Date fechaAlta, 
+            ModelMap modelo) {
+        System.out.println("FCK");
         try {
-            tutorServicio.crearTutor(nombre, apellido, telefono, nombre, fechaAlta, idPerro);
+            tutorServicio.crearTutor(nombre, apellido, telefono, direccion, fechaAlta);
             
             modelo.put("exito", "El tutor fue cargado correctamente");
             

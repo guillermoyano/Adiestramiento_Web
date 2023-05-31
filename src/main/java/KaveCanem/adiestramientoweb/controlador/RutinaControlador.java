@@ -30,16 +30,34 @@ public class RutinaControlador {
     }
     
     @PostMapping("/registro")
-    public String registro(@RequestParam(required = false)  String paseo, @RequestParam(required = false) String frecPaseo, @RequestParam(required = false) String herramientas,
-           @RequestParam(required = false) String salida, @RequestParam(required = false) String observacionesPaseo, @RequestParam(required = false) String calle, @RequestParam(required = false)  String comida,
-           @RequestParam(required = false) String frecComida, @RequestParam(required = false) String observacionesComida, @RequestParam(required = false)  String juego,
-           @RequestParam(required = false) String juegaCon, @RequestParam(required = false) String dispoJuguetes, @RequestParam(required = false) String frecJuego,
-           @RequestParam(required = false) String observacionesJuego, @RequestParam(required = false) String duerme, @RequestParam(required = false) String frecDuerme,
-           @RequestParam(required = false) String dondePasaDia, @RequestParam(required = false) String educacionPrevia,
-           @RequestParam(required = false)  String  motivoContratacion, @RequestParam(required = false) String observacionesEducacion, ModelMap modelo){
+    public String registro(
+            @RequestParam(required = false)  String paseo, 
+            @RequestParam(required = false) String frecPaseo, 
+            @RequestParam(required = false) String herramientas,
+           @RequestParam(required = false) String salida,
+           @RequestParam(required = false) String observacionesPaseo, 
+           @RequestParam(required = false) String calle, 
+           @RequestParam(required = false)  String comida,
+           @RequestParam(required = false) String frecComida, 
+           @RequestParam(required = false) String observacionesComida, 
+           @RequestParam(required = false)  String juego,
+           @RequestParam(required = false) String juegaCon, 
+           @RequestParam(required = false) String dispoJuguetes, 
+           @RequestParam(required = false) String frecJuego,
+           @RequestParam(required = false) String observacionesJuego, 
+           @RequestParam(required = false) String duerme, 
+           @RequestParam(required = false) String frecDuerme,
+           @RequestParam(required = false) String dondePasaDia, 
+           @RequestParam(required = false) String educacionPrevia,
+           @RequestParam(required = false)  String  motivoContratacion, 
+           @RequestParam(required = false) String observacionesEducacion, 
+           @RequestParam(required = false) String idPerro,
+           ModelMap modelo ){
         
         try {
-            rutinaServicio.crearRutina(paseo, frecPaseo, herramientas, salida, observacionesPaseo, calle, comida, frecComida, observacionesComida, juego, juegaCon, dispoJuguetes, frecJuego, observacionesJuego, duerme, frecDuerme, dondePasaDia, educacionPrevia, motivoContratacion, observacionesEducacion);
+            rutinaServicio.crearRutina(paseo, frecPaseo, herramientas, salida, observacionesPaseo, 
+                    calle, comida, frecComida, observacionesComida, juego, juegaCon, dispoJuguetes, 
+                    frecJuego, observacionesJuego, duerme, frecDuerme, dondePasaDia, educacionPrevia, motivoContratacion, observacionesEducacion, idPerro);
             
             modelo.put("exito", "La rutina fue cargada correctamente");
             

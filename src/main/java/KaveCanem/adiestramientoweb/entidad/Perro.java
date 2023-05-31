@@ -33,7 +33,7 @@ public class Perro {
     private String salud;
     private Integer cantPerros;
     @OneToOne
-    private Rutina rutina;
+    private Tutor tutor;
 //    @OneToOne
 //    private Imagen imagen;
 

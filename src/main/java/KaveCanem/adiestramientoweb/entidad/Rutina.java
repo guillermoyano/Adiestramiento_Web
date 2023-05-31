@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -42,5 +43,7 @@ public class Rutina {
     private String educacionPrevia;
     private String motivoContratacion;
     private String observacionesEducacion;
+    @OneToOne
+    private Perro perro;
 
 }

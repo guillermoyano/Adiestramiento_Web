@@ -8,6 +8,7 @@ import KaveCanem.adiestramientoweb.excepciones.MiException;
 import KaveCanem.adiestramientoweb.repositorios.ImagenRepositorio;
 import KaveCanem.adiestramientoweb.repositorios.PerroRepositorio;
 import KaveCanem.adiestramientoweb.repositorios.RutinaRepositorio;
+import KaveCanem.adiestramientoweb.repositorios.TutorRepositorio;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,14 +30,23 @@ public class PerroServicio {
     private ImagenRepositorio imagenRepositorio;
     @Autowired
     private RutinaRepositorio rutinaRepositorio;
+    @Autowired
+    private TutorRepositorio tutorRepositorio;
 
     @Transactional
-    public void crearPerro(String nombre, Date fechaNac, String raza, String salud, Integer cantPerros, String idRutina, String idImagen) throws MiException {
+    public void crearPerro(String nombre, Date fechaNac, String raza, String salud, Integer cantPerros, String idTutor, String idImagen) throws MiException {
 
-        validarPerro(nombre, fechaNac, raza, salud, cantPerros, idImagen, idRutina);
+        validarPerro(nombre, fechaNac, raza, salud, cantPerros, idImagen, idTutor);
+        
+        Optional<Tutor> respuestaTutor = tutorRepositorio.findById(idTutor);
 
-        Rutina rutina = rutinaRepositorio.findById(idRutina).get();
-        Imagen imagen = imagenRepositorio.findById(idImagen).get();
+        Tutor tutor = new Tutor();
+//        Imagen imagen = imagenRepositorio.findById(idImagen).get();
+
+        if (respuestaTutor.isPresent()) {
+            tutor = respuestaTutor.get();
+        }
+        
         Perro perro = new Perro();
 
         perro.setNombre(nombre);
@@ -44,7 +54,7 @@ public class PerroServicio {
         perro.setRaza(raza);
         perro.setSalud(salud);
         perro.setCantPerros(cantPerros);
-        perro.setRutina(rutina);
+        perro.setTutor(tutor);
 //        perro.setImagen(imagen);
 
         perroRepositorio.save(perro);
@@ -61,24 +71,24 @@ public class PerroServicio {
     }
 
     @Transactional
-    public void modificarPerro(String idPerro, String nombre, Date fechaNac, String raza, String salud, Integer cantPerros, String idRutina, String idImagen) throws MiException {
+    public void modificarPerro(String idPerro, String nombre, Date fechaNac, String raza, String salud, Integer cantPerros, String idImagen, String idTutor) throws MiException {
 
-        validarPerro(nombre, fechaNac, raza, salud, cantPerros, idImagen, idRutina);
+        validarPerro(nombre, fechaNac, raza, salud, cantPerros, idImagen, idTutor);
 
         Optional<Perro> respuesta = perroRepositorio.findById(idPerro);
-        Optional<Rutina> respuestaRutina = rutinaRepositorio.findById(idRutina);
-        Optional<Imagen> respuestaImagen = imagenRepositorio.findById(idImagen);
+        Optional<Tutor> respuestaTutor = tutorRepositorio.findById(idTutor);
+//        Optional<Imagen> respuestaImagen = imagenRepositorio.findById(idImagen);
 
-        Rutina rutina = new Rutina();
-        Imagen imagen = new Imagen();
+        Tutor tutor = new Tutor();
+//        Imagen imagen = new Imagen();
 
-        if (respuestaRutina.isPresent()) {
-            rutina = respuestaRutina.get();
+        if (respuestaTutor.isPresent()) {
+            tutor = respuestaTutor.get();
         }
 
-        if (respuestaImagen.isPresent()) {
-            imagen = respuestaImagen.get();
-        }
+//        if (respuestaImagen.isPresent()) {
+//            imagen = respuestaImagen.get();
+//        }
 
         if (respuesta.isPresent()) {
             Perro perro = respuesta.get();
@@ -88,7 +98,7 @@ public class PerroServicio {
             perro.setRaza(raza);
             perro.setSalud(salud);
             perro.setCantPerros(cantPerros);
-            perro.setRutina(rutina);
+            perro.setTutor(tutor);
 //            perro.setImagen(imagen);
 
             perroRepositorio.save(perro);
