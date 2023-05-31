@@ -26,9 +26,9 @@ public class TutorServicio {
     private PerroRepositorio perroRepositorio;
 
     @Transactional
-    public void crearTutor(String nombre, String apellido, Long telefono, String direccion, Date fechaAlta) throws MiException {
+    public void crearTutor(String nombre, String apellido, Long telefono, String direccion) throws MiException {
 
-        verificarTutor(nombre, apellido, telefono, direccion, fechaAlta);
+        verificarTutor(nombre, apellido, telefono, direccion);
 
         Tutor tutor = new Tutor();
 
@@ -36,7 +36,6 @@ public class TutorServicio {
         tutor.setApellido(apellido);
         tutor.setTelefono(telefono);
         tutor.setDireccion(direccion);
-        tutor.setFechaAlta(fechaAlta);
 
         tutorRepositorio.save(tutor);
 
@@ -53,9 +52,9 @@ public class TutorServicio {
     }
 
     @Transactional
-    public void modificarTutor(String idTutor, String nombre, String apellido, Long telefono, String direccion, Date fechaAlta) throws MiException {
+    public void modificarTutor(String idTutor, String nombre, String apellido, Long telefono, String direccion) throws MiException {
 
-        verificarTutor(nombre, apellido, telefono, direccion, fechaAlta);
+        verificarTutor(nombre, apellido, telefono, direccion);
 
         Optional<Tutor> respuesta = tutorRepositorio.findById(idTutor);
 
@@ -73,7 +72,7 @@ public class TutorServicio {
         }
     }
 
-    private void verificarTutor(String nombre, String apellido, Long telefono, String direccion, Date fechaAlta) throws MiException {
+    private void verificarTutor(String nombre, String apellido, Long telefono, String direccion) throws MiException {
 
         if (nombre == null || nombre.isEmpty()) {
             throw new MiException("El nombre no puede ser nulo o estar vacío");
@@ -89,10 +88,6 @@ public class TutorServicio {
 
         if (direccion == null || direccion.isEmpty()) {
             throw new MiException("La direccion no puede ser nulo o estar vacío");
-        }
-
-        if (fechaAlta == null) {
-            throw new MiException("La fecha de alta no puede ser nula");
         }
 
     }

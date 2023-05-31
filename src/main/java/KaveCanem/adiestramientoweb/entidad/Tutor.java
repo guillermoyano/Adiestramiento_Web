@@ -31,7 +31,6 @@ public class Tutor {
     private String apellido;
     private Long telefono;
     private String direccion;
-    @Temporal(TemporalType.DATE)
-    private Date fechaAlta;
+    
 
 }
