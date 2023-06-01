@@ -29,15 +29,13 @@ public class PerroServicio {
     @Autowired
     private ImagenRepositorio imagenRepositorio;
     @Autowired
-    private RutinaRepositorio rutinaRepositorio;
-    @Autowired
     private TutorRepositorio tutorRepositorio;
 
     @Transactional
-    public void crearPerro(String nombre, Date fechaNac, String raza, String salud, Integer cantPerros, String idTutor, String idImagen) throws MiException {
+    public void crearPerro(String nombre, Double edad, String raza, String salud, Integer cantPerros, Integer idTutor) throws MiException {
 
-        validarPerro(nombre, fechaNac, raza, salud, cantPerros, idImagen, idTutor);
-        
+        validarPerro(nombre, edad, raza, salud, cantPerros, idTutor);
+
         Optional<Tutor> respuestaTutor = tutorRepositorio.findById(idTutor);
 
         Tutor tutor = new Tutor();
@@ -46,11 +44,11 @@ public class PerroServicio {
         if (respuestaTutor.isPresent()) {
             tutor = respuestaTutor.get();
         }
-        
+
         Perro perro = new Perro();
 
         perro.setNombre(nombre);
-        perro.setFechaNac(fechaNac);
+        perro.setEdad(edad);
         perro.setRaza(raza);
         perro.setSalud(salud);
         perro.setCantPerros(cantPerros);
@@ -71,9 +69,9 @@ public class PerroServicio {
     }
 
     @Transactional
-    public void modificarPerro(String idPerro, String nombre, Date fechaNac, String raza, String salud, Integer cantPerros, String idImagen, String idTutor) throws MiException {
+    public void modificarPerro(Integer idPerro, String nombre, Double edad, String raza, String salud, Integer cantPerros, Integer idTutor) throws MiException {
 
-        validarPerro(nombre, fechaNac, raza, salud, cantPerros, idImagen, idTutor);
+        validarPerro(nombre, edad, raza, salud, cantPerros, idTutor);
 
         Optional<Perro> respuesta = perroRepositorio.findById(idPerro);
         Optional<Tutor> respuestaTutor = tutorRepositorio.findById(idTutor);
@@ -89,12 +87,11 @@ public class PerroServicio {
 //        if (respuestaImagen.isPresent()) {
 //            imagen = respuestaImagen.get();
 //        }
-
         if (respuesta.isPresent()) {
             Perro perro = respuesta.get();
 
             perro.setNombre(nombre);
-            perro.setFechaNac(fechaNac);
+            perro.setEdad(edad);
             perro.setRaza(raza);
             perro.setSalud(salud);
             perro.setCantPerros(cantPerros);
@@ -105,13 +102,13 @@ public class PerroServicio {
         }
     }
 
-    private void validarPerro(String nombre, Date fechaNac, String raza, String salud, Integer cantPerros, String idRutina, String idImagen) throws MiException {
+    private void validarPerro(String nombre, Double edad, String raza, String salud, Integer cantPerros, Integer idTutor) throws MiException {
 
         if (nombre == null || nombre.isEmpty()) {
             throw new MiException("El nombre no puede ser nulo o estar vacío");
         }
 
-        if (fechaNac == null) {
+        if (edad == null || edad < 0 ) {
             throw new MiException("La fecha de nacimiento no puede ser nula");
         }
 
@@ -123,16 +120,15 @@ public class PerroServicio {
             throw new MiException("La salud no puede ser nula o estar vacía");
         }
 
-        if (cantPerros == null || cantPerros < 10) {
+        if (cantPerros == null || cantPerros < 0) {
             throw new MiException("La cantidad de perros no puede ser nula");
         }
 
-        if (idImagen == null) {
-            throw new MiException("La imagen no puede ser nula");
-        }
-
-        if (idRutina == null) {
-            throw new MiException("La rutina no puede ser nula");
+//        if (idImagen == null) {
+//            throw new MiException("La imagen no puede ser nula");
+//        }
+        if (idTutor == null) {
+            throw new MiException("El tutor no puede ser nulo");
         }
 
     }

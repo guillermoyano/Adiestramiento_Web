@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
  * @author Guillote
  */
 @Repository
-public interface PerroRepositorio extends JpaRepository<Perro, String>{
+public interface PerroRepositorio extends JpaRepository<Perro, Integer>{
 
     @Query("SELECT p FROM Perro p WHERE p.nombre = :nombre") 
    public Perro buscarPerroPorNombre(@Param("nombre") String nombre);

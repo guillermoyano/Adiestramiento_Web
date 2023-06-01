@@ -51,7 +51,7 @@ public class RutinaControlador {
            @RequestParam(required = false) String educacionPrevia,
            @RequestParam(required = false)  String  motivoContratacion, 
            @RequestParam(required = false) String observacionesEducacion, 
-           @RequestParam(required = false) String idPerro,
+           @RequestParam(required = false) Integer idPerro,
            ModelMap modelo ){
         
         try {

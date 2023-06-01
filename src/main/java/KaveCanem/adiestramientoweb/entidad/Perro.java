@@ -25,10 +25,9 @@ public class Perro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String idPerro;
+    private Integer idPerro;
     private String nombre;
-    @Temporal(TemporalType.DATE)
-    private Date fechaNac;
+    private Double edad;
     private String raza;
     private String salud;
     private Integer cantPerros;

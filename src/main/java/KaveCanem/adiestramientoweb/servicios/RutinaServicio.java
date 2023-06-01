@@ -29,9 +29,9 @@ public class RutinaServicio {
     public void crearRutina(String paseo, String frecPaseo, String herramientas, String salida, String observacionesPaseo,
             String calle, String comida, String frecComida, String observacionesComida, String juego, String juegaCon,
             String dispoJuguetes, String frecJuego, String observacionesJuego, String duerme, String frecDuerme,
-            String dondePasaDia, String educacionPrevia, String motivoContratacion, String observacionesEducacion, String idPerro) throws MiException {
+            String dondePasaDia, String educacionPrevia, String motivoContratacion, String observacionesEducacion, Integer idPerro) throws MiException {
 
-        validarRutina(paseo, comida, juego, motivoContratacion);
+        validarRutina(paseo, comida, juego, motivoContratacion, idPerro);
 
         Optional<Perro> respuestaPerro = perroRepositorio.findById(idPerro);
 
@@ -80,12 +80,12 @@ public class RutinaServicio {
     }
 
     @Transactional
-    public void modificarRutina(String idRutina, String paseo, String frecPaseo, String herramientas, String salida, String observacionesPaseo,
+    public void modificarRutina(Integer idRutina, String paseo, String frecPaseo, String herramientas, String salida, String observacionesPaseo,
             String calle, String comida, String frecComida, String observacionesComida, String juego, String juegaCon,
             String dispoJuguetes, String frecJuego, String observacionesJuego, String duerme, String frecDuerme,
-            String dondePasaDia, String educacionPrevia, String motivoContratacion, String observacionesEducacion, String idPerro) throws MiException {
+            String dondePasaDia, String educacionPrevia, String motivoContratacion, String observacionesEducacion, Integer idPerro) throws MiException {
 
-        validarRutina(paseo, comida, juego, motivoContratacion);
+        validarRutina(paseo, comida, juego, motivoContratacion, idPerro);
 
         Optional<Rutina> respuesta = rutinaRepositorio.findById(idRutina);
         Optional<Perro> respuestaPerro = perroRepositorio.findById(idPerro);
@@ -128,7 +128,7 @@ public class RutinaServicio {
         }
     }
 
-    private void validarRutina(String paseo, String comida, String juego, String motivoContratacion) throws MiException {
+    private void validarRutina(String paseo, String comida, String juego, String motivoContratacion, Integer idPerro) throws MiException {
 
         if (paseo == null || paseo.isEmpty()) {
             throw new MiException("El paseo no puedo ser nulo o estar vacío");
@@ -141,6 +141,10 @@ public class RutinaServicio {
         }
         if (motivoContratacion == null || motivoContratacion.isEmpty()) {
             throw new MiException("El motivoContratacion no puedo ser nulo o estar vacío");
+        }
+        
+        if(idPerro == null){
+            throw new MiException("Debe haber un perro para cargar o modificar una rutina");
         }
     }
 

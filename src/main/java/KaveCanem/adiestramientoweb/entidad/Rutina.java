@@ -22,7 +22,7 @@ public class Rutina {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String idRutina;
+    private Integer idRutina;
     private String paseo;
     private String frecPaseo;
     private String herramientas;

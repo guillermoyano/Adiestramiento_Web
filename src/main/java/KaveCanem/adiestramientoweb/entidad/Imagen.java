@@ -28,7 +28,7 @@ public class Imagen {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String idImagen;
+    private Integer idImagen;
     private String mime;
     private String nombre;
     @Lob

@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
  * @author Guillote
  */
 @Repository
-public interface RutinaRepositorio extends JpaRepository<Rutina, String>{
+public interface RutinaRepositorio extends JpaRepository<Rutina, Integer>{
 
 }

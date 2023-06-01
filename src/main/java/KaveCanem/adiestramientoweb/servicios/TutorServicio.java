@@ -52,7 +52,7 @@ public class TutorServicio {
     }
 
     @Transactional
-    public void modificarTutor(String idTutor, String nombre, String apellido, Long telefono, String direccion) throws MiException {
+    public void modificarTutor(Integer idTutor, String nombre, String apellido, Long telefono, String direccion) throws MiException {
 
         verificarTutor(nombre, apellido, telefono, direccion);
 

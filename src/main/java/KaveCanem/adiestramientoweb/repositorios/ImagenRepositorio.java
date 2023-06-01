@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
  * @author Guillote
  */
 @Repository
-public interface ImagenRepositorio extends JpaRepository <Imagen, String>{
+public interface ImagenRepositorio extends JpaRepository <Imagen, Integer>{
 
 }

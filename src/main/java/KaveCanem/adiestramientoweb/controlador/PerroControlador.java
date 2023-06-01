@@ -25,8 +25,7 @@ public class PerroControlador {
 
     @Autowired
     private PerroServicio perroServicio;
-    @Autowired
-    private RutinaServicio rutinaServicio;
+   
 
     @GetMapping("/registrar")
     public String registrar() {
@@ -35,13 +34,12 @@ public class PerroControlador {
     }
 
     @PostMapping("/registro")
-    public String registro(@RequestParam(required = false) String nombre, @RequestParam(required = false)  Date fechaNac, 
+    public String registro(@RequestParam(required = false) String nombre, @RequestParam(required = false)  Double edad, 
             @RequestParam(required = false)  String raza, @RequestParam(required = false)  Integer cantPerros, 
-            @RequestParam(required = false)  String salud, @RequestParam(required = false)  String idRutina, 
-            @RequestParam(required = false) String idImagen, ModelMap modelo) {
+            @RequestParam(required = false)  String salud, @RequestParam(required = false)  Integer idTutor, ModelMap modelo) {
 
         try {
-            perroServicio.crearPerro(nombre, fechaNac, raza, salud, cantPerros, idRutina, idImagen);
+            perroServicio.crearPerro(nombre, edad, raza, salud, cantPerros, idTutor);
             
             modelo.put("exito", "El perro fue cargado correctamente");
 
