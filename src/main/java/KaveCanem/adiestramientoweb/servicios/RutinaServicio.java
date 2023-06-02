@@ -140,7 +140,7 @@ public class RutinaServicio {
             throw new MiException("El juego no puedo ser nulo o estar vacío");
         }
         if (motivoContratacion == null || motivoContratacion.isEmpty()) {
-            throw new MiException("El motivoContratacion no puedo ser nulo o estar vacío");
+            throw new MiException("El motivo de contratacion no puedo ser nulo o estar vacío");
         }
         
         if(idPerro == null){

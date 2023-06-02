@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -36,20 +37,17 @@ public class TutorControlador {
     @PostMapping("/registro")
     public String registro(@RequestParam(required = false) String nombre, @RequestParam(required = false) String apellido,
             @RequestParam(required = false) Long telefono, @RequestParam(required = false) String direccion, 
-            ModelMap modelo) {
-        System.out.println("FCK");
+             RedirectAttributes redirect, ModelMap modelo) {
         try {
             tutorServicio.crearTutor(nombre, apellido, telefono, direccion);
-            
-            modelo.put("exito", "El tutor fue cargado correctamente");
+            redirect.addFlashAttribute("exito", "salió todo bien");
             
         } catch (MiException ex) {
             
             modelo.put("error", ex.getMessage());
-            
             return "tutor_form.html";
         }
-        return "index.html";
+         return "redirect:../perro/registrar";
     }
 
 }
