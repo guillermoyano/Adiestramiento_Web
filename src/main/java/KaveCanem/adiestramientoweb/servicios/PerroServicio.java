@@ -101,6 +101,10 @@ public class PerroServicio {
             perroRepositorio.save(perro);
         }
     }
+    
+       public Perro  getOne(Integer idPerro){
+        return perroRepositorio.getOne(idPerro);
+    }
 
     private void validarPerro(String nombre, Double edad, String raza, String salud, Integer cantPerros, Integer idTutor) throws MiException {
 

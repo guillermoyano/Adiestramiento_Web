@@ -71,6 +71,10 @@ public class TutorServicio {
             tutorRepositorio.save(tutor);
         }
     }
+    
+    public Tutor getOne(Integer idTutor){
+        return tutorRepositorio.getOne(idTutor);
+    }
 
     private void verificarTutor(String nombre, String apellido, Long telefono, String direccion) throws MiException {
 

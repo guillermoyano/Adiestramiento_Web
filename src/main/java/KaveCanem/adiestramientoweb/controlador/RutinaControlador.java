@@ -1,6 +1,7 @@
 package KaveCanem.adiestramientoweb.controlador;
 
 import KaveCanem.adiestramientoweb.entidad.Perro;
+import KaveCanem.adiestramientoweb.entidad.Rutina;
 import KaveCanem.adiestramientoweb.excepciones.MiException;
 import KaveCanem.adiestramientoweb.servicios.PerroServicio;
 import KaveCanem.adiestramientoweb.servicios.RutinaServicio;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -67,11 +69,10 @@ public class RutinaControlador {
                     calle, comida, frecComida, observacionesComida, juego, juegaCon, dispoJuguetes,
                     frecJuego, observacionesJuego, duerme, frecDuerme, dondePasaDia, educacionPrevia, motivoContratacion, observacionesEducacion, idPerro);
 
-             List<Perro> perros = perroServicio.listarPerros();
+            List<Perro> perros = perroServicio.listarPerros();
 
             redirect.addAttribute("perros", perros);
             redirect.addFlashAttribute("exito", "La rutina fue cargada correctamente");
-            
 
         } catch (MiException ex) {
 
@@ -86,4 +87,41 @@ public class RutinaControlador {
         return "index.html";
     }
 
+    @GetMapping("/lista")
+    public String listar(ModelMap modelo) {
+        List<Rutina> rutinas = rutinaServicio.listarRutina();
+        modelo.addAttribute("rutinas", rutinas);
+
+        return "rutina_list.html";
+
+    }
+
+   @GetMapping("modificar/{idRutina}")
+    public String modificar(@PathVariable Integer idRutina, ModelMap modelo) {
+
+        modelo.put("rutina", rutinaServicio.getOne(idRutina));
+
+        return "rutina_modificar.html";
+    }
+
+    @PostMapping("modificar/{idRutina}")
+    public String modificar(@PathVariable Integer idRutina, String paseo,
+            String frecPaseo, String herramientas, String salida, String observacionesPaseo, String calle, String comida,
+            String frecComida, String observacionesComida, String juego, String juegaCon, String dispoJuguetes, 
+            String frecJuego, String observacionesJuego, String duerme, String frecDuerme, String dondePasaDia,
+            String educacionPrevia, String motivoContratacion, String observacionesEducacion, Integer idPerro,
+            ModelMap modelo) {
+        try {
+            rutinaServicio.modificarRutina(idRutina, paseo, frecPaseo, herramientas, salida, observacionesPaseo, calle, comida,
+                    frecComida, observacionesComida, juego, juegaCon, dispoJuguetes,
+                    frecJuego, observacionesJuego, duerme, frecDuerme, dondePasaDia,
+                    educacionPrevia, motivoContratacion, observacionesEducacion, idPerro);
+            
+            return "redirect:../lista";
+        } catch (MiException ex) {
+            modelo.put("error", ex.getMessage());
+            return "rutina_modificar.html";
+        }
+    }
+    
 }

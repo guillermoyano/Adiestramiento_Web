@@ -127,6 +127,10 @@ public class RutinaServicio {
             rutinaRepositorio.save(rutina);
         }
     }
+    
+       public Rutina getOne(Integer idRutina){
+        return rutinaRepositorio.getOne(idRutina);
+    }
 
     private void validarRutina(String paseo, String comida, String juego, String motivoContratacion, Integer idPerro) throws MiException {
 

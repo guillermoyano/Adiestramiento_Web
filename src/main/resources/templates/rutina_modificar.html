@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rutina Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/formulario.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navBar">
+        <div class="containerImg">
+            <a href="/" class="navbar-brand d-flex align-items-center">
+                <img class="logo" src="/img/Egg.png" alt="Img logo egg">
+            </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse elementosNav" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto elementos">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Libros
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                        <li><a class="dropdown-item" th:href="@{/libro/registrar}">Crear Libro</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li><a class="dropdown-item" th:href="@{/libro/lista}">Listar Libros</a></li>
+                    </ul>
+                </li>
+
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Autores
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                        <li><a class="dropdown-item" th:href="@{/autor/registrar}">Crear Autor</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li><a class="dropdown-item" th:href="@{/autor/lista}">Listar Autores</a></li>
+                    </ul>
+                </li>
+
+
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Editoriales
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                        <li><a class="dropdown-item" th:href="@{/editorial/registrar}">Crear Editorial</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li><a class="dropdown-item" th:href="@{/editorial/lista}">Listar Editoriales</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid m-5 contenedor">
+
+
+        <form class="formulario" th:action="@{/rutina/modificar/__${rutina.idRutina}__}" method="POST">
+
+            <input hidden th:value="${idRutina}" name="idRutina">
+
+
+            <div class="form-group my-3">
+                <label class="mb-2">Paseo</label>
+                <input th:value="${rutina.paseo}" type="text" class="form-control" name="paseo"
+                    placeholder="Cuántas veces por día sale a pasear">
+            </div>
+            <div class="form-group my-3">
+                <label class="mb-2">Tiempo de paseo</label>
+                <input th:value="${rutina.frecPaseo}" type="number" class="form-control" name="frecPaseo"
+                    placeholder="Cuánto tiempo dura el paseo">
+            </div>
+            <div class="form-group my-3">
+                <label class="mb-2">Herramientas de paseo</label>
+                <input th:value="${rutina.herramientas}" type="text" class="form-control" name="herramientas"
+                    placeholder="Qué usa al salir(pretal/collar fijo/ collar ahorque)">
+            </div>
+            <div class="form-group my-3">
+                <label class="mb-2">Qué hace cuando va a pasear?</label>
+                <input th:value="${rutina.salida}" type="text" class="form-control" name="salida"
+                    placeholder="Cómo se pone cuando sabe que va a salir?">
+            </div>
+            <div class="form-group my-3">
+                <label class="mb-2">Observaciones</label>
+                <textarea th:value="${rutina.observacionesPaseo}" rows="1" cols="100" class="form-control"
+                    name="observacionesPaseo" placeholder="Qué hace durante el paseo?"></textarea>
+            </div>
+            <div class="form-group my-3">
+                <label class="mb-2">Dónde hace sus necesidades?</label>
+                <input th:value="${rutina.calle}" type="text" class="form-control" name="calle"
+                    placeholder="Micción/defecación en la calle?">
+            </div>
+            <div class="form-group my-3">
+                <label class="mb-2">Disposición de comida</label>
+                <input th:value="${rutina.comida}" type="text" class="form-control" name="comida"
+                    placeholder="Tiene a disposición durante todo el día?">
+            </div>
+            <div class="form-group my-3">
+                <label class="mb-2">Frecuencia de comida</label>
+                <input th:value="${rutina.frecComida}" type="number" class="form-control" name="frecComida"
+                    placeholder="Cuántas veces por día come?">
+            </div>
+            <div class="form-group my-3">
+                <label class="mb-2">Observaciones</label>
+                <textarea th:value="${rutina.observacionesComida}" rows="1" cols="100" class="form-control"
+                    name="observacionesComida" placeholder="Qué hacen si no come?"></textarea>
+            </div>
+            <div class="form-group my-3">
+                <label class="mb-2">Es juguetón?</label>
+                <input th:value="${rutina.juego}" type="text" class="form-control" name="juego"
+                    placeholder="Suele juegar?">
+            </div>
+            <div class="form-group my-3">
+                <label class="mb-2">Con quién juega?</label>
+                <input th:value="${rutina.juegaCon}" type="text" class="form-control" name="juegaCon"
+                    placeholder="Solo? con tutor? otros perros?">
+            </div>
+            <div class="form-group my-3">
+                <label class="mb-2">Disposición de juguetes</label>
+                <input th:value="${rutina.dispoJuguetes}" type="text" class="form-control" name="dispoJuguetes"
+                    placeholder="Siempre a disposición?">
+            </div>
+            <div class="form-group my-3">
+                <label class="mb-2">Frecuencia de juego</label>
+                <input th:value="${rutina.frecJuego}" type="number" class="form-control" name="frecJuego"
+                    placeholder="Cuántas veces por día juega?">
+            </div>
+            <div class="form-group my-3">
+                <label class="mb-2">Observaciones</label>
+                <textarea th:value="${rutina.observacionesJuego}" rows="1" cols="100" class="form-control"
+                    name="observacionesJuego" placeholder="Con qué juguetes juega?"></textarea>
+            </div>
+            <div class="form-group my-3">
+                <label class="mb-2">Dónde duerme</label>
+                <input th:value="${rutina.duerme}" type="text" class="form-control" name="duerme"
+                    placeholder="Dónde duerme?">
+            </div>
+            <div class="form-group my-3">
+                <label class="mb-2">Cuántas veces por día duerme?</label>
+                <input th:value="${rutina.frecDuerme}" type="text" class="form-control" name="frecDuerme"
+                    placeholder="Cuántas veces por día duerme?">
+            </div>
+            <div class="form-group my-3">
+                <label class="mb-2">Dónde pasa el día?</label>
+                <input th:value="${rutina.dondePasaDia}" type="text" class="form-control" name="dondePasaDia"
+                    placeholder="Dónde pasa el día?">
+            </div>
+            <div class="form-group my-3">
+                <label class="mb-2">Educación previa</label>
+                <input th:value="${rutina.educacionPrevia}" type="text" class="form-control" name="educacionPrevia"
+                    placeholder="Tuvo algún tipo de educación">
+            </div>
+            <div class="form-group my-3">
+                <label class="mb-2">Motivo de contratación</label>
+                <input th:value="${rutina.motivoContratacion}" type="textarea" class="form-control"
+                    name="motivoContratacion" placeholder="Motivo contratación">
+            </div>
+            <div class="form-group my-3">
+                <label class="mb-2">Observaciones</label>
+                <textarea th:value="${rutina.observacionesEducacion}" rows="1" cols="100" class="form-control"
+                    name="observacionesEducacion" placeholder="Qué educación tuvo y de qué tipo?"></textarea>
+            </div>
+
+            <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
+                <div class="card-body">
+                    <h5 class="card-title">Error</h5>
+                    <p class="card-text" th:text="${error}"></p>
+                </div>
+            </div>
+
+            <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
+                <div class="card-body">
+                    <h5 class="card-title">Exito!</h5>
+                    <p class="card-text" th:text="${exito}"></p>
+                </div>
+            </div>
+
+            <section class=" text-center container">
+                <div class="row mt-3">
+                    <div class="divVolver">
+                        <a th:href="@{/}" class="btn btn-secondary my-2 botonVolver botones">Volver</a>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3 botones">Enviar</button>
+            </section>
+
+
+        </form>
+    </div>
+
+    <footer class="text-muted py-5">
+        <div class="containerFooter">
+            <p class="mb-1">Album example is &copy; Bootstrap,<br>but please download and customize it for yourself!</p>
+            <p class="mb-0">New to Bootstrap? <a href="/"><br>Visit the homepage</a> or read our <a
+                    href="../getting-started/introduction/">getting started guide</a>.</p>
+            <p class="float-end mb-1">
+                <a href="#" style="text-decoration:none"><span>⬆️</span> Back to top</a>
+            </p>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

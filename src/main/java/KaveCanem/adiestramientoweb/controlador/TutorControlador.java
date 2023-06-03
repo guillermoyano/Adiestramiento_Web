@@ -1,16 +1,19 @@
 package KaveCanem.adiestramientoweb.controlador;
 
 import KaveCanem.adiestramientoweb.entidad.Perro;
+import KaveCanem.adiestramientoweb.entidad.Tutor;
 import KaveCanem.adiestramientoweb.excepciones.MiException;
 import KaveCanem.adiestramientoweb.servicios.PerroServicio;
 import KaveCanem.adiestramientoweb.servicios.TutorServicio;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,5 +52,34 @@ public class TutorControlador {
         }
          return "redirect:../perro/registrar";
     }
+    
+    @GetMapping("/lista")
+    public String listar(ModelMap modelo){
+        List<Tutor>tutores = tutorServicio.listarTutores();
+        modelo.addAttribute("tutores", tutores);
+        
+        return "tutor_list.html";
+        
+    }
+    
+     @GetMapping("/modificar/{idTutor}")
+    public String modificar(@PathVariable Integer idTutor, ModelMap modelo) {
+
+        modelo.put("tutor", tutorServicio.getOne(idTutor));
+        
+        return "tutor_modificar.html";
+    }
+    
+    @PostMapping("modificar/{idTutor}")
+     public String modificar(@PathVariable Integer idTutor, 
+             String nombre, String apellido, Long telefono, String direccion, ModelMap modelo) {
+        try {
+            tutorServicio.modificarTutor(idTutor, nombre, apellido, telefono, direccion);
+            return  "redirect:../lista";
+        } catch (MiException ex) {
+            modelo.put("error", ex.getMessage());
+            return "tutor_modificar.html";
+        }
+     }
 
 }
