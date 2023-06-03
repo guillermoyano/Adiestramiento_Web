@@ -92,6 +92,7 @@
                     <th scope="col">Nombre Tutor</th>
                     <th scope="col">Telefono Tutor</th>
                     <th scope="col">Acciones</th>
+                    <th scope="col">Rutina</th>
 
                 </tr>
             </thead>
@@ -103,8 +104,14 @@
                     <td th:text="${perro.raza}"></td>
                     <td th:text="${perro.tutor.nombre}"></td>
                     <td th:text="${perro.tutor.telefono}"></td>
+                    
                     <td>
                         <a th:href="@{/perro/modificar/__${perro.idPerro}__}"><i class="fas fa-feather-alt"></i> Modificar
+                        </a>
+                    </td>
+
+                    <td>
+                        <a th:href="@{/rutina/lista/__${perro.idPerro}__}"><i class="fas fa-feather-alt"></i> Ver
                         </a>
                     </td>
                 </tr>

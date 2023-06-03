@@ -82,6 +82,18 @@
     </nav>
     <div class="container m-5">
 
+
+        <!-- <div class="form-group my-3">
+            <select name="idAutor">
+                <option>Seleccionar Autor</option>
+                <option> th:each="autor : ${autores}"
+                        th:value="${autor.id}" 
+                        th:text="${autor.nombre}"
+            </option>
+            </select>
+        </div> -->
+
+
         <table class="table table-dark">
             <thead>
                 <tr>
@@ -90,22 +102,22 @@
                     <th scope="col">Frecuencia</th>
                     <th scope="col">Herramientas</th>
                     <th scope="col">Salida</th>
-                    <th scope="col">Observaciones</th>
+                    <th scope="col">Observaciones Paseo</th>
                     <th scope="col">Calle</th>
                     <th scope="col">Comida</th>
                     <th scope="col">Frecuencia comida</th>
-                    <th scope="col">Observaciones</th>
+                    <th scope="col">Observaciones Comida</th>
                     <th scope="col">Juego</th>
                     <th scope="col">Juega con</th>
                     <th scope="col">Disposición juguetes</th>
                     <th scope="col">Frecuencia juego</th>
-                    <th scope="col">Observaciones</th>
+                    <th scope="col">Observaciones Juego</th>
                     <th scope="col">Duerme</th>
                     <th scope="col">Cuánto duerme</th>
                     <th scope="col">Dónde pasa el día</th>
                     <th scope="col">Educación previa</th>
                     <th scope="col">Motivo contratación</th>
-                    <th scope="col">Observaciones</th>
+                    <th scope="col">Observaciones General</th>
                     <th scope="col">Modificar</th>
                 </tr>
             </thead>
@@ -120,7 +132,7 @@
                     <td th:text="${rutina.calle}"></td>
                     <td th:text="${rutina.comida}"></td>
                     <td th:text="${rutina.frecComida}"></td>
-                    <td th:text="${rutina.observacionesPaseo}"></td>
+                    <td th:text="${rutina.observacionesComida}"></td>
                     <td th:text="${rutina.juego}"></td>
                     <td th:text="${rutina.juegaCon}"></td>
                     <td th:text="${rutina.dispoJuguetes}"></td>
@@ -131,7 +143,7 @@
                     <td th:text="${rutina.dondePasaDia}"></td>
                     <td th:text="${rutina.educacionPrevia}"></td>
                     <td th:text="${rutina.motivoContratacion}"></td>
-                    <td th:text="${rutina.observacionesPaseo}"></td>
+                    <td th:text="${rutina.observacionesEducacion}"></td>
                     <td>
                         <a th:href="@{/rutina/modificar/__${rutina.idRutina}__}"><i class="fas fa-feather-alt"></i> Modificar
                         </a>

@@ -92,100 +92,119 @@
                 <input th:value="${rutina.paseo}" type="text" class="form-control" name="paseo"
                     placeholder="Cuántas veces por día sale a pasear">
             </div>
+
             <div class="form-group my-3">
                 <label class="mb-2">Tiempo de paseo</label>
                 <input th:value="${rutina.frecPaseo}" type="number" class="form-control" name="frecPaseo"
                     placeholder="Cuánto tiempo dura el paseo">
             </div>
+
             <div class="form-group my-3">
                 <label class="mb-2">Herramientas de paseo</label>
                 <input th:value="${rutina.herramientas}" type="text" class="form-control" name="herramientas"
                     placeholder="Qué usa al salir(pretal/collar fijo/ collar ahorque)">
             </div>
+
             <div class="form-group my-3">
                 <label class="mb-2">Qué hace cuando va a pasear?</label>
                 <input th:value="${rutina.salida}" type="text" class="form-control" name="salida"
                     placeholder="Cómo se pone cuando sabe que va a salir?">
             </div>
+
             <div class="form-group my-3">
-                <label class="mb-2">Observaciones</label>
-                <textarea th:value="${rutina.observacionesPaseo}" rows="1" cols="100" class="form-control"
-                    name="observacionesPaseo" placeholder="Qué hace durante el paseo?"></textarea>
+                <label class="mb-2">Observaciones Paseo</label>
+                <input th:value="${rutina.observacionesPaseo}" class="form-control"
+                    name="observacionesPaseo" placeholder="Qué hace durante el paseo?">
             </div>
+
             <div class="form-group my-3">
                 <label class="mb-2">Dónde hace sus necesidades?</label>
                 <input th:value="${rutina.calle}" type="text" class="form-control" name="calle"
                     placeholder="Micción/defecación en la calle?">
             </div>
+
             <div class="form-group my-3">
                 <label class="mb-2">Disposición de comida</label>
                 <input th:value="${rutina.comida}" type="text" class="form-control" name="comida"
                     placeholder="Tiene a disposición durante todo el día?">
             </div>
+
             <div class="form-group my-3">
                 <label class="mb-2">Frecuencia de comida</label>
                 <input th:value="${rutina.frecComida}" type="number" class="form-control" name="frecComida"
                     placeholder="Cuántas veces por día come?">
             </div>
+
             <div class="form-group my-3">
-                <label class="mb-2">Observaciones</label>
-                <textarea th:value="${rutina.observacionesComida}" rows="1" cols="100" class="form-control"
-                    name="observacionesComida" placeholder="Qué hacen si no come?"></textarea>
+                <label class="mb-2">Observaciones Comida</label>
+                <input th:value="${rutina.observacionesComida}" class="form-control"
+                    name="observacionesComida" placeholder="Qué hacen si no come?">
             </div>
+
             <div class="form-group my-3">
                 <label class="mb-2">Es juguetón?</label>
                 <input th:value="${rutina.juego}" type="text" class="form-control" name="juego"
                     placeholder="Suele juegar?">
             </div>
+
             <div class="form-group my-3">
                 <label class="mb-2">Con quién juega?</label>
                 <input th:value="${rutina.juegaCon}" type="text" class="form-control" name="juegaCon"
                     placeholder="Solo? con tutor? otros perros?">
             </div>
+
             <div class="form-group my-3">
                 <label class="mb-2">Disposición de juguetes</label>
                 <input th:value="${rutina.dispoJuguetes}" type="text" class="form-control" name="dispoJuguetes"
                     placeholder="Siempre a disposición?">
             </div>
+
             <div class="form-group my-3">
                 <label class="mb-2">Frecuencia de juego</label>
                 <input th:value="${rutina.frecJuego}" type="number" class="form-control" name="frecJuego"
                     placeholder="Cuántas veces por día juega?">
             </div>
+
             <div class="form-group my-3">
-                <label class="mb-2">Observaciones</label>
-                <textarea th:value="${rutina.observacionesJuego}" rows="1" cols="100" class="form-control"
-                    name="observacionesJuego" placeholder="Con qué juguetes juega?"></textarea>
+                <label class="mb-2">Observaciones Juego</label>
+                <input th:value="${rutina.observacionesJuego}" class="form-control"
+                    name="observacionesJuego" placeholder="Con qué juguetes juega?">
             </div>
+
             <div class="form-group my-3">
                 <label class="mb-2">Dónde duerme</label>
                 <input th:value="${rutina.duerme}" type="text" class="form-control" name="duerme"
                     placeholder="Dónde duerme?">
             </div>
+
             <div class="form-group my-3">
                 <label class="mb-2">Cuántas veces por día duerme?</label>
                 <input th:value="${rutina.frecDuerme}" type="text" class="form-control" name="frecDuerme"
                     placeholder="Cuántas veces por día duerme?">
             </div>
+
             <div class="form-group my-3">
                 <label class="mb-2">Dónde pasa el día?</label>
                 <input th:value="${rutina.dondePasaDia}" type="text" class="form-control" name="dondePasaDia"
                     placeholder="Dónde pasa el día?">
             </div>
+
             <div class="form-group my-3">
                 <label class="mb-2">Educación previa</label>
                 <input th:value="${rutina.educacionPrevia}" type="text" class="form-control" name="educacionPrevia"
                     placeholder="Tuvo algún tipo de educación">
             </div>
+
             <div class="form-group my-3">
                 <label class="mb-2">Motivo de contratación</label>
-                <input th:value="${rutina.motivoContratacion}" type="textarea" class="form-control"
+                <input th:value="${rutina.motivoContratacion}" type="text" class="form-control"
                     name="motivoContratacion" placeholder="Motivo contratación">
             </div>
+
             <div class="form-group my-3">
-                <label class="mb-2">Observaciones</label>
-                <textarea th:value="${rutina.observacionesEducacion}" rows="1" cols="100" class="form-control"
-                    name="observacionesEducacion" placeholder="Qué educación tuvo y de qué tipo?"></textarea>
+                <label class="mb-2">Observaciones General</label>
+                <input th:value="${rutina.observacionesEducacion}" class="form-control"
+                    name="observacionesEducacion" placeholder="Qué educación tuvo y de qué tipo?">
             </div>
 
             <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">

@@ -77,7 +77,7 @@ public class PerroControlador {
     }
 
     @GetMapping("modificar/{idPerro}")
-    public String modificar(@PathVariable Integer idPerro, ModelMap modelo) {
+    public String modificar(@PathVariable Integer idPerro, ModelMap modelo) throws MiException {
 
         modelo.put("perro", perroServicio.getOne(idPerro));
 
@@ -86,9 +86,9 @@ public class PerroControlador {
 
     @PostMapping("modificar/{idPerro}")
     public String modificar(@PathVariable Integer idPerro,
-            String nombre, Double edad, String raza, Integer cantPerros, String salud, Integer idTutor, ModelMap modelo, RedirectAttributes redirect) {
+            String nombre, Double edad, String raza, Integer cantPerros, String salud, ModelMap modelo, RedirectAttributes redirect) throws MiException {
         try {
-            perroServicio.modificarPerro(idPerro, nombre, edad, raza, salud, cantPerros, idTutor);
+            perroServicio.modificarPerro(idPerro, nombre, edad, raza, salud, cantPerros);
             redirect.addFlashAttribute("exito", "Ha sido modificada correctamente.");
             return "redirect:../lista";
         } catch (MiException ex) {

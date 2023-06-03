@@ -84,6 +84,7 @@
         <form class="formulario" th:action="@{/perro/modificar/__${perro.idPerro}__}" method="POST">
 
             <input hidden th:value="${perro.idPerro}" name="idPerro">
+            <input hidden th:value="${idTutor}" name="idTutor">
 
 
             <div class="form-group my-3">

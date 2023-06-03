@@ -34,7 +34,7 @@ public class PerroServicio {
     @Transactional
     public void crearPerro(String nombre, Double edad, String raza, String salud, Integer cantPerros, Integer idTutor) throws MiException {
 
-        validarPerro(nombre, edad, raza, salud, cantPerros, idTutor);
+        validarPerroCrear(nombre, edad, raza, salud, cantPerros, idTutor);
 
         Optional<Tutor> respuestaTutor = tutorRepositorio.findById(idTutor);
 
@@ -69,50 +69,55 @@ public class PerroServicio {
     }
 
     @Transactional
-    public void modificarPerro(Integer idPerro, String nombre, Double edad, String raza, String salud, Integer cantPerros, Integer idTutor) throws MiException {
-
-        validarPerro(nombre, edad, raza, salud, cantPerros, idTutor);
-
+    public void modificarPerro(Integer idPerro, String nombre, Double edad, String raza, String salud, Integer cantPerros) throws MiException {
+        validarPerro(nombre, edad, raza, salud, cantPerros);
         Optional<Perro> respuesta = perroRepositorio.findById(idPerro);
-        Optional<Tutor> respuestaTutor = tutorRepositorio.findById(idTutor);
-//        Optional<Imagen> respuestaImagen = imagenRepositorio.findById(idImagen);
-
-        Tutor tutor = new Tutor();
-//        Imagen imagen = new Imagen();
-
-        if (respuestaTutor.isPresent()) {
-            tutor = respuestaTutor.get();
-        }
-
-//        if (respuestaImagen.isPresent()) {
-//            imagen = respuestaImagen.get();
-//        }
         if (respuesta.isPresent()) {
             Perro perro = respuesta.get();
-
             perro.setNombre(nombre);
             perro.setEdad(edad);
             perro.setRaza(raza);
             perro.setSalud(salud);
             perro.setCantPerros(cantPerros);
-            perro.setTutor(tutor);
-//            perro.setImagen(imagen);
 
             perroRepositorio.save(perro);
         }
     }
-    
-       public Perro  getOne(Integer idPerro){
+
+    public Perro getOne(Integer idPerro) {
         return perroRepositorio.getOne(idPerro);
     }
 
-    private void validarPerro(String nombre, Double edad, String raza, String salud, Integer cantPerros, Integer idTutor) throws MiException {
+    private void validarPerro(String nombre, Double edad, String raza, String salud, Integer cantPerros) throws MiException {
 
         if (nombre == null || nombre.isEmpty()) {
             throw new MiException("El nombre no puede ser nulo o estar vacío");
         }
 
-        if (edad == null || edad < 0 ) {
+        if (edad == null || edad < 0) {
+            throw new MiException("La fecha de nacimiento no puede ser nula");
+        }
+
+        if (raza == null || raza.isEmpty()) {
+            throw new MiException("La raza no puede ser nula o estar vacía");
+        }
+
+        if (salud == null || salud.isEmpty()) {
+            throw new MiException("La salud no puede ser nula o estar vacía");
+        }
+
+        if (cantPerros == null || cantPerros < 0) {
+            throw new MiException("La cantidad de perros no puede ser nula");
+        }
+    }
+
+    private void validarPerroCrear(String nombre, Double edad, String raza, String salud, Integer cantPerros, Integer idTutor) throws MiException {
+
+        if (nombre == null || nombre.isEmpty()) {
+            throw new MiException("El nombre no puede ser nulo o estar vacío");
+        }
+
+        if (edad == null || edad < 0) {
             throw new MiException("La fecha de nacimiento no puede ser nula");
         }
 
@@ -136,5 +141,4 @@ public class PerroServicio {
         }
 
     }
-
 }

@@ -109,13 +109,13 @@ public class RutinaControlador {
             String frecPaseo, String herramientas, String salida, String observacionesPaseo, String calle, String comida,
             String frecComida, String observacionesComida, String juego, String juegaCon, String dispoJuguetes, 
             String frecJuego, String observacionesJuego, String duerme, String frecDuerme, String dondePasaDia,
-            String educacionPrevia, String motivoContratacion, String observacionesEducacion, Integer idPerro,
+            String educacionPrevia, String motivoContratacion, String observacionesEducacion,
             ModelMap modelo) {
         try {
             rutinaServicio.modificarRutina(idRutina, paseo, frecPaseo, herramientas, salida, observacionesPaseo, calle, comida,
                     frecComida, observacionesComida, juego, juegaCon, dispoJuguetes,
                     frecJuego, observacionesJuego, duerme, frecDuerme, dondePasaDia,
-                    educacionPrevia, motivoContratacion, observacionesEducacion, idPerro);
+                    educacionPrevia, motivoContratacion, observacionesEducacion);
             
             return "redirect:../lista";
         } catch (MiException ex) {
