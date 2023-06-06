@@ -17,8 +17,8 @@
 <body>
     <nav class="navbar navbar-expand-lg navBar">
         <div class="containerImg">
-            <a href="/" class="navbar-brand d-flex align-items-center">
-                <img class="logo" src="/img/Egg.png" alt="Img logo egg">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <img class="logo" src="/img/perrito.png" alt="Img logo egg">
             </a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -27,54 +27,45 @@
         </button>
         <div class="collapse navbar-collapse elementosNav" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto elementos">
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        Libros
+                        Nuevo Cliente
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                        <li><a class="dropdown-item" th:href="@{/libro/registrar}">Crear Libro</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li><a class="dropdown-item" th:href="@{/libro/lista}">Listar Libros</a></li>
+                        <li><a class="dropdown-item" th:href="@{/tutor/registrar}">Cargar Cliente</a></li>
                     </ul>
                 </li>
 
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Tutores
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" th:href="@{/libro/lista}">Listar Tutores</a></li>
+                    </ul>
+                </li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        Autores
+                        Perros
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                        <li><a class="dropdown-item" th:href="@{/autor/registrar}">Crear Autor</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li><a class="dropdown-item" th:href="@{/autor/lista}">Listar Autores</a></li>
+                        <li><a class="dropdown-item" th:href="@{/autor/lista}">Listar Perros</a></li>
                     </ul>
                 </li>
-
-
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        Editoriales
+                        Perfil
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                        <li><a class="dropdown-item" th:href="@{/editorial/registrar}">Crear Editorial</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li><a class="dropdown-item" th:href="@{/editorial/lista}">Listar Editoriales</a></li>
+                        <li><a class="dropdown-item" href="/logout">Cerrar Sesión</a></li>
                     </ul>
                 </li>
             </ul>
@@ -121,7 +112,7 @@
                     <th scope="col">Modificar</th>
                 </tr>
             </thead>
-            <tbody th:each="rutina : ${rutinas}">
+            <tbody th:action="@{/rutina/lista/__${rutina.perro.idPerro}__}">
                 <tr>
                     <td th:text="${rutina.perro.nombre}"></td>
                     <td th:text="${rutina.paseo}"></td>
@@ -145,7 +136,8 @@
                     <td th:text="${rutina.motivoContratacion}"></td>
                     <td th:text="${rutina.observacionesEducacion}"></td>
                     <td>
-                        <a th:href="@{/rutina/modificar/__${rutina.idRutina}__}"><i class="fas fa-feather-alt"></i> Modificar
+                        <a th:href="@{/rutina/modificar/__${rutina.idRutina}__}"><i class="fas fa-feather-alt"></i>
+                            Modificar
                         </a>
                     </td>
                 </tr>
@@ -176,7 +168,7 @@
                         <a th:href="@{/libro/modificar/__${libro.isbn}__}"><i class="fas fa-feather-alt"></i> Modificar
                         </a>
                     </td> -->
-                <!--</tr>
+        <!--</tr>
 
             </tbody>
         </table>
@@ -206,7 +198,7 @@
                         <a th:href="@{/libro/modificar/__${libro.isbn}__}"><i class="fas fa-feather-alt"></i> Modificar
                         </a>
                     </td> -->
-                <!--</tr>
+        <!--</tr>
 
             </tbody>
         </table>

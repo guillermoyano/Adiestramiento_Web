@@ -8,15 +8,15 @@
     <title>Tutor Form</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-        <link rel="stylesheet" href="../css/formulario.css">
+    <link rel="stylesheet" href="../css/formulario.css">
 </head>
 
 <body>
 
     <nav class="navbar navbar-expand-lg navBar">
         <div class="containerImg">
-            <a href="/" class="navbar-brand d-flex align-items-center">
-                <img class="logo" src="/img/Egg.png" alt="Img logo egg">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <img class="logo" src="/img/perrito.png" alt="Img logo egg">
             </a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -25,54 +25,45 @@
         </button>
         <div class="collapse navbar-collapse elementosNav" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto elementos">
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        Libros
+                        Nuevo Cliente
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                        <li><a class="dropdown-item" th:href="@{/libro/registrar}">Crear Libro</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li><a class="dropdown-item" th:href="@{/libro/lista}">Listar Libros</a></li>
+                        <li><a class="dropdown-item" th:href="@{/tutor/registrar}">Cargar Cliente</a></li>
                     </ul>
                 </li>
 
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Tutores
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" th:href="@{/libro/lista}">Listar Tutores</a></li>
+                    </ul>
+                </li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        Autores
+                        Perros
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                        <li><a class="dropdown-item" th:href="@{/autor/registrar}">Crear Autor</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li><a class="dropdown-item" th:href="@{/autor/lista}">Listar Autores</a></li>
+                        <li><a class="dropdown-item" th:href="@{/autor/lista}">Listar Perros</a></li>
                     </ul>
                 </li>
-
-
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        Editoriales
+                        Perfil
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                        <li><a class="dropdown-item" th:href="@{/editorial/registrar}">Crear Editorial</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li><a class="dropdown-item" th:href="@{/editorial/lista}">Listar Editoriales</a></li>
+                        <li><a class="dropdown-item" href="/logout">Cerrar Sesión</a></li>
                     </ul>
                 </li>
             </ul>
@@ -101,7 +92,8 @@
             </div>
             <div class="form-group">
                 <label class="mb-2">Cantidad de perros en la vivienda</label>
-                <input th:value="${perro.cantPerros}" type="number" class="form-control" name="cantPerros" placeholder="cantPerros">
+                <input th:value="${perro.cantPerros}" type="number" class="form-control" name="cantPerros"
+                    placeholder="cantPerros">
             </div>
             <div class="form-group">
                 <label class="mb-2">Salud</label>

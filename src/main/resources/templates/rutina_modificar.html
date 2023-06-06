@@ -15,8 +15,8 @@
 
     <nav class="navbar navbar-expand-lg navBar">
         <div class="containerImg">
-            <a href="/" class="navbar-brand d-flex align-items-center">
-                <img class="logo" src="/img/Egg.png" alt="Img logo egg">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <img class="logo" src="/img/perrito.png" alt="Img logo egg">
             </a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -25,54 +25,45 @@
         </button>
         <div class="collapse navbar-collapse elementosNav" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto elementos">
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        Libros
+                        Nuevo Cliente
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                        <li><a class="dropdown-item" th:href="@{/libro/registrar}">Crear Libro</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li><a class="dropdown-item" th:href="@{/libro/lista}">Listar Libros</a></li>
+                        <li><a class="dropdown-item" th:href="@{/tutor/registrar}">Cargar Cliente</a></li>
                     </ul>
                 </li>
 
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Tutores
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" th:href="@{/libro/lista}">Listar Tutores</a></li>
+                    </ul>
+                </li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        Autores
+                        Perros
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                        <li><a class="dropdown-item" th:href="@{/autor/registrar}">Crear Autor</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li><a class="dropdown-item" th:href="@{/autor/lista}">Listar Autores</a></li>
+                        <li><a class="dropdown-item" th:href="@{/autor/lista}">Listar Perros</a></li>
                     </ul>
                 </li>
-
-
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        Editoriales
+                        Perfil
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                        <li><a class="dropdown-item" th:href="@{/editorial/registrar}">Crear Editorial</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li><a class="dropdown-item" th:href="@{/editorial/lista}">Listar Editoriales</a></li>
+                        <li><a class="dropdown-item" href="/logout">Cerrar Sesión</a></li>
                     </ul>
                 </li>
             </ul>
@@ -113,8 +104,8 @@
 
             <div class="form-group my-3">
                 <label class="mb-2">Observaciones Paseo</label>
-                <input th:value="${rutina.observacionesPaseo}" class="form-control"
-                    name="observacionesPaseo" placeholder="Qué hace durante el paseo?">
+                <input th:value="${rutina.observacionesPaseo}" class="form-control" name="observacionesPaseo"
+                    placeholder="Qué hace durante el paseo?">
             </div>
 
             <div class="form-group my-3">
@@ -137,8 +128,8 @@
 
             <div class="form-group my-3">
                 <label class="mb-2">Observaciones Comida</label>
-                <input th:value="${rutina.observacionesComida}" class="form-control"
-                    name="observacionesComida" placeholder="Qué hacen si no come?">
+                <input th:value="${rutina.observacionesComida}" class="form-control" name="observacionesComida"
+                    placeholder="Qué hacen si no come?">
             </div>
 
             <div class="form-group my-3">
@@ -167,8 +158,8 @@
 
             <div class="form-group my-3">
                 <label class="mb-2">Observaciones Juego</label>
-                <input th:value="${rutina.observacionesJuego}" class="form-control"
-                    name="observacionesJuego" placeholder="Con qué juguetes juega?">
+                <input th:value="${rutina.observacionesJuego}" class="form-control" name="observacionesJuego"
+                    placeholder="Con qué juguetes juega?">
             </div>
 
             <div class="form-group my-3">
@@ -203,8 +194,8 @@
 
             <div class="form-group my-3">
                 <label class="mb-2">Observaciones General</label>
-                <input th:value="${rutina.observacionesEducacion}" class="form-control"
-                    name="observacionesEducacion" placeholder="Qué educación tuvo y de qué tipo?">
+                <input th:value="${rutina.observacionesEducacion}" class="form-control" name="observacionesEducacion"
+                    placeholder="Qué educación tuvo y de qué tipo?">
             </div>
 
             <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">

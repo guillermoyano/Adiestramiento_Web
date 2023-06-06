@@ -3,6 +3,7 @@ package KaveCanem.adiestramientoweb.controlador;
 import KaveCanem.adiestramientoweb.entidad.Perro;
 import KaveCanem.adiestramientoweb.entidad.Rutina;
 import KaveCanem.adiestramientoweb.excepciones.MiException;
+import KaveCanem.adiestramientoweb.repositorios.RutinaRepositorio;
 import KaveCanem.adiestramientoweb.servicios.PerroServicio;
 import KaveCanem.adiestramientoweb.servicios.RutinaServicio;
 import java.util.List;
@@ -28,6 +29,8 @@ public class RutinaControlador {
 
     @Autowired
     private RutinaServicio rutinaServicio;
+    @Autowired
+    private RutinaRepositorio rutinaRepositorio;
     @Autowired
     private PerroServicio perroServicio;
 
@@ -87,8 +90,9 @@ public class RutinaControlador {
         return "index.html";
     }
 
-    @GetMapping("/lista")
-    public String listar(ModelMap modelo) {
+    @GetMapping("/lista/{idPerro}")
+    public String listar(@PathVariable Integer idPerro,  ModelMap modelo) {
+        modelo.put("rutina", rutinaRepositorio.buscarRutinaPorIdPerro(idPerro));
         List<Rutina> rutinas = rutinaServicio.listarRutina();
         modelo.addAttribute("rutinas", rutinas);
 
@@ -117,7 +121,7 @@ public class RutinaControlador {
                     frecJuego, observacionesJuego, duerme, frecDuerme, dondePasaDia,
                     educacionPrevia, motivoContratacion, observacionesEducacion);
             
-            return "redirect:../lista";
+            return "redirect:/perro/lista";
         } catch (MiException ex) {
             modelo.put("error", ex.getMessage());
             return "rutina_modificar.html";
