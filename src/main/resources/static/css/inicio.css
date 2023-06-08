@@ -4,7 +4,7 @@
 
 .elementosNav{
     display: flex;
-    width: 30%;
+    width: 50%;
     justify-content: space-around;
     color: #37474f;
     font-weight: 700;
@@ -15,7 +15,7 @@
 }
 
 .logo{
-    width: 40%;
+    width: 80%;
     margin: auto;
 }
 

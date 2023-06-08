@@ -16,6 +16,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -27,19 +28,18 @@ public class PerroServicio {
     @Autowired
     private PerroRepositorio perroRepositorio;
     @Autowired
-    private ImagenRepositorio imagenRepositorio;
+    private ImagenServicio imagenServicio;
     @Autowired
     private TutorRepositorio tutorRepositorio;
 
     @Transactional
-    public void crearPerro(String nombre, Double edad, String raza, String salud, Integer cantPerros, Integer idTutor) throws MiException {
+    public void crearPerro(MultipartFile archivo, String nombre, Double edad, String raza, String salud, Integer cantPerros, Integer idTutor) throws MiException {
 
         validarPerroCrear(nombre, edad, raza, salud, cantPerros, idTutor);
 
         Optional<Tutor> respuestaTutor = tutorRepositorio.findById(idTutor);
 
         Tutor tutor = new Tutor();
-//        Imagen imagen = imagenRepositorio.findById(idImagen).get();
 
         if (respuestaTutor.isPresent()) {
             tutor = respuestaTutor.get();
@@ -53,7 +53,8 @@ public class PerroServicio {
         perro.setSalud(salud);
         perro.setCantPerros(cantPerros);
         perro.setTutor(tutor);
-//        perro.setImagen(imagen);
+        Imagen imagen = imagenServicio.guardar(archivo);
+        perro.setImagen(imagen);
 
         perroRepositorio.save(perro);
     }
@@ -69,7 +70,7 @@ public class PerroServicio {
     }
 
     @Transactional
-    public void modificarPerro(Integer idPerro, String nombre, Double edad, String raza, String salud, Integer cantPerros) throws MiException {
+    public void modificarPerro(MultipartFile archivo, Integer idPerro, String nombre, Double edad, String raza, String salud, Integer cantPerros) throws MiException {
         validarPerro(nombre, edad, raza, salud, cantPerros);
         Optional<Perro> respuesta = perroRepositorio.findById(idPerro);
         if (respuesta.isPresent()) {
@@ -79,7 +80,15 @@ public class PerroServicio {
             perro.setRaza(raza);
             perro.setSalud(salud);
             perro.setCantPerros(cantPerros);
+            Integer idImagen = null;
 
+            if (perro.getImagen() != null) {
+                idImagen = perro.getImagen().getIdImagen();
+            }
+
+            Imagen imagen = imagenServicio.actualizar(archivo, idImagen);
+
+            perro.setImagen(imagen);
             perroRepositorio.save(perro);
         }
     }

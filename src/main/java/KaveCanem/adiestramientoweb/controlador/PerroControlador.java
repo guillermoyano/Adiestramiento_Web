@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
@@ -46,10 +47,10 @@ public class PerroControlador {
     public String registro(@RequestParam(required = false) String nombre, @RequestParam(required = false) Double edad,
             @RequestParam(required = false) String raza, @RequestParam(required = false) Integer cantPerros,
             @RequestParam(required = false) String salud, @RequestParam(required = false) Integer idTutor,
-            RedirectAttributes redirect, ModelMap modelo) {
+            RedirectAttributes redirect, ModelMap modelo, MultipartFile archivo) {
 
         try {
-            perroServicio.crearPerro(nombre, edad, raza, salud, cantPerros, idTutor);
+            perroServicio.crearPerro(archivo, nombre, edad, raza, salud, cantPerros, idTutor);
             List<Tutor> tutores = tutorServicio.listarTutores();
 
             redirect.addAttribute("tutores", tutores);
@@ -86,9 +87,10 @@ public class PerroControlador {
 
     @PostMapping("modificar/{idPerro}")
     public String modificar(@PathVariable Integer idPerro,
-            String nombre, Double edad, String raza, Integer cantPerros, String salud, ModelMap modelo, RedirectAttributes redirect) throws MiException {
+            String nombre, Double edad, String raza, Integer cantPerros, String salud, 
+            ModelMap modelo, RedirectAttributes redirect, MultipartFile archivo) throws MiException {
         try {
-            perroServicio.modificarPerro(idPerro, nombre, edad, raza, salud, cantPerros);
+            perroServicio.modificarPerro(archivo, idPerro, nombre, edad, raza, salud, cantPerros);
             redirect.addFlashAttribute("exito", "Ha sido modificada correctamente.");
             return "redirect:../lista";
         } catch (MiException ex) {
@@ -96,4 +98,6 @@ public class PerroControlador {
             return "perro_modificar.html";
         }
     }
+    
+    
 }

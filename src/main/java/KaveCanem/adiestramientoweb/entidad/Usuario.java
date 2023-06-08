@@ -6,6 +6,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -36,6 +37,8 @@ public class Usuario {
     private String password;
     @Enumerated(EnumType.STRING)
     private Rol rol;
+    @OneToOne
+    private Imagen imagen;
 
     
     

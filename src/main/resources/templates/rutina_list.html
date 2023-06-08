@@ -1,76 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymelead.org/extras/spring-security">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rutina Lista</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
-
-</head>
+<head th:replace="/fragments/head" :: head> </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navBar">
-        <div class="containerImg">
-            <a href="#" class="navbar-brand d-flex align-items-center">
-                <img class="logo" src="/img/perrito.png" alt="Img logo egg">
-            </a>
-        </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse elementosNav" id="navbarNavDropdown">
-            <ul class="navbar-nav ms-auto elementos">
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Nuevo Cliente
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" th:href="@{/tutor/registrar}">Cargar Cliente</a></li>
-                    </ul>
-                </li>
+    <nav th:replace="/fragments/navbar" :: nav> </nav>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Tutores
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" th:href="@{/libro/lista}">Listar Tutores</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Perros
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                        <li><a class="dropdown-item" th:href="@{/autor/lista}">Listar Perros</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Perfil
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/logout">Cerrar Sesión</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </nav>
     <div class="container m-5">
 
 
@@ -145,97 +82,6 @@
             </tbody>
         </table>
 
-        <!-- <table class="table table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">Nombre Perro</th>
-                    <th scope="col">Calle</th>
-                    <th scope="col">Comida</th>
-                    <th scope="col">Frecuencia comida</th>
-                    <th scope="col">Observaciones</th>
-
-                </tr>
-            </thead>
-            <tbody th:each="rutina : ${rutinas}">
-                <tr>
-                    <td th:text="${rutina.perro.nombre}"></td>
-                    <td th:text="${rutina.calle}"></td>
-                    <td th:text="${rutina.comida}"></td>
-                    <td th:text="${rutina.frecComida}"></td>
-                    <td th:text="${rutina.observacionesPaseo}"></td>
-
-                    <td>
-                        <a th:href="@{/libro/modificar/__${libro.isbn}__}"><i class="fas fa-feather-alt"></i> Modificar
-                        </a>
-                    </td> -->
-        <!--</tr>
-
-            </tbody>
-        </table>
-
-        <table class="table table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">Nombre Perro</th>
-                    <th scope="col">Juego</th>
-                    <th scope="col">Juega con</th>
-                    <th scope="col">Disposición juguetes</th>
-                    <th scope="col">Frecuencia juego</th>
-                    <th scope="col">Observaciones</th>
-
-                </tr>
-            </thead>
-            <tbody th:each="rutina : ${rutinas}">
-                <tr>
-                    <td th:text="${rutina.perro.nombre}"></td>
-                    <td th:text="${rutina.juego}"></td>
-                    <td th:text="${rutina.juegaCon}"></td>
-                    <td th:text="${rutina.dispoJuguetes}"></td>
-                    <td th:text="${rutina.frecJuego}"></td>
-                    <td th:text="${rutina.observacionesJuego}"></td>
-
-                     <td>
-                        <a th:href="@{/libro/modificar/__${libro.isbn}__}"><i class="fas fa-feather-alt"></i> Modificar
-                        </a>
-                    </td> -->
-        <!--</tr>
-
-            </tbody>
-        </table>
-
-        <table class="table table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">Nombre Perro</th>
-                    <th scope="col">Duerme</th>
-                    <th scope="col">Cuánto duerme</th>
-                    <th scope="col">Dónde pasa el día</th>
-                    <th scope="col">Educación previa</th>
-                    <th scope="col">Motivo contratación</th>
-                    <th scope="col">Observaciones</th>
-
-                </tr>
-            </thead>
-            <tbody th:each="rutina : ${rutinas}">
-                <tr>
-                    <td th:text="${rutina.perro.nombre}"></td>
-                    <td th:text="${rutina.duerme}"></td>
-                    <td th:text="${rutina.frecDuerme}"></td>
-                    <td th:text="${rutina.dondePasaDia}"></td>
-                    <td th:text="${rutina.educacionPrevia}"></td>
-                    <td th:text="${rutina.motivoContratacion}"></td>
-                    <td th:text="${rutina.observacionesPaseo}"></td>
-
-
-                     <td>
-                        <a th:href="@{/libro/modificar/__${libro.isbn}__}"><i class="fas fa-feather-alt"></i> Modificar
-                        </a>
-                    </td> 
-                </tr>
-
-            </tbody>
-        </table> -->
-
         <div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito">
             <div class="card-body">
                 <h5 class="card-title">Exito ð</h5>
@@ -252,7 +98,7 @@
         <section class="py-5 text-center container">
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
-                    <a th:href="@{/inicio}" class="btn btn-primary my-2">Volver</a>
+                    <a th:href="@{/perro/lista}" class="btn btn-primary my-2">Volver</a>
                     </p>
                 </div>
             </div>
@@ -260,16 +106,7 @@
 
     </div>
 
-    <footer class="text-muted py-5">
-        <div class="containerFooter">
-            <p class="mb-1">Album example is &copy; Bootstrap,<br>but please download and customize it for yourself!</p>
-            <p class="mb-0">New to Bootstrap? <a href="/"><br>Visit the homepage</a> or read our <a
-                    href="../getting-started/introduction/">getting started guide</a>.</p>
-            <p class="float-end mb-1">
-                <a href="#" style="text-decoration:none"><span>⬆️</span> Back to top</a>
-            </p>
-        </div>
-    </footer>
+    <footer th:replace="/fragments/footer" :: footer> </footer>
 
 
 

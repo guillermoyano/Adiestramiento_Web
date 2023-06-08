@@ -33,7 +33,7 @@ public class Perro {
     private Integer cantPerros;
     @OneToOne
     private Tutor tutor;
-//    @OneToOne
-//    private Imagen imagen;
+    @OneToOne
+    private Imagen imagen;
 
 }
