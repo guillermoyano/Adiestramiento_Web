@@ -3,6 +3,7 @@ package KaveCanem.adiestramientoweb.controlador;
 import KaveCanem.adiestramientoweb.entidad.Perro;
 import KaveCanem.adiestramientoweb.entidad.Rutina;
 import KaveCanem.adiestramientoweb.excepciones.MiException;
+import KaveCanem.adiestramientoweb.repositorios.PerroRepositorio;
 import KaveCanem.adiestramientoweb.repositorios.RutinaRepositorio;
 import KaveCanem.adiestramientoweb.servicios.PerroServicio;
 import KaveCanem.adiestramientoweb.servicios.RutinaServicio;
@@ -35,12 +36,14 @@ public class RutinaControlador {
     private RutinaRepositorio rutinaRepositorio;
     @Autowired
     private PerroServicio perroServicio;
+    @Autowired
+    private PerroRepositorio perroRepositorio;
 
     @GetMapping("/registrar")
-    public String registrar(ModelMap modelo) {
-        List<Perro> perros = perroServicio.listarPerros();
+    public String registrar(ModelMap modelo, Integer idPerro) {
 
-        modelo.addAttribute("perros", perros);
+        modelo.put("perro", perroRepositorio.buscarPerroPorIdPerro());
+
         return "rutina_form.html";
     }
 
@@ -66,34 +69,34 @@ public class RutinaControlador {
             @RequestParam(required = false) String educacionPrevia,
             @RequestParam(required = false) String motivoContratacion,
             @RequestParam(required = false) String observacionesEducacion,
-            @RequestParam(required = false) Integer idPerro,
-            RedirectAttributes redirect) {
+            Integer idPerro,
+            RedirectAttributes redirect, ModelMap modelo) {
+
+        System.out.println("Fuera del try");
 
         try {
             rutinaServicio.crearRutina(paseo, frecPaseo, herramientas, salida, observacionesPaseo,
                     calle, comida, frecComida, observacionesComida, juego, juegaCon, dispoJuguetes,
                     frecJuego, observacionesJuego, duerme, frecDuerme, dondePasaDia, educacionPrevia, motivoContratacion, observacionesEducacion, idPerro);
+            System.out.println("Dentro del try");
 
-            List<Perro> perros = perroServicio.listarPerros();
-
-            redirect.addAttribute("perros", perros);
-            redirect.addFlashAttribute("exito", "La rutina fue cargada correctamente");
+            modelo.put("exito", "La rutina fue cargada correctamente");
 
         } catch (MiException ex) {
-
+            System.out.println("Fuera del catch");
             List<Perro> perros = perroServicio.listarPerros();
 
             redirect.addAttribute("perros", perros);
-            redirect.addFlashAttribute("error", ex.getMessage());
+            modelo.put("error", ex.getMessage());
 
             return "rutina_form.html";
         }
 
-        return "index.html";
+        return "rutina_form.html";
     }
 
     @GetMapping("/lista/{idPerro}")
-    public String listar(@PathVariable Integer idPerro,  ModelMap modelo) {
+    public String listar(@PathVariable Integer idPerro, ModelMap modelo) {
         modelo.put("rutina", rutinaRepositorio.buscarRutinaPorIdPerro(idPerro));
         List<Rutina> rutinas = rutinaServicio.listarRutina();
         modelo.addAttribute("rutinas", rutinas);
@@ -102,7 +105,7 @@ public class RutinaControlador {
 
     }
 
-   @GetMapping("modificar/{idRutina}")
+    @GetMapping("modificar/{idRutina}")
     public String modificar(@PathVariable Integer idRutina, ModelMap modelo) {
 
         modelo.put("rutina", rutinaServicio.getOne(idRutina));
@@ -113,7 +116,7 @@ public class RutinaControlador {
     @PostMapping("modificar/{idRutina}")
     public String modificar(@PathVariable Integer idRutina, String paseo,
             String frecPaseo, String herramientas, String salida, String observacionesPaseo, String calle, String comida,
-            String frecComida, String observacionesComida, String juego, String juegaCon, String dispoJuguetes, 
+            String frecComida, String observacionesComida, String juego, String juegaCon, String dispoJuguetes,
             String frecJuego, String observacionesJuego, String duerme, String frecDuerme, String dondePasaDia,
             String educacionPrevia, String motivoContratacion, String observacionesEducacion,
             ModelMap modelo) {
@@ -122,12 +125,12 @@ public class RutinaControlador {
                     frecComida, observacionesComida, juego, juegaCon, dispoJuguetes,
                     frecJuego, observacionesJuego, duerme, frecDuerme, dondePasaDia,
                     educacionPrevia, motivoContratacion, observacionesEducacion);
-            
+
             return "redirect:/perro/lista";
         } catch (MiException ex) {
             modelo.put("error", ex.getMessage());
             return "rutina_modificar.html";
         }
     }
-    
+
 }

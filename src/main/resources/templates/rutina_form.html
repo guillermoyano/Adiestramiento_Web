@@ -3,7 +3,6 @@
     xmlns:sec="http://www.thymelead.org/extras/spring-security">
 
 <head th:replace="/fragments/head" :: head> </head>
-</head>
 
 <body>
 
@@ -11,19 +10,13 @@
 
     <div class="container-fluid m-5 contenedor">
 
-        <form class="formulario" th:action="@{/rutina/registro/}" method="POST">
+        <form class="formulario" action="/rutina/registro" method="POST">
 
+            <input hidden th:value="${perro.idPerro}" name="idPerro">
             <div class="form-group my-3">
-                <select name="idPerro">
-                    <option th:value=null>Seleccionar el perro para esta rutina</option>
-
-                    <option th:each="perro : ${perros}" th:value="${perro.idPerro}" th:text="${perro.nombre}">
-                    </option>
-                </select>
+                <label class="mb-2">Nombre del perro</label>
+                <input type="text" class="form-control" th:value="${perro.nombre}" name="idPerro" readonly>
             </div>
-
-
-
 
 
             <div class="form-group my-3">

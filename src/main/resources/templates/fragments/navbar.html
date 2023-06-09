@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navBar">
+<!-- <nav class="navbar navbar-expand-lg navBar">
     <div class="containerImg">
         <a href="#" class="navbar-brand d-flex align-items-center">
             <img class="logo" src="/img/perrito.png" alt="Img logo egg">
@@ -48,31 +48,84 @@
 
                     <li><a class="dropdown-item" href="/logout" >Cerrar Sesión</a></li>
                 </ul>
-            </li>
+            </li> -->
             <!-- <li class="nav-item dropdown">
                 <a class="nav-link" th:if="${session.usuariosession == null}" href="/registrar" id="navbarDropdown" role="button" aria-expanded="false">
                     Registrate
                 </a>
             </li> -->
-            <li class="nav-item dropdown">
+            <!-- <li class="nav-item dropdown">
                 <a class="nav-link" th:if="${session.usuariosession == null && !#httpServletRequest.requestURI.endsWith('/registrar')}" href="/registrar" id="navbarDropdown" role="button" aria-expanded="false">
                     Registrate
                 </a>
-            </li>
+            </li> -->
             <!-- <li class="nav-item dropdown">
                 <a class="nav-link" th:if="${session.usuariosession == null}" href="/login" id="navbarDropdown" role="button" aria-expanded="false">
                     Logueate
                 </a>
             </li> -->
-            <li class="nav-item dropdown">
+            <!-- <li class="nav-item dropdown">
                 <a class="nav-link" th:if="${session.usuariosession == null && !#httpServletRequest.requestURI.endsWith('/login')}" href="/login" id="navbarDropdown" role="button" aria-expanded="false">
                     Logueate
                 </a>
             </li>
         </ul>
     </div>
-</nav>
+</nav> -->
 
 
 
 <!-- th:if="${(session.usuariosession == null && #request.requestURI.startsWith('/login')) || (session.usuariosession == null && #request.requestURI.equals('/'))}" -->
+
+
+
+<nav>
+    <div id="logo"></div>
+
+    <label for="drop" class="toggle">Menu</label>
+    <input type="checkbox" id="drop" />
+        <ul class="menu">
+            <li><a th:href="@{/}">Inicio</a></li>
+            <li>
+                <!-- First Tier Drop Down -->
+                <label for="drop-1" class="toggle">WordPress +</label>
+                <a href="#">WordPress</a>
+                <input type="checkbox" id="drop-1"/>
+                <ul>
+                    <li><a href="#">Themes and stuff</a></li>
+                    <li><a href="#">Plugins</a></li>
+                    <li><a href="#">Tutorials</a></li>
+                </ul> 
+
+            </li>
+            <li>
+
+            <!-- First Tier Drop Down -->
+            <label for="drop-2" class="toggle">Web Design +</label>
+            <a href="#">Web Design</a>
+            <input type="checkbox" id="drop-2"/>
+            <ul>
+                <li><a href="#">Resources</a></li>
+                <li><a href="#">Links</a></li>
+                <li>
+                   
+                <!-- Second Tier Drop Down -->        
+                <label for="drop-3" class="toggle">Tutorials +</label>
+                <a href="#">Tutorials</a>         
+                <input type="checkbox" id="drop-3"/>
+
+                <ul>
+                    <li><a href="#">HTML/CSS</a></li>
+                    <li><a href="#">jQuery</a></li>
+                    <li><a href="#">Other</a></li>
+                </ul>
+                </li>
+            </ul>
+            </li>
+            <li><a href="#">Graphic Design</a></li>
+            <li><a href="#">Inspiration</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+    </nav>
+

@@ -4,8 +4,6 @@
 
 <head th:replace="/fragments/head" :: head> </head>
 
-</head>
-
 <body>
 
   <nav th:replace="/fragments/navbar" :: nav> </nav>
@@ -13,15 +11,14 @@
   <div class="container-fluid m-5 contenedor">
 
     <form class="formulario" action="/perro/registro" method="POST" enctype="multipart/form-data">
-
+      
+      <input hidden th:value="${tutor.idTutor}" name="idTutor">
       <div class="form-group my-3">
-        <select name="idTutor">
-          <option th:value=null>Seleccionar el tutor para este perro</option>
-
-          <option th:value="${tutor.idTutor}" th:text="${tutor.nombre}"></option>
-        </select>
+        <label class="mb-2">Nombre del tutor</label>
+        <input type="text" class="form-control" th:value="${tutor.nombre}" name="idTutor" readonly>
       </div>
 
+      
       <div class="form-group my-3">
         <label class="mb-2">Nombre del perro</label>
         <input type="text" class="form-control" name="nombre" placeholder="Nombre del can">

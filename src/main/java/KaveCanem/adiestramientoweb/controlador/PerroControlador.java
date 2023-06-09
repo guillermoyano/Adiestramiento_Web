@@ -3,6 +3,7 @@ package KaveCanem.adiestramientoweb.controlador;
 import KaveCanem.adiestramientoweb.entidad.Perro;
 import KaveCanem.adiestramientoweb.entidad.Tutor;
 import KaveCanem.adiestramientoweb.excepciones.MiException;
+import KaveCanem.adiestramientoweb.repositorios.TutorRepositorio;
 import KaveCanem.adiestramientoweb.servicios.PerroServicio;
 import KaveCanem.adiestramientoweb.servicios.RutinaServicio;
 import KaveCanem.adiestramientoweb.servicios.TutorServicio;
@@ -27,7 +28,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  *
  * @author Guillote
  */
- @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
 @Controller
 @RequestMapping("/perro")
 public class PerroControlador {
@@ -36,11 +37,13 @@ public class PerroControlador {
     private PerroServicio perroServicio;
     @Autowired
     private TutorServicio tutorServicio;
+    @Autowired
+    private TutorRepositorio tutorRepositorio;
 
     @GetMapping("/registrar")
-    public String registrar(ModelMap modelo) {
-        List<Tutor> tutores = tutorServicio.listarTutores();
-        modelo.addAttribute("tutores", tutores);
+    public String registrar(ModelMap modelo, Integer idTutor) {
+
+        modelo.put("tutor", tutorRepositorio.buscarTutorPorIdTutor());
 
         return "perro_form.html";
     }
@@ -49,8 +52,8 @@ public class PerroControlador {
     public String registro(@RequestParam(required = false) String nombre, @RequestParam(required = false) Double edad,
             @RequestParam(required = false) String raza, @RequestParam(required = false) Integer cantPerros,
             @RequestParam(required = false) String salud, @RequestParam(required = false) Integer idTutor,
-            RedirectAttributes redirect, ModelMap modelo
-            , MultipartFile archivo
+            RedirectAttributes redirect, ModelMap modelo,
+             MultipartFile archivo
     ) {
 
         try {
@@ -91,10 +94,10 @@ public class PerroControlador {
 
     @PostMapping("modificar/{idPerro}")
     public String modificar(@PathVariable Integer idPerro,
-            String nombre, Double edad, String raza, Integer cantPerros, String salud, 
+            String nombre, Double edad, String raza, Integer cantPerros, String salud,
             ModelMap modelo, RedirectAttributes redirect,
             MultipartFile archivo
-           ) throws MiException {
+    ) throws MiException {
         try {
             perroServicio.modificarPerro(archivo, idPerro, nombre, edad, raza, salud, cantPerros);
             redirect.addFlashAttribute("exito", "Ha sido modificada correctamente.");
@@ -104,6 +107,5 @@ public class PerroControlador {
             return "perro_modificar.html";
         }
     }
-    
-    
+
 }

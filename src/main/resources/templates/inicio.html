@@ -5,7 +5,7 @@
 <body>
     <nav th:replace = "/fragments/navbar" :: nav > </nav>
 
-    <header class="header">
+    <!-- <header class="header">
         <section class="contenedorMain">
             <div class="tituloBiblioteca">
                 <a class="navbar-brand">BIBLIOTECA EGG</a>
@@ -19,17 +19,37 @@
                     <img class="logo"  th:src="@{/imagen/perfil/__${session.usuariosession.id}__}" >
                 </a>
             </div>
-            <!--  <div class="container">
+             <div class="container">
                     <a th:if="${session.usuariosession.imagen != null}" class="d-flex align-items-center">
                         <img class="logo"  th:src="@{/imagen/perfil/__${session.usuariosession.id}__}" >
                     </a>
-                </div> -->
+                </div> 
             <div class="bg-circle-1 bg-circle"></div>
             <div class="bg-circle-2 bg-circle"></div>
             <div class="bg-circle-3 bg-circle"></div>
             <div class="bg-circle-4 bg-circle"></div>
         </section>
-    </header>
+    </header> -->
+
+    <h1 class="fancy">Adiestramiento Kave Canem</h1>
+    <p>Croissant tiramisu candy canes danish dragée lemon drops. Tart dessert dragée fruitcake bear claw danish
+        gingerbread. Croissant gingerbread chocolate cake apple pie sweet roll cotton candy. Jelly jelly icing
+        toffee cotton candy. Soufflé tart sweet roll chocolate sesame snaps fruitcake carrot cake. Wafer biscuit
+        cotton candy sweet icing.
+    </p>
+    <h2 class="fancy" style="--w: 50vw;--c: #C44D58;--b:4px;--g: 40px"><p  th:if="${session.usuariosession != null}"
+        th:text=" 'Hola '+ ${session.usuariosession.nombre} "></p></h2>
+    <a th:if="${session.usuariosession.imagen != null}" class="d-flex align-items-center">
+        <img class="logo" style="width: 230px; border-radius: 40px;" th:src="@{/imagen/perfil/__${session.usuariosession.id}__}" >
+        
+    </a>
+    
+    <!-- <h2 class="fancy" style="--w: 50vw;--c: #8A9B0F;--b:4px;--g:-5px">Clases grupales</h2>
+    <p>Croissant tiramisu candy canes danish dragée lemon drops. Tart dessert dragée fruitcake bear claw danish
+        gingerbread. Croissant gingerbread chocolate cake apple pie sweet roll cotton candy. Jelly jelly icing
+        toffee cotton candy. Soufflé tart sweet roll chocolate sesame snaps fruitcake carrot cake. Wafer biscuit
+        cotton candy sweet icing.
+    </p> -->
 
     <footer th:replace = "/fragments/footer" :: footer> </footer>
 
