@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +27,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  *
  * @author Guillote
  */
+ @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
 @Controller
 @RequestMapping("/perro")
 public class PerroControlador {
@@ -47,7 +49,9 @@ public class PerroControlador {
     public String registro(@RequestParam(required = false) String nombre, @RequestParam(required = false) Double edad,
             @RequestParam(required = false) String raza, @RequestParam(required = false) Integer cantPerros,
             @RequestParam(required = false) String salud, @RequestParam(required = false) Integer idTutor,
-            RedirectAttributes redirect, ModelMap modelo, MultipartFile archivo) {
+            RedirectAttributes redirect, ModelMap modelo
+            , MultipartFile archivo
+    ) {
 
         try {
             perroServicio.crearPerro(archivo, nombre, edad, raza, salud, cantPerros, idTutor);
@@ -88,7 +92,9 @@ public class PerroControlador {
     @PostMapping("modificar/{idPerro}")
     public String modificar(@PathVariable Integer idPerro,
             String nombre, Double edad, String raza, Integer cantPerros, String salud, 
-            ModelMap modelo, RedirectAttributes redirect, MultipartFile archivo) throws MiException {
+            ModelMap modelo, RedirectAttributes redirect,
+            MultipartFile archivo
+           ) throws MiException {
         try {
             perroServicio.modificarPerro(archivo, idPerro, nombre, edad, raza, salud, cantPerros);
             redirect.addFlashAttribute("exito", "Ha sido modificada correctamente.");

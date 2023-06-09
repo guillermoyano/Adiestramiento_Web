@@ -27,7 +27,7 @@
             <tbody th:each="perro : ${perros}">
                 <tr>
                     <td >
-                            <a><img th:if="${perro.imagen != null}" class="logo" th:src="@{/imagen/perfil/__${perro.id}__}" ></a>
+                            <a><img th:if="${perro.imagen != null}" class="logo" th:src="@{/imagen/perfilperro/__${perro.idPerro}__}" ></a>
                         </td>
                     <td th:text="${perro.nombre}"></td>
                     <td th:text="${perro.edad}"></td>

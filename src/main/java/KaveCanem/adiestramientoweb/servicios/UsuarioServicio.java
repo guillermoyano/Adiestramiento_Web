@@ -57,13 +57,13 @@ public class UsuarioServicio implements UserDetailsService {
     
     @Transactional
     public void actualizar(MultipartFile archivo, 
-            String idUsuario, 
+            Integer id, 
             String nombre
             ) throws MiException {
 
         validar2(nombre);
 
-        Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
         if (respuesta.isPresent()) {
 
             Usuario usuario = respuesta.get();
@@ -84,7 +84,7 @@ public class UsuarioServicio implements UserDetailsService {
 
     }
     
-    public Usuario getOne(String id){
+    public Usuario getOne(Integer id){
         return usuarioRepositorio.getOne(id);
     }
     
@@ -99,7 +99,7 @@ public class UsuarioServicio implements UserDetailsService {
     }
     
     @Transactional
-    public void cambiarRol(String id){
+    public void cambiarRol(Integer id){
         Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
     	
     	if(respuesta.isPresent()) {

@@ -91,7 +91,7 @@ public class PortalControlador {
 
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @PostMapping("/perfil/{id}")
-    public String actualizar(MultipartFile archivo, @PathVariable String id, @RequestParam String nombre, ModelMap modelo) {
+    public String actualizar(MultipartFile archivo, @PathVariable Integer id, @RequestParam String nombre, ModelMap modelo) {
 
         try {
             usuarioServicio.actualizar(archivo, id, nombre);

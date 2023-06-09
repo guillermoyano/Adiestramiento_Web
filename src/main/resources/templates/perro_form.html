@@ -18,7 +18,7 @@
         <select name="idTutor">
           <option th:value=null>Seleccionar el tutor para este perro</option>
 
-          <option th:each="tutor : ${tutores}" th:value="${tutor.idTutor}" th:text="${tutor.nombre}"></option>
+          <option th:value="${tutor.idTutor}" th:text="${tutor.nombre}"></option>
         </select>
       </div>
 
@@ -43,8 +43,8 @@
         <input type="text" class="form-control" name="salud" placeholder="Salud del can">
       </div>
       <div class="form-group my-3">
-        <input type="file" class="form-control" name="archivo" >
-    </div> 
+        <input type="file" class="form-control" name="archivo">
+      </div>
 
       <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
         <div class="card-body">
