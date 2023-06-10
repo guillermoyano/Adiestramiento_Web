@@ -72,6 +72,7 @@
     </dependencies>
 
     <build>
+             <finalName>adiestramientoweb</fiinalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -84,6 +85,32 @@
                         </exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+                 <plugin>
+                <groupId>com.microsoft.azure</groupId>
+                <artifactId>azure-webapp-maven-plugin</artifactId>
+                <version>1.7.0</version>
+                 <configuration>
+                          <schemaVersion>V2</schemaVersion>
+                          <resourceGroup>test1</resourceGroup>
+                          <appName>test1MS</appName>
+                          <pricingTier>F1</pricingTier>
+                          <region>eastus</region>
+                          <runtime>
+                                   <os>windows</os>
+                                   <javaVersion>Java1.8</javaVersion>
+                                   <webContainer>Java1.8</webContainer>
+                          </runtime>
+                          <deployment>
+                                   <resources>
+                                            <direcctory>${project.basedir}/target</directory>
+                                            <includes>
+                                                     <include>*.jar</include>
+                                            </includes>
+                                   </resources>
+                          </deployment>     
+                 </configuration>
+                          
             </plugin>
         </plugins>
     </build>
