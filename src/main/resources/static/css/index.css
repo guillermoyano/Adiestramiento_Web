@@ -78,3 +78,7 @@
 .boton:active{
     box-shadow: none;
 }
+
+a:visited {
+	color: white; /* Cambia el color aquí */
+  }

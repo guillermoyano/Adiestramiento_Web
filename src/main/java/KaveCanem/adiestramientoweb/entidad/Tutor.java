@@ -31,6 +31,7 @@ public class Tutor {
     private String apellido;
     private Long telefono;
     private String direccion;
+    private boolean estadoTutor;
     
 
 }

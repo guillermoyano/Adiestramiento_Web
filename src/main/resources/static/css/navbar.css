@@ -6,12 +6,13 @@
 body {
 	background: #212121;
 	font-size:22px;
-	line-height: 32px;
+	line-height: 34px;
 	color: #ffffff;
 	margin: 0;
 	padding: 0;
 	word-wrap:break-word !important;
 	font-family: 'Open Sans', sans-serif;
+	text-decoration: none;
 	}
 
 h1 {
@@ -60,7 +61,7 @@ p {
 /* Giving a background-color to the nav container. */
 nav { 
 	margin:0;
-	padding: 0;
+	padding: 0 20px 0 0;
 	background-color: #254441;
 }
 
@@ -102,18 +103,18 @@ nav ul li {
 /* Styling the links */
 nav a {
 	display:block;
-	padding:14px 20px;	
+	padding:18px 20px;	
 	color:#FFF;
 	font-size:17px;
 	text-decoration:none;
 }
 
 
-nav ul li ul li:hover { background: #000000; }
+/* nav ul li ul li:hover { background: #000000; } */
 
 /* Background color change on Hover */
 nav a:hover { 
-	background-color: #000000; 
+	background-color: #C44D58; 
 }
 
 /* Hide Dropdowns by Default
@@ -122,7 +123,7 @@ nav ul ul {
 	display: none;
 	position: absolute; 
 	/* has to be the same number as the "line-height" of "nav a" */
-	top: 60px; 
+	top: 70px; 
 }
 	
 /* Display Dropdowns on Hover */
@@ -179,6 +180,10 @@ li > a:only-child:after { content: ''; }
 		display: none;
 	}
 
+	a:visited {
+		color: white; /* Cambia el color aquí */
+	  }
+
 	/* Stylinf the toggle lable */
 	.toggle {
 		display: block;
@@ -191,7 +196,7 @@ li > a:only-child:after { content: ''; }
 	}
 
 	.toggle:hover {
-		background-color: #000000;
+		background-color: #C44D58;
 	}
 
 	/* Display Dropdown when clicked on Parent Lable */
@@ -207,7 +212,7 @@ li > a:only-child:after { content: ''; }
 
 	nav ul ul .toggle,
 	nav ul ul a {
-		padding: 0 40px;
+		padding: 0 0px;
 	}
 
 	nav ul ul ul a {
@@ -216,7 +221,8 @@ li > a:only-child:after { content: ''; }
 
 	nav a:hover,
  	nav ul ul ul a {
-		background-color: #000000;
+		background-color: #C44D58;
+		text-decoration:none;
 	}
   
 	nav ul li ul li .toggle,
@@ -269,6 +275,9 @@ li > a:only-child:after { content: ''; }
 	}
 
 }
+a:visited {
+	color: white; /* Cambia el color aquí */
+  }
 
 /* main CSS
 #main {

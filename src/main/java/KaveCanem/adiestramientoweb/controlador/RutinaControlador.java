@@ -72,27 +72,24 @@ public class RutinaControlador {
             Integer idPerro,
             RedirectAttributes redirect, ModelMap modelo) {
 
-        System.out.println("Fuera del try");
 
         try {
             rutinaServicio.crearRutina(paseo, frecPaseo, herramientas, salida, observacionesPaseo,
                     calle, comida, frecComida, observacionesComida, juego, juegaCon, dispoJuguetes,
                     frecJuego, observacionesJuego, duerme, frecDuerme, dondePasaDia, educacionPrevia, motivoContratacion, observacionesEducacion, idPerro);
-            System.out.println("Dentro del try");
 
             modelo.put("exito", "La rutina fue cargada correctamente");
 
         } catch (MiException ex) {
-            System.out.println("Fuera del catch");
-            List<Perro> perros = perroServicio.listarPerros();
+            modelo.put("perro", perroRepositorio.buscarPerroPorIdPerro());
 
-            redirect.addAttribute("perros", perros);
+            
             modelo.put("error", ex.getMessage());
 
             return "rutina_form.html";
         }
 
-        return "rutina_form.html";
+        return "index.html";
     }
 
     @GetMapping("/lista/{idPerro}")

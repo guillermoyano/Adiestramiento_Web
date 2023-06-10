@@ -45,5 +45,6 @@ public class Rutina {
     private String observacionesEducacion;
     @OneToOne
     private Perro perro;
+    private boolean estadoRutina;
 
 }

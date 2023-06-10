@@ -35,5 +35,6 @@ public class Perro {
     private Tutor tutor;
     @OneToOne
     private Imagen imagen;
+    private boolean estadoPerro;
 
 }

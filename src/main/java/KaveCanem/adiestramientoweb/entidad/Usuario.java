@@ -39,6 +39,7 @@ public class Usuario {
     private Rol rol;
     @OneToOne
     private Imagen imagen;
+    private boolean estadoUsuario;
 
     
     
