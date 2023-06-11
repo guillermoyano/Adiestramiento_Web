@@ -18,7 +18,7 @@
 
         <div class="container-fluid m-5 contenedor">
 
-            <form class="formulario" th:action="@{/perfil/__${usuario.id}__}" method="POST" enctype="multipart/form-data">
+            <form class="formulario" th:action="@{/perfilAdmin/__${usuario.id}__}" method="POST" enctype="multipart/form-data">
 
                 <input hidden th:value="${id}" name="id">
 

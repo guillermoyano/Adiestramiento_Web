@@ -2,6 +2,7 @@ package KaveCanem.adiestramientoweb.controlador;
 
 import KaveCanem.adiestramientoweb.entidad.Usuario;
 import KaveCanem.adiestramientoweb.excepciones.MiException;
+import KaveCanem.adiestramientoweb.repositorios.UsuarioRepositorio;
 import KaveCanem.adiestramientoweb.servicios.UsuarioServicio;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,8 @@ public class PortalControlador {
 
     @Autowired
     private UsuarioServicio usuarioServicio;
+    @Autowired
+    private UsuarioRepositorio usuarioRepositorio;
 
     @GetMapping("/")
     public String index() {
@@ -107,5 +110,34 @@ public class PortalControlador {
             return "usuario_modificar.html";
         }
 
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @GetMapping("/perfilAdmin/{id}")
+    public String perfilAdmin(ModelMap modelo, @PathVariable Integer id) {
+
+        Usuario usuario = usuarioServicio.getOne(id);
+        modelo.put("usuario", usuario);
+
+        return "usuario_modificar_admin.html";
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @PostMapping("/perfilAdmin/{id}")
+    public String actualizarAdmin(MultipartFile archivo, @PathVariable Integer id, @RequestParam String nombre, ModelMap modelo) {
+
+        try {
+            usuarioServicio.actualizar(archivo, id, nombre);
+
+            modelo.put("exito", "Usuario actualizado correctamente!");
+
+            return "inicio.html";
+        } catch (MiException ex) {
+
+            modelo.put("error", ex.getMessage());
+            modelo.put("nombre", nombre);
+
+            return "usuario_modificar_admin.html";
+        }
     }
 }

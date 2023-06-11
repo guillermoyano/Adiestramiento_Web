@@ -2,22 +2,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="http://www.thymelead.org/extras/spring-security">
 
-<head th:replace="/fragments/head" :: head> </head>
+<head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/footer.css">
+</head>
 
 <body>
     <nav th:replace="/fragments/navbar" :: nav> </nav>
 
-    <div class="container m-5">
+    <div class="contenedor">
 
-        <table class="table table-dark">
-            <thead class="align-items-center">
+        <div class="table-wrapper">
+        <table class="fl-table">
+            <thead>
                 <tr>
-                    <th scope="col">Id del Usuario</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Foto de Perfil</th>
-                    <th scope="col">Rol</th>
-                    <th scope="col">Cambiar Rol</th>
-                    <th scope="col">Modificar</th>
+                    <th>Id del Usuario</th>
+                    <th>Nombre</th>
+                    <th>Foto de Perfil</th>
+                    <th>Rol</th>
+                    <th>Cambiar Rol</th>
+                    <th>Modificar</th>
 
                 </tr>
             </thead>
@@ -26,19 +33,19 @@
                     <th scope="row" th:text="${usuario.id}"></th>
                     <td th:text="${usuario.nombre}"></td>
                     <td>
-                        <a><img th:if="${usuario.imagen != null}" class="logo"
+                        <a><img style="width: 70px; border-radius: 20px;" th:if="${usuario.imagen != null}" class="logo"
                                 th:src="@{/imagen/perfil/__${usuario.id}__}"></a>
                     </td>
 
                     <td th:text="${usuario.rol}"></td>
 
                     <td>
-                        <a th:href="@{/admin/modificarRol/__${usuario.id}__}"><i
+                        <a class="modificar" th:href="@{/admin/modificarRol/__${usuario.id}__}"><i
                                 class="fas fa-feather-alt"></i>Cambiar</a>
                     </td>
 
                     <td>
-                        <a th:href="@{/usuario/modificar/__${usuario.id}__}"><i class="fas fa-feather-alt"></i>
+                        <a class="modificar" th:href="@{/perfilAdmin/__${usuario.id}__}"><i class="fas fa-feather-alt"></i>
                             Modificar</a>
                     </td>
 
@@ -46,8 +53,9 @@
 
             </tbody>
         </table>
+    </div>
 
-        <div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito">
+        <!-- <div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito">
             <div class="card-body">
                 <h5 class="card-title">Exito ð</h5>
                 <p class="card-text" th:text="${exito}"></p>
@@ -58,16 +66,8 @@
                 <h5 class="card-title">Error ð</h5>
                 <p class="card-text" th:text="${error}"></p>
             </div>
-        </div>
+        </div> -->
 
-        <section class="py-5 text-center container">
-            <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
-                    <a th:href="@{/admin/dashboard }" class="btn btn-primary my-2">Volver</a>
-                    </p>
-                </div>
-            </div>
-        </section>
 
     </div>
 

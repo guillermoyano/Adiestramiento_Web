@@ -2,11 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="http://www.thymelead.org/extras/spring-security">
 
-<head th:replace="/fragments/head" :: head> </head>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/index.css">
+        <link rel="stylesheet" href="/css/footer.css">
+    </head>
 
 <body>
     <nav th:replace="/fragments/navbar" :: nav> </nav>
 <div class="contenedor">
+    <div>
     <div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito">
         <div class="card-body">
             <h5 class="card-title">Exito</h5>
@@ -21,24 +28,32 @@
     </div>
 
     <h1 class="fancy">Adiestramiento Kave Canem</h1>
-    <p>Croissant tiramisu candy canes danish dragée lemon drops. Tart dessert dragée fruitcake bear claw danish
+    <p class="texto">Croissant tiramisu candy canes danish dragée lemon drops. Tart dessert dragée fruitcake bear claw danish
         gingerbread. Croissant gingerbread chocolate cake apple pie sweet roll cotton candy. Jelly jelly icing
         toffee cotton candy. Soufflé tart sweet roll chocolate sesame snaps fruitcake carrot cake. Wafer biscuit
         cotton candy sweet icing.
     </p>
     <h2 class="fancy" style="--w: 50vw;--c: #C44D58;--b:4px;--g: 40px">Clases personalizadas</h2>
-    <p>Croissant tiramisu candy canes danish dragée lemon drops. Tart dessert dragée fruitcake bear claw danish
+    <p class="texto">Croissant tiramisu candy canes danish dragée lemon drops. Tart dessert dragée fruitcake bear claw danish
         gingerbread. Croissant gingerbread chocolate cake apple pie sweet roll cotton candy. Jelly jelly icing
         toffee cotton candy. Soufflé tart sweet roll chocolate sesame snaps fruitcake carrot cake. Wafer biscuit
         cotton candy sweet icing.
     </p>
-    <h2 class="fancy" style="--w: 50vw;--c: #8A9B0F;--b:4px;--g:-5px">Clases grupales</h2>
-    <p>Croissant tiramisu candy canes danish dragée lemon drops. Tart dessert dragée fruitcake bear claw danish
+    <h2 class="fancy" style="--w: 50vw;--c: #C44D58;--b:4px;--g: 40px">Clases grupales</h2>
+    <p class="texto">Croissant tiramisu candy canes danish dragée lemon drops. Tart dessert dragée fruitcake bear claw danish
         gingerbread. Croissant gingerbread chocolate cake apple pie sweet roll cotton candy. Jelly jelly icing
         toffee cotton candy. Soufflé tart sweet roll chocolate sesame snaps fruitcake carrot cake. Wafer biscuit
         cotton candy sweet icing.
     </p>
+    <!-- <h2 class="fancy" style="--w: 50vw;--c: #8A9B0F;--b:4px;--g:-5px">Clases grupales</h2>
+    <p>Croissant tiramisu candy canes danish dragée lemon drops. Tart dessert dragée fruitcake bear claw danish
+        gingerbread. Croissant gingerbread chocolate cake apple pie sweet roll cotton candy. Jelly jelly icing
+        toffee cotton candy. Soufflé tart sweet roll chocolate sesame snaps fruitcake carrot cake. Wafer biscuit
+        cotton candy sweet icing.
+    </p> -->
 </div>
+</div>
+
     <footer th:replace="/fragments/footer" :: footer> </footer>
 
 
