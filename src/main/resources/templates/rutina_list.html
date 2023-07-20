@@ -35,7 +35,63 @@
 
     <div class="contenedor">
 
+
+
         <div class="table-wrapper">
+            <table class="fl-table">
+                <thead>
+                    <tr th:action="@{/rutina/lista/__${rutina.perro.idPerro}__}">
+                        <th class="auto-width-td">Cantidad de paseos diarios</th>
+                        <th class="auto-width-td" th:text="${rutina.paseo}"></th></th>
+                    </tr>
+                </thead>
+                <tbody th:action="@{/rutina/lista/__${rutina.perro.idPerro}__}">
+                    <tr>
+                        <td class="auto-width-td">Duración del paseo (en minutos)</td>
+                        <td class="auto-width-td" th:text="${rutina.frecPaseo}"></td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr th:action="@{/rutina/lista/__${rutina.perro.idPerro}__}">
+                        <th class="auto-width-td">Herramientas de paseo</th>
+                        <th class="auto-width-td" th:text="${rutina.herramientas}"></th></th>
+                    </tr>
+                </thead>
+                <tbody th:action="@{/rutina/lista/__${rutina.perro.idPerro}__}">
+                    <tr>
+                        <th class="auto-width-td">Qué hace cuando sale</th>
+                        <td class="auto-width-td" th:text="${rutina.salida}"></td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr th:action="@{/rutina/lista/__${rutina.perro.idPerro}__}">
+                        <th class="auto-width-td">Paseo</th>
+                        <th class="auto-width-td" th:text="${rutina.paseo}"></th></th>
+                    </tr>
+                </thead>
+                <tbody th:action="@{/rutina/lista/__${rutina.perro.idPerro}__}">
+                    <tr>
+                        <td class="auto-width-td"> Frecuencia</td>
+                        <td class="auto-width-td" th:text="${rutina.frecPaseo}"></td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr th:action="@{/rutina/lista/__${rutina.perro.idPerro}__}">
+                        <th class="auto-width-td">Herramientas</th>
+                        <th class="auto-width-td" th:text="${rutina.herramientas}"></th></th>
+                    </tr>
+                </thead>
+                <tbody th:action="@{/rutina/lista/__${rutina.perro.idPerro}__}">
+                    <tr>
+                        <th class="auto-width-td">Salida</th>
+                        <td class="auto-width-td" th:text="${rutina.salida}"></td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+        <!-- <div class="table-wrapper">
             <table class="fl-table">
                 <thead>
                     <tr>
@@ -144,7 +200,7 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
+        </div> -->
 
 
 

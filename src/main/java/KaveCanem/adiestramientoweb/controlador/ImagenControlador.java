@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  * @author Guillote
  */
- @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
 @Controller
 @RequestMapping("/imagen")
 public class ImagenControlador {

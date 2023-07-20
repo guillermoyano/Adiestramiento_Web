@@ -1,47 +1,92 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymelead.org/extras/spring-security">
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/css/formulario.css">
-        <link rel="stylesheet" href="/css/index.css">
-        <link rel="stylesheet" href="/css/inicio.css">
-        <link rel="stylesheet" href="/css/navbar.css">
-        <link rel="stylesheet" href="/css/footer.css">
-        <link rel="stylesheet" href="/css/tabla.css">
-        <link rel="stylesheet" href="/css/style.css">
-    </head>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymelead.org/extras/spring-security">
 
-    <body>
-        <nav th:replace = "/fragments/navbar" :: nav > </nav>
+<head>
+    <title>Modificar Usuario</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/tabla.css">
+    <link rel="stylesheet" href="/css/editar.css">
+</head>
 
-        <div class="container-fluid m-5 contenedor">
+<body>
+    <nav th:replace="/fragments/navbar" :: nav> </nav>
 
-            <form class="formulario" th:action="@{/perfil/__${usuario.id}__}" method="POST" enctype="multipart/form-data">
 
-                <input hidden th:value="${id}" name="id">
-
-                <div class="form-group my-3">
-                    <h3 class="card-title">Editar Usuario</h3>
+    <div class="containerForm">
+        
+        <form class="editar" th:action="@{/perfil/__${usuario.id}__}" method="POST" enctype="multipart/form-data">>
+            <div class="text">
+                Editar Usuariossss
+            </div>
+            <input hidden th:value="${id}" name="id">
+            <div class="form-row">
+                <div class="input-data">
+                    <input type="text" required th:value="${usuario.nombre}">
+                    <div class="underline"></div>
+                    <label for="">Nombre</label>
                 </div>
-                <div class="form-group my-3">
-                    <input type="text" class="form-control" name="nombre"  th:value="${usuario.nombre}">
+                <div class="input-data">
+                    <input type="file" class="form-control" name="archivo">
+                    <div class="underline"></div>
+                    <label for="">Last Name</label>
                 </div>
-                <div class="form-group my-3">
-                    <input type="file" class="form-control" name="archivo" >
+            </div>
+            <div class="form-row">
+                <div class="input-data">
+                    <input type="text" required>
+                    <div class="underline"></div>
+                    <label for="">Email Address</label>
                 </div>
+                <div class="input-data">
+                    <input type="text" required>
+                    <div class="underline"></div>
+                    <label for="">Website Name</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-data textarea">
+                    
+                    <div class="form-row submit-btn">
+                        <div class="input-data">
+                            <div class="inner"></div>
+                            <input type="submit" value="Actualizar">
+                        </div>
+                    </div>
+        </form>
+    </div>
+
+    <div class="container-fluid m-5 contenedor">
+
+        <form class="formulario" 
+
+            <input hidden th:value="${id}" name="id">
+
+            <div class="form-group my-3">
+                <h3 class="card-title">Editar Usuario</h3>
+            </div>
+            <div class="form-group my-3">
+                <input type="text" class="form-control" name="nombre" >
+            </div>
+            <div class="form-group my-3">
+                <input type="file" class="form-control" name="archivo">
+            </div>
 
 
-                <button type="submit" class="btn btn-primary mt-3 botones">Actualizar</button>
-            </form>
+            <button type="submit" class="btn btn-primary mt-3 botones">Actualizar</button>
+        </form>
 
 
-        </div>
+    </div>
 
-        <footer th:replace="/fragments/footer" :: footer> </footer>
+    <footer th:replace="/fragments/footer" :: footer> </footer>
 
-        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    </body>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
 </html>

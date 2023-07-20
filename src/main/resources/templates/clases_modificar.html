@@ -3,7 +3,7 @@
     xmlns:sec="http://www.thymelead.org/extras/spring-security">
 
     <head>
-        <title>Modificar Tutores</title>
+        <title>Modificar Perro</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/css/formulario.css">
@@ -17,36 +17,22 @@
 
 <body>
 
+
     <nav th:replace="/fragments/navbar" :: nav> </nav>
 
     <div class="container-fluid m-5 contenedor">
 
-        <form class="formulario" th:action="@{/tutor/modificar/__${tutor.idTutor}__}" method="POST">
+        <form class="formulario" th:action="@{/clases/modificar/__${clases.idClases}__}" method="POST">
 
-            <input hidden th:value="${idTutor}" name="idTutor">
+            <input hidden th:value="${clases.idClases}" name="idClases">
 
 
             <div class="form-group my-3">
-                <label class="mb-2">Nombre del tutor</label>
-                <input th:value="${tutor.nombre}" type="text" class="form-control" name="nombre"
-                    placeholder="Nombre del tutor">
+                <label class="mb-2">Comentario</label>
+                <textarea name="comentario" id="" cols="30" rows="10"></textarea>
+                <!-- <input th:value="${clases.comentario}" type="text" class="form-control" name="comentario" placeholder="Comentario"> -->
             </div>
-            <div class="form-group">
-                <label class="mb-2">Apellido del tutor</label>
-                <input th:value="${tutor.apellido}" type="text" class="form-control" name="apellido"
-                    placeholder="Apellido del tutor">
-            </div>
-            <div class="form-group">
-                <label class="mb-2">Teléfono del tutor</label>
-                <input th:value="${tutor.telefono}" type="number" class="form-control" name="telefono"
-                    placeholder="Telefono del tutor">
-            </div>
-            <div class="form-group">
-                <label class="mb-2">Direccion del tutor</label>
-                <input th:value="${tutor.direccion}" type="text" class="form-control" name="direccion"
-                    placeholder="Direccion del tutor">
-            </div>
-
+        
 
             <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
                 <div class="card-body">

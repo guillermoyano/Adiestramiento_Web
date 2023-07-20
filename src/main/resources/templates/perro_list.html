@@ -4,7 +4,7 @@
     xmlns:sec="http://www.thymelead.org/extras/spring-security">
 
 <head>
-    <title>TODO supply a title</title>
+    <title>Listar Perros</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/index.css">
@@ -47,6 +47,16 @@
                             <a class="modificar" sec:authorize="hasRole('ADMIN')"
                                 th:href="@{/perro/modificar/__${perro.idPerro}__}"><i></i>
                                 Modificar
+                            </a>
+                        </td>
+                        <td>
+                            <a class="modificar" sec:authorize="hasRole('ADMIN')"
+                                th:href="@{/clases/nuevaClase/__${perro.idPerro}__}"><i></i>
+                                Crear Clase
+                            </a>
+                        </td>
+                        <td>
+                            <a class="modificar" th:href="@{/clases/lista/__${perro.idPerro}__}"><i></i> Listar Clases
                             </a>
                         </td>
                     </tr>
