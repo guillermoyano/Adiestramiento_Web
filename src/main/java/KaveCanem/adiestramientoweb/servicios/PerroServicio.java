@@ -72,9 +72,8 @@ public class PerroServicio {
     }
 
     @Transactional
-    public void modificarPerro(
-            MultipartFile archivo,
-            Integer idPerro, String nombre, Double edad, String raza, String salud, Integer cantPerros) throws MiException {
+    public void modificarPerro(MultipartFile archivo, Integer idPerro, String nombre, Double edad, String raza, String salud, Integer cantPerros) throws MiException {
+       
         validarPerro(nombre, edad, raza, salud, cantPerros);
         Optional<Perro> respuesta = perroRepositorio.findById(idPerro);
         if (respuesta.isPresent()) {
@@ -122,7 +121,6 @@ public class PerroServicio {
 //        if (idImagen == null) {
 //            throw new MiException("La imagen no puede ser nula");
 //        }
-
         if (cantPerros == null || cantPerros < 0) {
             throw new MiException("La cantidad de perros no puede ser nula");
         }
@@ -150,7 +148,6 @@ public class PerroServicio {
             throw new MiException("La cantidad de perros no puede ser nula");
         }
 
-        
         if (idTutor == null) {
             throw new MiException("El tutor no puede ser nulo");
         }

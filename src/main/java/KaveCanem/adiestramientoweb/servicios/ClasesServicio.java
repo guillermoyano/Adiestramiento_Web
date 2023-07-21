@@ -46,14 +46,17 @@ public class ClasesServicio {
     }
 
     @Transactional
-    public Clases actualizar(String comentario) throws MiException {
+    public void actualizar(Integer idClases, String comentario) throws MiException {
 
         validarClases(comentario);
-        Clases clases = new Clases();
 
-        clases.setComentario(comentario);
+        Optional<Clases> respuesta = clasesRepositorio.findById(idClases);
 
-        return clasesRepositorio.save(clases);
+        if (respuesta.isPresent()) {
+            Clases clases = respuesta.get();
+            clases.setComentario(comentario);
+            clasesRepositorio.save(clases);
+        }
 
     }
 
@@ -61,7 +64,7 @@ public class ClasesServicio {
         return clasesRepositorio.findAll();
     }
 
-    public Clases getOne(String idClases) {
+    public Clases getOne(Integer idClases) {
         return clasesRepositorio.getOne(idClases);
     }
 
