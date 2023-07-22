@@ -1,0 +1,68 @@
+.colores{
+    --primary-100:#019b98;
+    --primary-200:#55ccc9;
+    --primary-300:#c1ffff;
+    --accent-100:#dd0025;
+    --accent-200:#ffbfab;
+    --text-100:#014e60;
+    --text-200:#3f7a8d;
+    --bg-100:#fbfbfb;
+    --bg-200:#f1f1f1;
+    --bg-300:#c8c8c8;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+}
+
+.contenedorInput {
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+}
+
+.fancy {
+    --b: 6px; /* control the border thickness */
+    --w: 80px; /* control the width of the line*/
+    --g: 20px; /* control the gap */
+    --c: #3f7a8d;
+
+    width: fit-content;
+    padding: 0 1em;
+    line-height: 1.6em;
+    border: 1px solid;
+    color: #fff;
+    background: conic-gradient(from 45deg at left, var(--c) 25%, #0000 0) 0,
+      conic-gradient(from -135deg at right, var(--c) 25%, #0000 0) 100%;
+    background-size: 51% 100%;
+    background-origin: border-box;
+    background-repeat: no-repeat;
+    border-image: linear-gradient(
+        #0000 calc(50% - var(--b) / 2),
+        var(--c) 0 calc(50% + var(--b) / 2),
+        #0000 0
+      )
+      1/0 var(--w) / calc(var(--w) + var(--g));
+    margin-inline: auto;
+}
+
+.contenedorTexto{
+    display: flex;
+    margin: 5px;
+    width: auto;
+    color: #fff;
+}
+.texto {
+    font-size: 1.3rem;
+    text-align: justify;
+    margin-inline: max(20px, 50% - 800px/2);
+}
+#hache1 {
+    font-size: 2.3rem;
+}
+#hache2 {
+    font-size: 1.8rem;
+}

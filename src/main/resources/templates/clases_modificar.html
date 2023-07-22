@@ -21,33 +21,25 @@
     <nav th:replace="/fragments/navbar" :: nav> </nav>
 
     <div class="container-fluid m-5 contenedor">
-
         <form class="formulario" th:action="@{/clases/modificar/__${clases.idClases}__}" method="POST">
-
             <input hidden th:value="${clases.idClases}" name="idClases">
-
-
             <div class="form-group my-3">
                 <label class="mb-2">Comentario</label>
                 <textarea name="comentario" id="" cols="30" rows="10"></textarea>
                 <!-- <input th:value="${clases.comentario}" type="text" class="form-control" name="comentario" placeholder="Comentario"> -->
             </div>
-        
-
             <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
                 <div class="card-body">
                     <h5 class="card-title">Error</h5>
                     <p class="card-text" th:text="${error}"></p>
                 </div>
             </div>
-
             <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
                 <div class="card-body">
                     <h5 class="card-title">Exito!</h5>
                     <p class="card-text" th:text="${exito}"></p>
                 </div>
             </div>
-
             <section class=" text-center container">
                 <div class="row mt-3">
                     <div class="divVolver">
@@ -59,10 +51,8 @@
         </form>
     </div>
     
-    <footer th:replace="/fragments/footer" :: footer> </footer>
-
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script> -->
 </body>
 
 </html>

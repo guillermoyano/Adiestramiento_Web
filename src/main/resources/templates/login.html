@@ -2,55 +2,52 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="http://www.thymelead.org/extras/spring-security">
 
-    <head>
-        <title>Login</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/css/formulario.css">
-        <link rel="stylesheet" href="/css/index.css">
-        <link rel="stylesheet" href="/css/inicio.css">
-        <link rel="stylesheet" href="/css/navbar.css">
-        <link rel="stylesheet" href="/css/footer.css">
-        <link rel="stylesheet" href="/css/tabla.css">
-        <link rel="stylesheet" href="/css/style.css">
-    </head>
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/loginForm.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+</head>
 
 <body>
 
     <nav th:replace="/fragments/navbar" :: nav> </nav>
 
+    <div class="contenedorGeneral">
+        <div class="containerForm">
+            <form class="formLogin" th:action="@{/logincheck}" method="POST">
 
-    <div class="container">
-        <form class="form" th:action="@{/logincheck}" method="POST">
-            <span class="title">Acceder</span>
-            
-            <label for="email" class="label">Email</label>
-            <input type="email" id="email" name="email" required="" class="input">
-            <label for="password" class="label">Password</label>
-            <input type="password" id="password" name="password" required="" class="input">
-            <button type="submit" class="submit">Ingresar</button>
-          </form>
+                <span class="input-span">
+
+                    <label for="email" class="label">Email</label>
+                    <input type="email" name="email" id="email" required></span>
+
+                <span class="input-span">
+
+                    <label for="password" class="label">Password</label>
+                    <input type="password" name="password" id="password" required></span>
+
+                <input class="submit" type="submit" value="Ingresar">
+            </form>
+        </div>
     </div>
 
-    
-
-  <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
-            <div class="card-body">
-                <h5 class="card-title">Error!</h5>
-                <p class="card-text" th:text="${error}"></p>
-            </div>
+    <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
+        <div class="card-body">
+            <h5 class="card-title">Error!</h5>
+            <p class="card-text" th:text="${error}"></p>
         </div>
-        <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
-            <div class="card-body">
-                <h5 class="card-title">Exito!</h5>
-                <p class="card-text" th:text="${exito}"></p>
-            </div>
+    </div>
+    <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
+        <div class="card-body">
+            <h5 class="card-title">Exito!</h5>
+            <p class="card-text" th:text="${exito}"></p>
         </div>
+    </div>
 
-    <footer th:replace="/fragments/footer" :: footer> </footer>
-
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

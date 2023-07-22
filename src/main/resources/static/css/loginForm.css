@@ -1,0 +1,88 @@
+.contenedorGeneral{
+  display: flex;
+  margin: 50px;
+  width: 85%;
+  justify-content: center;
+}
+
+.containerForm{
+    display: flex;
+    background-color: #000;
+    width: 50%;
+}
+
+.formLogin {
+    --bg-light: #000;
+    --bg-dark: #fbfbfb;
+    --clr: #dd0025;
+    --clr-alpha: #9c9c9c60;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  .formLogin .input-span {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+  
+  .formLogin input[type="email"],
+  .formLogin input[type="text"],
+  .formLogin input[type="password"] {
+    border-radius: 0.5rem;
+    padding: 1rem 0.75rem;
+    width: 100%;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fbfbfb;
+    background-color: var(--clr-alpha);
+    outline: 2px solid var(--bg-dark);
+  }
+  
+  .formLogin input[type="email"]:focus,
+  .formLogin input[type="text"]:focus,
+  .formLogin input[type="password"]:focus {
+    outline: 2px solid var(--clr);
+  }
+  
+  .label {
+    align-self: flex-start;
+    color: var(--clr);
+    font-weight: 600;
+  }
+  
+  .formLogin .submit {
+    padding: 1rem 0.75rem;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 3rem;
+    background-color: var(--bg-dark);
+    color: var(--bg-light);
+    border: none;
+    cursor: pointer;
+    transition: all 300ms;
+    font-weight: 600;
+    font-size: .9rem;
+  }
+  
+  .formLogin .submit:hover {
+    background-color: var(--clr);
+    color: var(--bg-dark);
+  }
+  
+  .span {
+    text-decoration: none;
+    color: var(--bg-dark);
+  }
+  
+  .span a {
+    color: var(--clr);
+  }

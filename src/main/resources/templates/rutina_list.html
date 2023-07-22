@@ -87,6 +87,30 @@
                         <td class="auto-width-td" th:text="${rutina.salida}"></td>
                     </tr>
                 </tbody>
+                <thead>
+                    <tr th:action="@{/rutina/lista/__${rutina.perro.idPerro}__}">
+                        <th class="auto-width-td">Herramientas</th>
+                        <th class="auto-width-td" th:text="${rutina.herramientas}"></th></th>
+                    </tr>
+                </thead>
+                <tbody th:action="@{/rutina/lista/__${rutina.perro.idPerro}__}">
+                    <tr>
+                        <th class="auto-width-td">Salida</th>
+                        <td class="auto-width-td" th:text="${rutina.salida}"></td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr th:action="@{/rutina/lista/__${rutina.perro.idPerro}__}">
+                        <th class="auto-width-td">Herramientas</th>
+                        <th class="auto-width-td" th:text="${rutina.herramientas}"></th></th>
+                    </tr>
+                </thead>
+                <tbody th:action="@{/rutina/lista/__${rutina.perro.idPerro}__}">
+                    <tr>
+                        <th class="auto-width-td">Salida</th>
+                        <td class="auto-width-td" th:text="${rutina.salida}"></td>
+                    </tr>
+                </tbody>
 
             </table>
         </div>
@@ -220,11 +244,6 @@
 
     </div>
     
-
-    <footer th:replace="/fragments/footer" :: footer> </footer>
-
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

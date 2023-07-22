@@ -6,13 +6,13 @@
     <title>Index</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/navbar.css">
 </head>
 
 <body>
     <nav th:replace="/fragments/navbar" :: nav> </nav>
-    <div class="contenedor">
+    <div class="contenedorInput">
         <div>
             <div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito">
                 <div class="card-body">
@@ -26,42 +26,57 @@
                     <p class="card-text" th:text="${error}"></p>
                 </div>
             </div>
-
-            <h1 class="fancy">Adiestramiento Kave Canem</h1>
-            <p class="texto">Croissant tiramisu candy canes danish dragée lemon drops. Tart dessert dragée fruitcake
-                bear claw danish
-                gingerbread. Croissant gingerbread chocolate cake apple pie sweet roll cotton candy. Jelly jelly icing
-                toffee cotton candy. Soufflé tart sweet roll chocolate sesame snaps fruitcake carrot cake. Wafer biscuit
-                cotton candy sweet icing.
-            </p>
-            <h2 class="fancy" style="--w: 50vw;--c: #C44D58;--b:4px;--g: 40px">Clases personalizadas</h2>
-            <p class="texto">Croissant tiramisu candy canes danish dragée lemon drops. Tart dessert dragée fruitcake
-                bear claw danish
-                gingerbread. Croissant gingerbread chocolate cake apple pie sweet roll cotton candy. Jelly jelly icing
-                toffee cotton candy. Soufflé tart sweet roll chocolate sesame snaps fruitcake carrot cake. Wafer biscuit
-                cotton candy sweet icing.
-            </p>
-            <h2 class="fancy" style="--w: 50vw;--c: #C44D58;--b:4px;--g: 40px">Clases grupales</h2>
-            <p class="texto">Croissant tiramisu candy canes danish dragée lemon drops. Tart dessert dragée fruitcake
-                bear claw danish
-                gingerbread. Croissant gingerbread chocolate cake apple pie sweet roll cotton candy. Jelly jelly icing
-                toffee cotton candy. Soufflé tart sweet roll chocolate sesame snaps fruitcake carrot cake. Wafer biscuit
-                cotton candy sweet icing.
-            </p>
-            <!-- <h2 class="fancy" style="--w: 50vw;--c: #8A9B0F;--b:4px;--g:-5px">Clases grupales</h2>
-    <p>Croissant tiramisu candy canes danish dragée lemon drops. Tart dessert dragée fruitcake bear claw danish
-        gingerbread. Croissant gingerbread chocolate cake apple pie sweet roll cotton candy. Jelly jelly icing
-        toffee cotton candy. Soufflé tart sweet roll chocolate sesame snaps fruitcake carrot cake. Wafer biscuit
-        cotton candy sweet icing.
-    </p> -->
+            <h1 id="hache1" class="fancy" style=" font-size: 42; --w: 50vw;--c: #254441;--b:4px;--g: 5px">Adiestramiento Kave Canem
+            </h1>
+            <div class="contenedorTexto">
+                <p class="texto">Croissant tiramisu candy canes danish dragée lemon drops. Tart dessert dragée fruitcake
+                    bear claw danish
+                    gingerbread. Croissant gingerbread chocolate cake apple pie sweet roll cotton candy. Jelly jelly
+                    icing
+                    toffee cotton candy. Soufflé tart sweet roll chocolate sesame snaps fruitcake carrot cake. Wafer
+                    biscuit
+                    cotton candy sweet icing.
+                </p>
+            </div>
+            <h2 id="hache2" class="fancy" style="--w: 50vw;--c: #dd0025;--b:4px;--g: 40px">Clases personalizadas</h2>
+            <div class="contenedorTexto">
+                <p class="texto">Croissant tiramisu candy canes danish dragée lemon drops. Tart dessert dragée fruitcake
+                    bear claw danish
+                    gingerbread. Croissant gingerbread chocolate cake apple pie sweet roll cotton candy. Jelly jelly
+                    icing
+                    toffee cotton candy. Soufflé tart sweet roll chocolate sesame snaps fruitcake carrot cake. Wafer
+                    biscuit
+                    cotton candy sweet icing.
+                    Croissant tiramisu candy canes danish dragée lemon drops. Tart dessert dragée fruitcake
+                    bear claw danish
+                    gingerbread. Croissant gingerbread chocolate cake apple pie sweet roll cotton candy. Jelly jelly
+                    icing
+                    toffee cotton candy. Soufflé tart sweet roll chocolate sesame snaps fruitcake carrot cake. Wafer
+                    biscuit
+                    cotton candy sweet icing.
+                </p>
+            </div>
+            <h2 class="fancy" style="--w: 50vw;--c: #dd0025;--b:4px;--g: 40px">Clases grupales</h2>
+            <div class="contenedorTexto">
+                <p class="texto">Croissant tiramisu candy canes danish dragée lemon drops. Tart dessert dragée fruitcake
+                    bear claw danish
+                    gingerbread. Croissant gingerbread chocolate cake apple pie sweet roll cotton candy. Jelly jelly
+                    icing
+                    toffee cotton candy. Soufflé tart sweet roll chocolate sesame snaps fruitcake carrot cake. Wafer
+                    biscuit
+                    cotton candy sweet icing.
+                    Croissant tiramisu candy canes danish dragée lemon drops. Tart dessert dragée fruitcake
+                    bear claw danish
+                    gingerbread. Croissant gingerbread chocolate cake apple pie sweet roll cotton candy. Jelly jelly
+                    icing
+                    toffee cotton candy. Soufflé tart sweet roll chocolate sesame snaps fruitcake carrot cake. Wafer
+                    biscuit
+                    cotton candy sweet icing.
+                </p>
+            </div>
         </div>
     </div>
 
-    <footer th:replace="/fragments/footer" :: footer> </footer>
-
-
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

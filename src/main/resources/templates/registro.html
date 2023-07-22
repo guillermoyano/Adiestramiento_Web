@@ -2,18 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="http://www.thymelead.org/extras/spring-security">
 
-    <head>
-        <title>Registrar</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/css/formulario.css">
-        <link rel="stylesheet" href="/css/index.css">
-        <link rel="stylesheet" href="/css/inicio.css">
-        <link rel="stylesheet" href="/css/navbar.css">
-        <link rel="stylesheet" href="/css/footer.css">
-        <link rel="stylesheet" href="/css/tabla.css">
-        <link rel="stylesheet" href="/css/style.css">
-    </head>
+<head>
+    <title>Registrar</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/loginForm.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+</head>
 
 <body>
 
@@ -32,33 +29,26 @@
         </div>
     </div>
 
-    <div class="container">
-        <form class="form" th:action="@{/registro}" method="POST" enctype="multipart/form-data">
-            <span class="title">Registrate!</span>
-
-            <label for="nombre" class="label">Nombre</label>
-            <input type="text" id="nombre" name="nombre" required="" class="input" th:value="${nombre}">
-
-            <label for="email" class="label">Email</label>
-            <input type="email" id="email" name="email" required="" class="input" th:value="${email}">
-
-
-            <input type="file" id="password" name="archivo" required="" class="input">
-
-            <label for="password" class="label">Contraseña</label>
-            <input type="password" id="password" name="password" required="" class="input" th:value="${password}">
-
-            <label for="password2" class="label">Repetir contraseña</label>
-            <input type="password" id="password" name="password2" required="" class="input" th:value="${password2}">
-
-            <button type="submit" class="submit">Registrarme</button>
-        </form>
+    <div class="contenedorGeneral">
+        <div class="containerForm">
+            <form class="formLogin" th:action="@{/registro}" method="POST" enctype="multipart/form-data">
+                <span class="input-span">
+                    <label for="nombre" class="label">Nombre</label>
+                    <input type="text" name="nombre" id="nombre" required></span>
+                <span class="input-span">
+                    <label for="email" class="label">Email</label>
+                    <input type="email" name="email" id="email" required></span>
+                <span class="input-span">
+                    <label for="password" class="label">Password</label>
+                    <input type="password" name="password" id="password" required></span>
+                <span class="input-span">
+                    <label for="password2" class="label">Password</label>
+                    <input type="password" name="password2" id="password" required></span>
+                <input class="submit" type="submit" value="Registrarme">
+            </form>
+        </div>
     </div>
 
-    <footer th:replace="/fragments/footer" :: footer> </footer>
-
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

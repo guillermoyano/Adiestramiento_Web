@@ -1,30 +1,30 @@
-* {
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
+.contenedorInput {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 20px;
 }
 
-h2 {
+
+.titulo{
   text-align: center;
   font-size: 18px;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  color: black;
+  letter-spacing: 1px;
+  color: white;
   padding: 30px 0;
+  margin: 50px;
 }
 
 /* Table Styles */
 
-.table-wrapper {
+.table-wrapper{
   margin: 10px 70px 70px;
-  box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-wrap: wrap;
+  box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
 }
 
 .fl-table {
   border-radius: 5px;
-  font-size: 18px;
   font-weight: normal;
   border: none;
   border-collapse: collapse;
@@ -34,105 +34,94 @@ h2 {
   background-color: white;
 }
 
-.fl-table td,
-.fl-table th {
+.fl-table td, .fl-table th {
   text-align: center;
-  padding: 8px 20px 8px 20px;
+  padding: 8px;
 }
 
 .fl-table td {
-  font-size: 16px;
+  border-right: 1px solid #f8f8f8;
+  font-size: 20px;
 }
 
 .fl-table thead th {
   color: #ffffff;
-  background: #324960;
+  background: #254441;
+  border: 1px solid white;
+  font-size: 26px;
 }
+
 
 .fl-table thead th:nth-child(odd) {
   color: #ffffff;
-  background: #324960;
+  background: #254441;
+  border: 1px solid white;
+  font-size: 26px;
 }
 
 .fl-table tr:nth-child(even) {
-  background: #f8f8f8;
+  background: #F8F8F8;
 }
 
 /* Responsive */
 
-/* @media (max-width: 767px) {
-    .fl-table {
-        display: block;
-        width: 100%;
-    }
-    .table-wrapper:before{
-        content: "Scroll horizontally >";
-        display: block;
-        text-align: right;
-        font-size: 11px;
-        color: white;
-        padding: 0 0 10px;
-    }
-    .fl-table thead, .fl-table tbody, .fl-table thead th {
-        display: block;
-    }
-    .fl-table thead th:last-child{
-        border-bottom: none;
-    }
-    .fl-table thead {
-        float: left;
-    }
-    .fl-table tbody {
-        width: auto;
-        position: relative;
-        overflow-x: auto;
-    }
-    .fl-table td, .fl-table th {
-        padding: 20px .625em .625em .625em;
-        height: 60px;
-        vertical-align: middle;
-        box-sizing: border-box;
-        overflow-x: hidden;
-        overflow-y: auto;
-        width: 120px;
-        font-size: 13px;
-        text-overflow: ellipsis;
-    }
-    .fl-table thead th {
-        text-align: left;
-        border-bottom: 1px solid #f7f7f9;
-    }
-    .fl-table tbody tr {
-        display: table-cell;
-    }
-    .fl-table tbody tr:nth-child(odd) {
-        background: none;
-    }
-    .fl-table tr:nth-child(even) {
-        background: transparent;
-    }
-    .fl-table tr td:nth-child(odd) {
-        background: #F8F8F8;
-        border-right: 1px solid #E6E4E4;
-    }
-    .fl-table tr td:nth-child(even) {
-        border-right: 1px solid #E6E4E4;
-    }
-    .fl-table tbody td {
-        display: block;
-        text-align: center;
-    }
-} */
+@media (max-width: 767px) {
 
-a {
+  .contenedorInput {
+    margin-right: 300px;
+    margin-left: 400px;
+    content: "Scroll horizontally >"
+  }
+
+  .fl-table {
+      display: block;
+      width: 100%;
+  }
+}
+
+
+
+
+.botonTablaM {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #2d3365;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 17px;
+  padding: 16px;
+  width: 130px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+ }
+ 
+ .botonTablaM .modificar {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+ }
+ 
+ .botonTablaM .modificar:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -15px;
+  transition: 0.5s;
+ }
+ 
+ .botonTablaM:hover .modificar {
+  padding-right: 15px;
+ }
+ 
+ .botonTablaM:hover .modificar:after {
+  opacity: 1;
+  right: 0;
+ }
+
+ .modificar{
   text-decoration: none;
-}
-
-.auto-width-td {
-  white-space: nowrap;
-}
-
-.fotito {
-  width: 100px;
-  border-radius: 25px;
-}
+ }

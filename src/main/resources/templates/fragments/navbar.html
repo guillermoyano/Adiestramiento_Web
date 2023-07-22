@@ -1,64 +1,61 @@
 <nav>
     <div id="logo"></div>
 
-    <label for="drop" class="toggle">Menu</label>
-    <input type="checkbox" id="drop" />
-    <ul class="menu">
+    <div class="todo">
+        <div class="ContenedorNav">
+            <label for="drop" class="toggle">Menu</label>
+            <input type="checkbox" id="drop" />
+            <ul class="menu">
 
-        <li>
-            <!-- First Tier Drop Down -->
-            <label for="drop-1" class="toggle">Nuevo Cliente +</label>
-            <a th:if="${session.usuariosession != null}" href="#">Nuevo Cliente</a>
-            <input type="checkbox" id="drop-1" />
-            <ul>
-                <li><a th:href="@{/tutor/registrar}">Cargar Cliente</a></li>
+                <li>
+                    <label for="drop-1" class="toggle">Nuevo Cliente +</label>
+                    <a th:if="${session.usuariosession != null}" href="#">Nuevo Cliente</a>
+                    <input type="checkbox" id="drop-1" />
+                    <ul>
+                        <li><a th:href="@{/tutor/registrar}">Cargar Cliente</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <label for="drop-2" class="toggle">Tutores +</label>
+                    <a th:if="${session.usuariosession != null}" href="#">Tutores</a>
+                    <input type="checkbox" id="drop-2" />
+                    <ul>
+                        <li><a th:href="@{/tutor/lista}">Listar Tutores</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <label for="drop-2" class="toggle">Perros +</label>
+                    <a th:if="${session.usuariosession != null}" href="#">Perros</a>
+                    <input type="checkbox" id="drop-2" />
+                    <ul>
+                        <li><a th:href="@{/perro/lista}">Listar Perros</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <label for="drop-2" class="toggle">Usuarios +</label>
+                    <a sec:authorize="hasRole('ADMIN')" href="#">Usuarios</a>
+                    <input type="checkbox" id="drop-2" />
+                    <ul>
+                        <li><a th:href="@{/admin/usuarios}">Listar Usuarios</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <label for="drop-2" class="toggle">Perfil +</label>
+                    <a th:if="${session.usuariosession != null}" href="#">Perfil</a>
+                    <input type="checkbox" id="drop-2" />
+                    <ul>
+                        <li><a th:href="@{/perfil}">Editar Perfil</a></li>
+                        <li><a href="/logout">Cerrar Sesión</a></li>
+                    </ul>
+                </li>
+                <li><a th:if="${session.usuariosession == null && !#httpServletRequest.requestURI.endsWith('/registrar')}"
+                        href="/registrar">Registrate</a></li>
+                <li><a th:if="${session.usuariosession == null && !#httpServletRequest.requestURI.endsWith('/login')}"
+                        href="/login">Logueate</a></li>
+                <li><a th:href="@{/}">Home</a></li>
             </ul>
-        </li>
-
-        <li>
-            <label for="drop-2" class="toggle">Tutores +</label>
-            <a th:if="${session.usuariosession != null}" href="#">Tutores</a>
-            <input type="checkbox" id="drop-2" />
-            <ul>
-                <li><a th:href="@{/tutor/lista}">Listar Tutores</a></li>
-            </ul>
-        </li>
-
-        <li>
-            <label for="drop-2" class="toggle">Perros +</label>
-            <a th:if="${session.usuariosession != null}" href="#">Perros</a>
-            <input type="checkbox" id="drop-2" />
-            <ul>
-                <li><a th:href="@{/perro/lista}">Listar Perros</a></li>
-            </ul>
-        </li>
-
-        <li>
-            <label for="drop-2" class="toggle">Usuarios +</label>
-            <a sec:authorize="hasRole('ADMIN')" href="#">Usuarios</a>
-            <input type="checkbox" id="drop-2" />
-            <ul>
-                <li><a th:href="@{/admin/usuarios}">Listar Usuarios</a></li>
-            </ul>
-        </li>
-
-        <li>
-            <label for="drop-2" class="toggle">Perfil +</label>
-            <a th:if="${session.usuariosession != null}" href="#">Perfil</a>
-            <input type="checkbox" id="drop-2" />
-            <ul>
-                <li><a th:href="@{/perfil}">Editar Perfil</a></li>
-                <li><a href="/logout">Cerrar Sesión</a></li>
-            </ul>
-        </li>
-
-        <li><a th:if="${session.usuariosession == null && !#httpServletRequest.requestURI.endsWith('/registrar')}"
-                href="/registrar">Registrate</a></li>
-        <li><a th:if="${session.usuariosession == null && !#httpServletRequest.requestURI.endsWith('/login')}"
-                href="/login">Logueate</a></li>
-        <li><a th:if="${session.usuariosession != null}" th:href="@{/inicio}">Inicio</a></li>
-        <!-- <li style="color: #254441;">..</li> -->
-    </ul>
+        </div>
+    </div>
 </nav>
 
 
