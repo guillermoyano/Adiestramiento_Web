@@ -3,6 +3,7 @@ package KaveCanem.adiestramientoweb.controlador;
 import KaveCanem.adiestramientoweb.entidad.Perro;
 import KaveCanem.adiestramientoweb.entidad.Tutor;
 import KaveCanem.adiestramientoweb.excepciones.MiException;
+import KaveCanem.adiestramientoweb.repositorios.TutorRepositorio;
 import KaveCanem.adiestramientoweb.servicios.PerroServicio;
 import KaveCanem.adiestramientoweb.servicios.TutorServicio;
 import java.util.Date;
@@ -10,6 +11,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 /**
  *
@@ -33,9 +37,33 @@ public class TutorControlador {
     private TutorServicio tutorServicio;
     @Autowired
     private PerroServicio perroServicio;
+    @Autowired
+    private TutorRepositorio tutorRepositorio;
 
+    @GetMapping("/buscarTutor")
+    public String buscarTutor(ModelMap modelo){
+         List<Tutor>tutores = tutorServicio.listarTutores();
+        modelo.addAttribute("tutores", tutores);
+      
+             return "buscarTutor.html";
+       
+        
+    }
+    
+    
+    @PostMapping("/buscarTutor")
+    public RedirectView  buscarTutorPorDni(@PathVariable Long dni) {
+        Tutor tutor = tutorServicio.buscarPorDni(dni);
+        if (tutor != null) {
+            return new RedirectView("redirect:../perro/registrar");
+        } else {
+           return new RedirectView("/tutor_form.html");
+        }
+    }
+    
     @GetMapping("/registrar")
     public String registrar() {
+        
         return "tutor_form.html";
     }
 
@@ -55,7 +83,7 @@ public class TutorControlador {
          return "redirect:../perro/registrar";
     }
     
-    @GetMapping("/lista")
+      @GetMapping("/lista")
     public String listar(ModelMap modelo){
         List<Tutor>tutores = tutorServicio.listarTutores();
         modelo.addAttribute("tutores", tutores);

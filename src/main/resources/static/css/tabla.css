@@ -1,3 +1,9 @@
+*{
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+}
+
 .contenedorInput {
   display: flex;
   justify-content: center;
@@ -89,7 +95,7 @@
   border: none;
   color: #FFFFFF;
   text-align: center;
-  font-size: 17px;
+  font-size: 14px;
   padding: 16px;
   width: 130px;
   transition: all 0.5s;

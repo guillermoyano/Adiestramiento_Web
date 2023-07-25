@@ -2,83 +2,99 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
   xmlns:sec="http://www.thymelead.org/extras/spring-security">
 
-  <head>
-    <title>Perro Form</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/formulario.css">
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/inicio.css">
-    <link rel="stylesheet" href="/css/navbar.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <link rel="stylesheet" href="/css/tabla.css">
-    <link rel="stylesheet" href="/css/style.css">
+<head>
+  <title>Perro Form</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/navbar.css">
+  <link rel="stylesheet" href="/css/formularios.css">
 </head>
 
-<body>
+<body style="background-color: #000;">
 
   <nav th:replace="/fragments/navbar" :: nav> </nav>
 
-  <div class="container-fluid m-5 contenedor">
+  <div class="contenedorForm">
 
-    <form class="formulario" action="/perro/registro" method="POST" enctype="multipart/form-data">
-      
+    <form class="formulatio" action="/tutor/registro" method="POST">
+
+
+      <p class="titleForm">Registro del Can</p>
+
       <input hidden th:value="${tutor.idTutor}" name="idTutor">
-      <div class="form-group my-3">
-        <label class="mb-2">Nombre del tutor</label>
-        <input type="text" class="form-control" th:value="${tutor.nombre}" name="idTutor" readonly>
-      </div>
 
-      <div class="form-group my-3">
-        <label class="mb-2">Nombre del perro</label>
-        <input type="text" class="form-control" name="nombre" placeholder="Nombre del can">
-      </div>
-      <div class="form-group my-3">
-        <label class="mb-2">Edad</label>
-        <input type="numer" class="form-control" name="edad" placeholder="Edad del can">
-      </div>
-      <div class="form-group my-3">
-        <label class="mb-2">Raza</label>
-        <input type="text" class="form-control" name="raza" placeholder="Raza del can">
-      </div>
-      <div class="form-group my-3">
-        <label class="mb-2">Vive con otros perros?</label>
-        <input type="number" class="form-control" name="cantPerros" placeholder="Cantidad de perros">
-      </div>
-      <div class="form-group my-3">
-        <label class="mb-2">Salud? Vacunas? Castrado/a?</label>
-        <input type="text" class="form-control" name="salud" placeholder="Salud del can">
-      </div>
-      <div class="form-group my-3">
-        <input type="file" class="form-control" name="archivo">
-      </div>
-
-      <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
-        <div class="card-body">
-          <h5 class="card-title">Error</h5>
-          <p class="card-text" th:text="${error}"></p>
+      <label>
+        <input th:value="'El nombre del tutor es: ' + ${tutor.nombre}" name="idTutor" type="text" class="inputForm"
+          readonly>
+        <span th:value="${tutor.nombre}" name="idTutor"></span>
+      </label>
+      <label>
+        <input required="" placeholder="" name="nombre" type="text" class="inputForm">
+        <span>Nombre del Can</span>
+      </label>
+      <label>
+        <input required="" placeholder="" name="edad" type="number" class="inputForm">
+        <span>Edad del Can</span>
+      </label>
+      <label>
+        <input required="" placeholder="" name="raza" type="text" class="inputForm">
+        <span>Raza del Can</span>
+      </label>
+      <label>
+        <input required="" placeholder="" name="cantPerros" type="number" class="inputForm">
+        <span>Vive con otros perros</span>
+      </label>
+      <label>
+        <input required="" placeholder="" name="salud" type="text" class="inputForm">
+        <span>Salud? Vacunas? Castrado/a?</span>
+      </label>
+      <!-- <div class="contenedorFotoForm">
+        <div class="fotoForm">
+          <span class="foto">Foto del Can</span>
+          <p class="fotoTitulo">
+            Solo archivos .JPG
+          </p>
+          <label for="file-input" class="drop-container">
+            <span class="drop-title">Arrastra tú foto</span>
+            o
+            <input type="file" accept="image/*" required="" id="file-input">
+          </label>
+        </div>
+      </div> -->
+      <div class="contenedorFotoForm">
+        <div class="fotoForm">
+          <span class="foto">Foto del Can</span>
+          <p class="fotoTitulo">
+            Solo archivos .JPG
+          </p>
+          <img style="width: 150px; border-radius: 35px; align-items: center;" id="image-preview"
+            src="/img/schnauzer.jpg"
+            alt="Vista previa de la imagen">
+          <label for="file-input" class="drop-container">
+            <input type="file" accept="image/*" required="" id="file-input">
+          </label>
+          <!-- Agregamos el elemento img para mostrar la vista previa de la imagen -->
         </div>
       </div>
-
-      <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
-        <div class="card-body">
-          <h5 class="card-title">Exito!</h5>
-          <p class="card-text" th:text="${exito}"></p>
-        </div>
-      </div>
-
-      <section class=" text-center container">
-        <div class="row mt-3">
-          <div class="divVolver">
-            <a th:href="@{/}" class="btn btn-secondary my-2 botonVolver botones">Volver</a>
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary mt-3 botones">Enviar</button>
-      </section>
-
-
+      <button class="submit">Enviar</button>
+      <p class="signin">Volver al <a style="padding-left: -5px;" th:href="@{/}">INICIO</a> </p>
     </form>
   </div>
+
+  <script>
+    const fileInput = document.getElementById('file-input');
+    const imagePreview = document.getElementById('image-preview');
+    fileInput.addEventListener('change', function () {
+      if (fileInput.files && fileInput.files[0]) {
+        const imageUrl = URL.createObjectURL(fileInput.files[0]);
+        imagePreview.src = imageUrl;
+        imagePreview.style.display = 'block';
+      } else {
+        imagePreview.src = '#';
+        imagePreview.style.display = 'none';
+      }
+    });
+  </script>
 
 </body>
 

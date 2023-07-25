@@ -12,15 +12,15 @@ import org.springframework.stereotype.Repository;
  * @author Guillote
  */
 @Repository
-public interface TutorRepositorio  extends JpaRepository<Tutor, Integer>{
+public interface TutorRepositorio extends JpaRepository<Tutor, Integer> {
 
-   @Query("SELECT t FROM Tutor t WHERE t.apellido = :apellido") 
-   public Tutor buscarTutorPorApellido(@Param("apellido") String apellido);
-   
-   
-   @Query(value = "SELECT * FROM Tutor t order by id_Tutor desc limit 1", nativeQuery = true)
+    @Query("SELECT t FROM Tutor t WHERE t.apellido = :apellido")
+    public Tutor buscarTutorPorApellido(@Param("apellido") String apellido);
+
+    @Query(value = "SELECT * FROM Tutor t order by id_Tutor desc limit 1", nativeQuery = true)
     public Tutor buscarTutorPorIdTutor();
-   
-    
-   
+
+    @Query("SELECT t FROM Tutor t WHERE t.dni = :dni")
+    public Tutor buscarTutorPorDni(@Param("dni") Long dni);
+
 }

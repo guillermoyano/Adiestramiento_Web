@@ -30,15 +30,20 @@
 
     <div class="contenedor">
         <div>
-            <h1 class="fancy">Adiestramiento Kave Canem</h1>
-            <p class="texto">Croissant tiramisu candy canes danish dragée lemon drops. Tart dessert dragée fruitcake bear claw
+            <div class="centrarEsto">
+                <h1 class="fancy" style="font-size: 40px;">Adiestramiento Kave Canem</h1>
+            </div>
+            <p class="texto">Croissant tiramisu candy canes danish dragée lemon drops. Tart dessert dragée fruitcake
+                bear claw
                 danish
                 gingerbread. Croissant gingerbread chocolate cake apple pie sweet roll cotton candy. Jelly jelly icing
                 toffee cotton candy. Soufflé tart sweet roll chocolate sesame snaps fruitcake carrot cake. Wafer biscuit
                 cotton candy sweet icing.
             </p>
-            <h2 class="fancy" style="--w: 50vw;--c: #8A9B0F;--b:4px;--g:-5px">
-                <p th:if="${session.usuariosession != null}" th:text=" 'Hola '+ ${session.usuariosession.nombre} "></p>
+
+            <h2 class="fancy" style="--w: 50vw;--c: #8A9B0F;--b:4px;--g:-5px;">
+                <p style="background-color: #8A9B0F;" th:if="${session.usuariosession != null}"
+                    th:text=" 'Hola '+ ${session.usuariosession.nombre} "></p>
             </h2>
             <div class="centrar">
                 <a th:if="${session.usuariosession.imagen != null}">
@@ -46,12 +51,6 @@
                         th:src="@{/imagen/perfil/__${session.usuariosession.id}__}">
                 </a>
             </div>
-            <!-- <h2 class="fancy" style="--w: 50vw;--c: #8A9B0F;--b:4px;--g:-5px">Clases grupales</h2>
-    <p>Croissant tiramisu candy canes danish dragée lemon drops. Tart dessert dragée fruitcake bear claw danish
-        gingerbread. Croissant gingerbread chocolate cake apple pie sweet roll cotton candy. Jelly jelly icing
-        toffee cotton candy. Soufflé tart sweet roll chocolate sesame snaps fruitcake carrot cake. Wafer biscuit
-        cotton candy sweet icing.
-    </p> -->
         </div>
     </div>
 

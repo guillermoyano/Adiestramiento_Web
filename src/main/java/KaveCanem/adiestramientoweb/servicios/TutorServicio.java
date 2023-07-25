@@ -95,5 +95,15 @@ public class TutorServicio {
         }
 
     }
+    
+    public Tutor buscarPorDni(Long dni){
+        
+        Tutor tutor = new Tutor();
+       
+        tutor = tutorRepositorio.buscarTutorPorDni(dni);
+        
+        return tutor;
+        
+    }
 
 }

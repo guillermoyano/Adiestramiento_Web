@@ -6,41 +6,50 @@
   <title>Tutor Form</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/formulario.css">
-  <link rel="stylesheet" href="/css/index.css">
-  <link rel="stylesheet" href="/css/inicio.css">
   <link rel="stylesheet" href="/css/navbar.css">
-  <link rel="stylesheet" href="/css/footer.css">
-  <link rel="stylesheet" href="/css/tabla.css">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/formularios.css">
 </head>
 
-<body>
+<body style="background-color: #000;">
 
   <nav th:replace="/fragments/navbar" :: nav> </nav>
 
-  <div class="container-fluid m-5 contenedor">
+  <div class="contenedorForm" >
 
-    <form class="formulario" action="/tutor/registro" method="POST">
+    <form class="formulatio" action="/tutor/registro" method="POST">
+      <p class="titleForm">Registrar Nuevo Tutor</p>
+      <label>
+        <input required="" placeholder="" name="dni" type="text" class="inputForm">
+        <span>DNI del tutor</span>
+      </label>
+      <label>
+        <input required="" placeholder="" name="nombre" type="text" class="inputForm">
+        <span>Nombre del tutor</span>
+      </label>
+      <label>
+        <input required="" placeholder="" name="apellido" type="text" class="inputForm">
+        <span>Apellido del tutor</span>
+      </label>
+      <label>
+        <input required="" placeholder="" name="telefono" type="number" class="inputForm">
+        <span>Teléfono del tutor</span>
+      </label>
+      <label>
+        <input required="" placeholder="" name="direccion" type="text" class="inputForm">
+        <span>Dirección del tutor</span>
+      </label>
+      <button class="submit">Enviar</button>
+      <p class="signin">Volver al <a style="padding-left: -5px;" th:href="@{/}">INICIO</a> </p>
+    </form>
+  </div>
 
-      <div class="form-group my-3">
-        <label class="mb-2">Nombre del tutor</label>
-        <input type="text" class="form-control" name="nombre" placeholder="Nombre del tutor">
-      </div>
-      <div class="form-group">
-        <label class="mb-2">Apellido del tutor</label>
-        <input type="text" class="form-control" name="apellido" placeholder="Apellido del tutor">
-      </div>
-      <div class="form-group">
-        <label class="mb-2">Teléfono del tutor</label>
-        <input type="number" class="form-control" name="telefono" placeholder="Telefono del tutor">
-      </div>
-      <div class="form-group">
-        <label class="mb-2">Direccion del tutor</label>
-        <input type="text" class="form-control" name="direccion" placeholder="Direccion del tutor">
-      </div>
+</body>
+
+</html>
 
 
+
+<!--
       <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
         <div class="card-body">
           <h5 class="card-title">Error</h5>
@@ -53,19 +62,4 @@
           <h5 class="card-title">Exito!</h5>
           <p class="card-text" th:text="${exito}"></p>
         </div>
-      </div>
-
-      <section class=" text-center container">
-        <div class="row mt-3">
-          <div class="divVolver">
-            <a th:href="@{/}" class="btn btn-secondary my-2 botonVolver botones">Volver</a>
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary mt-3 botones">Enviar</button>
-      </section>
-    </form>
-  </div>
-
-</body>
-
-</html>
+      </div> -->

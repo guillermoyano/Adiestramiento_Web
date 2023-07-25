@@ -66,3 +66,19 @@
 #hache2 {
     font-size: 1.8rem;
 }
+
+.centrar{
+    display: flex;
+    margin: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+.centrarEsto{
+    display: flex;
+    margin: 50px;
+    padding-left: 150px;
+    padding-right: 200px;
+    align-items: center;
+    justify-content: center;
+}

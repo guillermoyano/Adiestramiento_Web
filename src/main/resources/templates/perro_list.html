@@ -7,57 +7,68 @@
     <title>Listar Perros</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/tabla.css">
     <link rel="stylesheet" href="/css/navbar.css">
-    <link rel="stylesheet" href="/css/footer.css">
 </head>
 
 <body>
     <nav th:replace="/fragments/navbar" :: nav> </nav>
+    <h2 class="titulo">Lista de Perros</h2>
 
-    <div class="contenedor">
-
+    <div class="contenedorInput">
         <div class="table-wrapper">
-            <table class="fl-table">
-                <thead>
-                    <tr>
-                        <th>Foto de Perfil</th>
+            <table class="fl-table" >
+                <thead >
+                    <tr style="background-color: white;">
+                        <th >Foto de Perfil</th>
                         <th>Perro</th>
                         <th>Edad</th>
                         <th>Raza</th>
                         <th>Nombre Tutor</th>
                         <th>Telefono Tutor</th>
-                        <th>Rutina</th>
+                        <th>Acciones</th>
                         <th sec:authorize="hasRole('ADMIN')">Acciones</th>
+                        <th sec:authorize="hasRole('ADMIN')">Acciones</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody th:each="perro : ${perros}">
                     <tr>
-                        <td><img style="width: 70px; border-radius: 20px;" th:if="${perro.imagen != null}"
-                                th:src="@{/imagen/perfilperro/__${perro.idPerro}__}"></td>
-                        <td th:text="${perro.nombre}"></td>
-                        <td th:text="${perro.edad}"></td>
-                        <td th:text="${perro.raza}"></td>
-                        <td th:text="${perro.tutor.nombre}"></td>
-                        <td th:text="${perro.tutor.telefono}"></td>
-                        <td>
-                            <a class="modificar" th:href="@{/rutina/lista/__${perro.idPerro}__}"><i></i> Ver
-                            </a>
+                        <td style="background-color: white;"><img style="width: 70px; border-radius: 20px; " th:if="${perro.imagen != null}"
+                            th:src="@{/imagen/perfilperro/__${perro.idPerro}__}"></td>
+                            <td th:text="${perro.nombre}" style="background-color: white;"></td>
+                            <td th:text="${perro.edad}" style="background-color: white;"></td>
+                            <td th:text="${perro.raza}" style="background-color: white;"></td>
+                            <td th:text="${perro.tutor.nombre}" style="background-color: white;"></td>
+                            <td th:text="${perro.tutor.telefono}" style="background-color: white;"></td>
+                        <td style="background-color: white;">
+                            <button class="botonTablaM">
+                                <a style="background-color: #2d3365;" class="modificar" th:href="@{/rutina/lista/__${perro.idPerro}__}"><i></i> Ver Rutina
+                                </a>
+                            </button>
                         </td>
-                        <td>
-                            <a class="modificar" sec:authorize="hasRole('ADMIN')"
+                        <td style="background-color: white;">
+                            <button class="botonTablaM">
+                                <a style="background-color: #2d3365;" class="modificar" sec:authorize="hasRole('ADMIN')"
                                 th:href="@{/perro/modificar/__${perro.idPerro}__}"><i></i>
-                                Modificar
+                                Modificar Rutina
                             </a>
+                            </button>
                         </td>
-                        <td>
-                            <a class="modificar" sec:authorize="hasRole('ADMIN')"
+                        <td style="background-color: white;">
+                            <button class="botonTablaM">
+                                <a style="background-color: #2d3365;" class="modificar" sec:authorize="hasRole('ADMIN')"
                                 th:href="@{/clases/nuevaClase/__${perro.idPerro}__}"><i></i>
                                 Crear Clase
                             </a>
+                            </button>
                         </td>
-                        <td>
-                            <a class="modificar" th:href="@{/clases/lista/__${perro.idPerro}__}"><i></i> Listar Clases
-                            </a>
+                        
+                        <td style="background-color: white;">
+                            <button class="botonTablaM">
+                                <a style="background-color: #2d3365;" class="modificar" th:href="@{/clases/lista/__${perro.idPerro}__}"><i></i> Listar Clases
+                                </a>
+                            </button>
                         </td>
                     </tr>
                 <tbody>

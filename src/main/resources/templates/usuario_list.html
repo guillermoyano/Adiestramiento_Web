@@ -6,56 +6,16 @@
     <title>Listar Usuarios</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/tabla.css">
+    <link rel="stylesheet" href="/css/navbar.css">
 </head>
 
 <body>
     <nav th:replace="/fragments/navbar" :: nav> </nav>
 
-    <div class="contenedor">
 
-        <div class="table-wrapper">
-        <table class="fl-table">
-            <thead>
-                <tr>
-                    <th>Id del Usuario</th>
-                    <th>Nombre</th>
-                    <th>Foto de Perfil</th>
-                    <th>Rol</th>
-                    <th>Cambiar Rol</th>
-                    <th>Modificar</th>
 
-                </tr>
-            </thead>
-            <tbody th:each="usuario : ${usuarios}">
-                <tr>
-                    <th scope="row" th:text="${usuario.id}"></th>
-                    <td th:text="${usuario.nombre}"></td>
-                    <td>
-                        <a><img style="width: 70px; border-radius: 20px;" th:if="${usuario.imagen != null}" class="logo"
-                                th:src="@{/imagen/perfil/__${usuario.id}__}"></a>
-                    </td>
-
-                    <td th:text="${usuario.rol}"></td>
-
-                    <td>
-                        <a class="modificar" th:href="@{/admin/modificarRol/__${usuario.id}__}"><i
-                                class="fas fa-feather-alt"></i>Cambiar</a>
-                    </td>
-
-                    <td>
-                        <a class="modificar" th:href="@{/perfilAdmin/__${usuario.id}__}"><i class="fas fa-feather-alt"></i>
-                            Modificar</a>
-                    </td>
-
-                </tr>
-
-            </tbody>
-        </table>
-    </div>
-
-        <!-- <div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito">
+    <!-- <div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito">
             <div class="card-body">
                 <h5 class="card-title">Exito ð</h5>
                 <p class="card-text" th:text="${exito}"></p>
@@ -69,6 +29,53 @@
         </div> -->
 
 
+
+
+
+    <h2 class="titulo">Lista de Usuarios</h2>
+
+    <div class="contenedorInput">
+        <div class="table-wrapper">
+            <table class="fl-table">
+                <thead>
+                    <tr style="background-color: white;">
+                        <th>Id del Usuario</th>
+                        <th>Nombre</th>
+                        <th>Foto de Perfil</th>
+                        <th>Rol</th>
+                        <th>Cambiar Rol</th>
+                        <th>Modificar</th>
+                    </tr>
+                </thead>
+                <tbody th:each="usuario : ${usuarios}">
+                    <tr>
+                        <td scope="row" th:text="${usuario.id}" style="background-color: white;"></td>
+                        <td th:text="${usuario.nombre}" style="background-color: white;"></td>
+                        <td style="background-color: white;"><a><img style="width: 70px; border-radius: 20px;"
+                                    th:if="${usuario.imagen != null}" class="logo"
+                                    th:src="@{/imagen/perfil/__${usuario.id}__}"></a>
+                        </td>
+                        <td th:text="${usuario.rol}" style="background-color: white;"></td>
+
+                        <td style="background-color: white;">
+                            <button class="botonTablaM">
+                                <a style="background-color: #2d3365;" class="modificar"
+                                    th:href="@{/admin/modificarRol/__${usuario.id}__}"><i></i> Cambiar Rol
+                                </a>
+                            </button>
+                        </td>
+                        <td style="background-color: white;">
+                            <button class="botonTablaM">
+                                <a style="background-color: #2d3365;" class="modificar" sec:authorize="hasRole('ADMIN')"
+                                    th:href="@{/perfilAdmin/__${usuario.id}__}"><i></i>
+                                    Modificar</a>
+                            </button>
+                        </td>
+
+                    </tr>
+                <tbody>
+            </table>
+        </div>
     </div>
 
 </body>

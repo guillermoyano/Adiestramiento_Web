@@ -18,7 +18,16 @@
 
     <h2 class="titulo">Lista de Tutores</h2>
 
+  
+
     <div class="contenedorInput">
+
+        <form action="/tutor/buscar" method="get">
+            <label for="dniInput">Buscar por DNI:</label>
+            <input type="text" id="dniInput" name="dni" required>
+            <button type="submit">Buscar</button>
+        </form>
+
         <div class="table-wrapper">
             <table class="fl-table">
                 <thead>
@@ -26,10 +35,8 @@
                         <th>Id del Tutor</th>
                         <th>Nombre</th>
                         <th>Apellido</th>
-                        <th>DNI</th>
                         <th>Direccion</th>
                         <th>Telefono</th>
-                        <th>Acciones</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -38,20 +45,12 @@
                         <td th:text="${tutor.idTutor}" style="background-color: white;"></td>
                         <td th:text="${tutor.nombre}" style="background-color: white;"></td>
                         <td th:text="${tutor.apellido}" style="background-color: white;"></td>
-                        <td th:text="${tutor.dni}" style="background-color: white;"></td>
                         <td th:text="${tutor.direccion}" style="background-color: white;"></td>
                         <td th:text="${tutor.telefono}" style="background-color: white;"> </td>
                         <td style="background-color: white;">
                             <button class="botonTablaM">
                                 <a style="background-color: #2d3365;" class="modificar" th:href="@{/tutor/modificar/__${tutor.idTutor}__}">
                                     Modificar
-                                </a>
-                            </button>
-                        </td>
-                        <td style="background-color: white;">
-                            <button class="botonTablaM">
-                                <a style="background-color: #2d3365;" class="modificar" th:href="@{/perro/registrar/__${tutor.idTutor}__}">
-                                    Añadir Perro
                                 </a>
                             </button>
                         </td>
