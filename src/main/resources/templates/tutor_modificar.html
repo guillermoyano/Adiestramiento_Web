@@ -6,13 +6,8 @@
         <title>Modificar Tutores</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/css/formulario.css">
-        <link rel="stylesheet" href="/css/index.css">
-        <link rel="stylesheet" href="/css/inicio.css">
         <link rel="stylesheet" href="/css/navbar.css">
-        <link rel="stylesheet" href="/css/footer.css">
-        <link rel="stylesheet" href="/css/tabla.css">
-        <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/formularios.css">
     </head>
 
 <body>
@@ -35,6 +30,11 @@
                 <label class="mb-2">Apellido del tutor</label>
                 <input th:value="${tutor.apellido}" type="text" class="form-control" name="apellido"
                     placeholder="Apellido del tutor">
+            </div>
+            <div class="form-group">
+                <label class="mb-2">Dni del tutor</label>
+                <input th:value="${tutor.dni}" type="number" class="form-control" name="dni"
+                    placeholder="Dni del tutor">
             </div>
             <div class="form-group">
                 <label class="mb-2">Teléfono del tutor</label>

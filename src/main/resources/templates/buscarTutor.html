@@ -6,8 +6,8 @@
     <title>Listar Tutores</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/tabla.css">
     <link rel="stylesheet" href="/css/navbar.css">
+         <link rel="stylesheet" href="/css/tabla.css">
 </head>
 
 </head>
@@ -16,50 +16,17 @@
 
     <nav th:replace="/fragments/navbar" :: nav> </nav>
 
-    <h2 class="titulo">Lista de Tutores</h2>
-
-  
+    <h2 class="titulo">Verificacion de DNI</h2>
 
     <div class="contenedorInput">
 
-        <form action="/tutor/buscar" method="get">
-            <label for="dniInput">Buscar por DNI:</label>
-            <input type="text" id="dniInput" name="dni" required>
-            <button type="submit">Buscar</button>
+        <form action="/tutor/buscarTutor" method="POST">
+            <input type="text" id="dniInput" name="dni" required style="width: 150px; height: 40px;
+                                background-color: #343945; color: white; border-radius: 10px; text-align: center" placeholder="Ingrese dni">
+                                <button type="submit" class="modificar" style="width: 100px; height: 40px; background-color: black; color: white; 
+                                    border-radius: 10px"><b>Buscar</b></button>
         </form>
-
-        <div class="table-wrapper">
-            <table class="fl-table">
-                <thead>
-                    <tr>
-                        <th>Id del Tutor</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Direccion</th>
-                        <th>Telefono</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody th:each="tutor : ${tutores}">
-                    <tr>
-                        <td th:text="${tutor.idTutor}" style="background-color: white;"></td>
-                        <td th:text="${tutor.nombre}" style="background-color: white;"></td>
-                        <td th:text="${tutor.apellido}" style="background-color: white;"></td>
-                        <td th:text="${tutor.direccion}" style="background-color: white;"></td>
-                        <td th:text="${tutor.telefono}" style="background-color: white;"> </td>
-                        <td style="background-color: white;">
-                            <button class="botonTablaM">
-                                <a style="background-color: #2d3365;" class="modificar" th:href="@{/tutor/modificar/__${tutor.idTutor}__}">
-                                    Modificar
-                                </a>
-                            </button>
-                        </td>
-                    </tr>
-                <tbody>
-            </table>
-        </div>
     </div>
-
 </body>
 
 </html>

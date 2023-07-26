@@ -6,6 +6,7 @@ import KaveCanem.adiestramientoweb.excepciones.MiException;
 import KaveCanem.adiestramientoweb.repositorios.TutorRepositorio;
 import KaveCanem.adiestramientoweb.servicios.PerroServicio;
 import KaveCanem.adiestramientoweb.servicios.TutorServicio;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -42,22 +43,19 @@ public class TutorControlador {
 
     @GetMapping("/buscarTutor")
     public String buscarTutor(ModelMap modelo){
-         List<Tutor>tutores = tutorServicio.listarTutores();
-        modelo.addAttribute("tutores", tutores);
-      
              return "buscarTutor.html";
-       
-        
+            
     }
     
     
     @PostMapping("/buscarTutor")
-    public RedirectView  buscarTutorPorDni(@PathVariable Long dni) {
+    public String buscarTutorPorDni(@RequestParam Long dni, RedirectAttributes redirect, ModelMap modelo) {
         Tutor tutor = tutorServicio.buscarPorDni(dni);
+        
         if (tutor != null) {
-            return new RedirectView("redirect:../perro/registrar");
+            return "redirect:../tutor/listaUnico/" + tutor.getIdTutor();
         } else {
-           return new RedirectView("/tutor_form.html");
+           return "tutor_form.html";
         }
     }
     
@@ -69,26 +67,47 @@ public class TutorControlador {
 
     @PostMapping("/registro")
     public String registro(@RequestParam(required = false) String nombre, @RequestParam(required = false) String apellido,
-            @RequestParam(required = false) Long telefono, @RequestParam(required = false) String direccion, 
+           @RequestParam(required = false) Long dni, @RequestParam(required = false) Long telefono,  @RequestParam(required = false) String direccion, 
              RedirectAttributes redirect, ModelMap modelo) {
         try {
-            tutorServicio.crearTutor(nombre, apellido, telefono, direccion);
+            if(tutorServicio.buscarPorDni(dni)==null){
+            tutorServicio.crearTutor(nombre, apellido, dni, telefono, direccion);
             redirect.addFlashAttribute("exito", "salió todo bien");
-            
+            return "redirect:../perro/registrar";
+            }
         } catch (MiException ex) {
             
             modelo.put("error", ex.getMessage());
             return "tutor_form.html";
         }
-         return "redirect:../perro/registrar";
+         return "tutor_list.html";
     }
     
       @GetMapping("/lista")
-    public String listar(ModelMap modelo){
-        List<Tutor>tutores = tutorServicio.listarTutores();
+    public String listar(ModelMap modelo, @Param("keyword")Long keyword){
+        try{
+            List<Tutor> tutores = new ArrayList<>();
+
+            if(keyword==null){
+                tutorRepositorio.findAll().forEach(tutores::add);
+            }else{
+                tutorRepositorio.buscarTutorPorDni1(keyword).forEach(tutores::add);
+                modelo.addAttribute("keyword", keyword);
+            }
+            modelo.addAttribute("tutores", tutores);
+        }catch(Exception e){
+            modelo.addAttribute("error", e.getMessage());
+        }
+        return "tutor_list.html";
+        
+    }
+    
+    @GetMapping("/listaUnico/{idTutor}")
+    public String listarunico(ModelMap modelo, @PathVariable Integer idTutor){
+        Tutor tutores = tutorServicio.getOne(idTutor);
         modelo.addAttribute("tutores", tutores);
         
-        return "tutor_list.html";
+        return "tutor_unico.html";
         
     }
     
@@ -102,9 +121,9 @@ public class TutorControlador {
     
     @PostMapping("modificar/{idTutor}")
      public String modificar(@PathVariable Integer idTutor, 
-             String nombre, String apellido, Long telefono, String direccion, ModelMap modelo) {
+             String nombre, String apellido, Long dni, Long telefono, String direccion, ModelMap modelo) {
         try {
-            tutorServicio.modificarTutor(idTutor, nombre, apellido, telefono, direccion);
+            tutorServicio.modificarTutor(idTutor, nombre, apellido, dni, telefono, direccion);
             return  "redirect:../lista";
         } catch (MiException ex) {
             modelo.put("error", ex.getMessage());
