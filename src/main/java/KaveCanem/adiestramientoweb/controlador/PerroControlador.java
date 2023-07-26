@@ -40,8 +40,18 @@ public class PerroControlador {
     @Autowired
     private TutorRepositorio tutorRepositorio;
 
-    @GetMapping("/registrar")
-    public String registrar(ModelMap modelo, Integer idTutor) {
+    @GetMapping("/registrar/{idTutor}")
+    public String registrar(ModelMap modelo, @PathVariable Integer idTutor) {
+
+        
+        modelo.put("tutor", tutorServicio.getOne(idTutor));
+
+        return "perro_form.html";
+    }
+    
+    
+    @GetMapping("/registrar1")
+    public String registrar1(ModelMap modelo,  Integer idTutor) {
 
         modelo.put("tutor", tutorRepositorio.buscarTutorPorIdTutor());
 

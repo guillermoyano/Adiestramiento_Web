@@ -34,7 +34,7 @@
                 </thead>
                 <tbody th:each="perro : ${perros}">
                     <tr>
-                        <td style="background-color: white;"><img style="width: 70px; border-radius: 20px; " th:if="${perro.imagen != null}"
+                        <td style="background-color: white;"><img style="width: 70px; border-radius: 20px;" th:if="${perro.imagen != null}"
                             th:src="@{/imagen/perfilperro/__${perro.idPerro}__}"></td>
                             <td th:text="${perro.nombre}" style="background-color: white;"></td>
                             <td th:text="${perro.edad}" style="background-color: white;"></td>

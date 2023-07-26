@@ -73,7 +73,7 @@ public class TutorControlador {
             if(tutorServicio.buscarPorDni(dni)==null){
             tutorServicio.crearTutor(nombre, apellido, dni, telefono, direccion);
             redirect.addFlashAttribute("exito", "salió todo bien");
-            return "redirect:../perro/registrar";
+            return "redirect:../perro/registrar1";
             }
         } catch (MiException ex) {
             
