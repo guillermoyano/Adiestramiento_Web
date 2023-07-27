@@ -20,16 +20,17 @@
             <table class="fl-table" >
                 <thead >
                     <tr style="background-color: white;">
-                        <th >Foto de Perfil</th>
+                        <th >Foto</th>
                         <th>Perro</th>
                         <th>Edad</th>
                         <th>Raza</th>
-                        <th>Nombre Tutor</th>
-                        <th>Telefono Tutor</th>
-                        <th>Acciones</th>
-                        <th sec:authorize="hasRole('ADMIN')">Acciones</th>
-                        <th sec:authorize="hasRole('ADMIN')">Acciones</th>
-                        <th>Acciones</th>
+                        <th>Tutor</th>
+                        <th>Teléfono</th>
+                        <th>Rutina</th>
+                        <th sec:authorize="hasRole('ADMIN')">Rutina</th>
+                        <th sec:authorize="hasRole('ADMIN')">Clase</th>
+                        <th>Clases</th>
+                        <th sec:authorize="hasRole('ADMIN')">Modificar</th>
                     </tr>
                 </thead>
                 <tbody th:each="perro : ${perros}">
@@ -42,31 +43,37 @@
                             <td th:text="${perro.tutor.nombre}" style="background-color: white;"></td>
                             <td th:text="${perro.tutor.telefono}" style="background-color: white;"></td>
                         <td style="background-color: white;">
-                            <button class="botonTablaM">
-                                <a style="background-color: #2d3365;" class="modificar" th:href="@{/rutina/lista/__${perro.idPerro}__}"><i></i> Ver Rutina
+                            <button class="botonTabla">
+                                <a style="background-color: #2d3365;" class="modificar" th:href="@{/rutina/lista/__${perro.idPerro}__}"><i></i> Ver
                                 </a>
                             </button>
                         </td>
                         <td style="background-color: white;">
-                            <button class="botonTablaM">
+                            <button class="botonTabla">
                                 <a style="background-color: #2d3365;" class="modificar" sec:authorize="hasRole('ADMIN')"
                                 th:href="@{/perro/modificar/__${perro.idPerro}__}"><i></i>
-                                Modificar Rutina
+                                Modificar
                             </a>
                             </button>
                         </td>
                         <td style="background-color: white;">
-                            <button class="botonTablaM">
+                            <button class="botonTabla">
                                 <a style="background-color: #2d3365;" class="modificar" sec:authorize="hasRole('ADMIN')"
                                 th:href="@{/clases/nuevaClase/__${perro.idPerro}__}"><i></i>
-                                Crear Clase
+                                Nueva
                             </a>
                             </button>
                         </td>
                         
                         <td style="background-color: white;">
+                            <button class="botonTabla">
+                                <a style="background-color: #2d3365;" class="modificar" th:href="@{/clases/lista/__${perro.idPerro}__}"><i></i> Listar
+                                </a>
+                            </button>
+                        </td>
+                        <td style="background-color: white;">
                             <button class="botonTablaM">
-                                <a style="background-color: #2d3365;" class="modificar" th:href="@{/clases/lista/__${perro.idPerro}__}"><i></i> Listar Clases
+                                <a style="background-color: #ce6a28;" class="modificar" th:href="@{/perro/modificar/__${perro.idPerro}__}"><i></i> Datos
                                 </a>
                             </button>
                         </td>

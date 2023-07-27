@@ -54,7 +54,7 @@
   color: #ffffff;
   background: #254441;
   border: 1px solid white;
-  font-size: 26px;
+  font-size: 20px;
 }
 
 
@@ -62,7 +62,7 @@
   color: #ffffff;
   background: #254441;
   border: 1px solid white;
-  font-size: 26px;
+  font-size: 20px;
 }
 
 .fl-table tr:nth-child(even) {
@@ -88,16 +88,63 @@
 
 
 
-.botonTablaM {
+.botonTabla {
   display: inline-block;
   border-radius: 4px;
   background-color: #2d3365;
   border: none;
   color: #FFFFFF;
   text-align: center;
-  font-size: 14px;
-  padding: 16px;
-  width: 130px;
+  font-size: 12px;
+  padding: 12px;
+  width: 100px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+ }
+ 
+ .botonTabla .modificar {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+ }
+ 
+ .botonTabla .modificar:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -15px;
+  transition: 0.5s;
+ }
+ 
+ .botonTabla:hover .modificar {
+  padding-right: 15px;
+ }
+ 
+ .botonTabla:hover .modificar:after {
+  opacity: 1;
+  right: 0;
+ }
+
+ .modificar{
+  text-decoration: none;
+ }
+
+
+
+
+ .botonTablaM {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #ce6a28;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 12px;
+  padding: 12px;
+  width: 100px;
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
