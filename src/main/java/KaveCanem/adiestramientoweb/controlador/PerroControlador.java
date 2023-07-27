@@ -3,16 +3,14 @@ package KaveCanem.adiestramientoweb.controlador;
 import KaveCanem.adiestramientoweb.entidad.Perro;
 import KaveCanem.adiestramientoweb.entidad.Tutor;
 import KaveCanem.adiestramientoweb.excepciones.MiException;
+import KaveCanem.adiestramientoweb.repositorios.PerroRepositorio;
 import KaveCanem.adiestramientoweb.repositorios.TutorRepositorio;
 import KaveCanem.adiestramientoweb.servicios.PerroServicio;
-import KaveCanem.adiestramientoweb.servicios.RutinaServicio;
 import KaveCanem.adiestramientoweb.servicios.TutorServicio;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -35,8 +33,13 @@ public class PerroControlador {
 
     @Autowired
     private PerroServicio perroServicio;
+    
+    @Autowired
+    private PerroRepositorio perroRepositorio;
+    
     @Autowired
     private TutorServicio tutorServicio;
+    
     @Autowired
     private TutorRepositorio tutorRepositorio;
 
@@ -85,13 +88,23 @@ public class PerroControlador {
         return "redirect:../rutina/registrar";
     }
 
-    @GetMapping("/lista")
-    public String listar(ModelMap modelo) {
-        List<Perro> perros = perroServicio.listarPerros();
-        modelo.addAttribute("perros", perros);
+        @GetMapping("/lista")
+    public String listar(ModelMap modelo, @Param("keyword")String keyword){
+        try{
+            List<Perro> perros = new ArrayList<>();
 
+            if(keyword==null){
+                perroRepositorio.findAll().forEach(perros::add);
+            }else{
+                perroRepositorio.buscarPerroPorNombre(keyword).forEach(perros::add);
+                modelo.addAttribute("keyword", keyword);
+            }
+            modelo.addAttribute("perros", perros);
+        }catch(Exception e){
+            modelo.addAttribute("error", e.getMessage());
+        }
         return "perro_list.html";
-
+        
     }
 
     @GetMapping("modificar/{idPerro}")

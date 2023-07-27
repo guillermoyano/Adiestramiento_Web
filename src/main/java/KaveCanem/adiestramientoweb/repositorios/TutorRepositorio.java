@@ -1,6 +1,5 @@
 package KaveCanem.adiestramientoweb.repositorios;
 
-import KaveCanem.adiestramientoweb.entidad.Rutina;
 import KaveCanem.adiestramientoweb.entidad.Tutor;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;

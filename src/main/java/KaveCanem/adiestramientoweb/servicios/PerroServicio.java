@@ -9,6 +9,7 @@ import KaveCanem.adiestramientoweb.repositorios.ImagenRepositorio;
 import KaveCanem.adiestramientoweb.repositorios.PerroRepositorio;
 import KaveCanem.adiestramientoweb.repositorios.RutinaRepositorio;
 import KaveCanem.adiestramientoweb.repositorios.TutorRepositorio;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -35,7 +36,7 @@ public class PerroServicio {
     @Transactional
     public void crearPerro(
             MultipartFile archivo,
-            String nombre, Double edad, String raza, String salud, Integer cantPerros, Integer idTutor) throws MiException {
+            String nombre, Double edad, String raza, String salud, Integer cantPerros, Integer idTutor) throws MiException, IOException {
 
         validarPerroCrear(nombre, edad, raza, salud, cantPerros, idTutor);
 
@@ -55,8 +56,13 @@ public class PerroServicio {
         perro.setSalud(salud);
         perro.setCantPerros(cantPerros);
         perro.setTutor(tutor);
-        Imagen imagen = imagenServicio.guardar(archivo);
-        perro.setImagen(imagen);
+         if (archivo.getSize() == 0) {
+            Imagen imagen = imagenServicio.obtenerImagenPorDefectoPerro();
+            perro.setImagen(imagen);
+        } else {
+            Imagen imagen = imagenServicio.guardar(archivo);
+            perro.setImagen(imagen);
+        }
 
         perroRepositorio.save(perro);
     }
@@ -83,6 +89,7 @@ public class PerroServicio {
             perro.setRaza(raza);
             perro.setSalud(salud);
             perro.setCantPerros(cantPerros);
+            
             Integer idImagen = null;
 
             if (perro.getImagen() != null) {

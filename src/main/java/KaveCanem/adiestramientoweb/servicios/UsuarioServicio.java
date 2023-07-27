@@ -5,6 +5,7 @@ import KaveCanem.adiestramientoweb.entidad.Usuario;
 import KaveCanem.adiestramientoweb.enumeraciones.Rol;
 import KaveCanem.adiestramientoweb.excepciones.MiException;
 import KaveCanem.adiestramientoweb.repositorios.UsuarioRepositorio;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +20,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
@@ -37,7 +37,7 @@ public class UsuarioServicio implements UserDetailsService {
     private ImagenServicio imagenServicio;
 
     @Transactional
-    public void registrar(MultipartFile archivo, String nombre, String email, String password, String password2) throws MiException {
+    public void registrar(MultipartFile archivo, String nombre, String email, String password, String password2) throws MiException, IOException {
 
         validar(nombre, email, password, password2);
 
@@ -49,9 +49,13 @@ public class UsuarioServicio implements UserDetailsService {
 
         usuario.setRol(Rol.USER);
 
-        Imagen imagen = imagenServicio.guardar(archivo);
-        
-        usuario.setImagen(imagen);
+        if (archivo.getSize() == 0) {
+            Imagen imagen = imagenServicio.obtenerImagenPorDefectoUsuario();
+            usuario.setImagen(imagen);
+        } else {
+            Imagen imagen = imagenServicio.guardar(archivo);
+            usuario.setImagen(imagen);
+        }
         usuarioRepositorio.save(usuario);
     }
     
