@@ -20,13 +20,43 @@
 
     <div class="contenedorInput">
 
-        <form action="/tutor/buscarTutor" method="POST">
-            <input type="text" id="dniInput" name="dni" required style="width: 150px; height: 40px;
+        <form onsubmit="return validarBusqueda()" action="/tutor/buscarTutor" method="POST">
+            <input type="text" id="dniInput" name="dni" required pattern="\d*" style="width: 150px; height: 40px;
                                 background-color: #343945; color: white; border-radius: 10px; text-align: center" placeholder="Ingrese dni">
-                                <button type="submit" class="modificar" style="width: 100px; height: 40px; background-color: black; color: white; 
+                                <button type="submit" id="buscar" class="modificar" style="width: 100px; height: 40px; background-color: black; color: white; 
                                     border-radius: 10px"><b>Buscar</b></button>
         </form>
     </div>
+    <span id="error" style="display: none; color: red; margin-left: 630px; font-size: 20px">Debe ingresar entre 7 y 8 números</span>
 </body>
+
+<script>
+  function validarBusqueda() {
+    var busqueda = document.getElementById('dniInput');
+    var inputValue = busqueda.value;
+    if (inputValue.length < 7 || inputValue.length > 8 || !/^\d*$/.test(inputValue)) {
+      document.getElementById('error').style.display = 'inline';
+      localStorage.removeItem('valor'); // Eliminar el valor almacenado si no es válido
+      return false;
+    } else {
+      document.getElementById('error').style.display = 'none'; // Ocultar el mensaje de error si el valor es válido
+      // Almacenar el valor de entrada válido en localStorage
+      localStorage.setItem('valor', inputValue);
+      return true;
+    }
+  }
+</script>
+<script>
+  document.getElementById('buscar').addEventListener('click', function () {
+    var inputValue = document.getElementById('dniInput').value;
+    if (inputValue.length >= 7 && inputValue.length <= 8 && /^\d*$/.test(inputValue)) {
+      // Redirigir a la página "tutor_form.html" solo si el valor es válido
+      window.location.href = 'tutor_form.html';
+    } else {
+      // Si el valor no es válido, eliminar cualquier valor almacenado en localStorage
+      localStorage.removeItem('valor');
+    }
+  });
+</script>
 
 </html>
