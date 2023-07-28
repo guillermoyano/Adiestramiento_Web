@@ -25,6 +25,13 @@
         <form class="formulario" th:action="@{/rutina/modificar/__${rutina.idRutina}__}" method="POST">
 
             <input hidden th:value="${idRutina}" name="idRutina">
+            <input hidden th:value="${perro.idPerro}" name="idPerro">
+
+            <div class="form-group my-3">
+                <label class="mb-2">Nombre</label>
+                <input th:value="${perro.nombre}" type="text" class="form-control" name="idPerro"
+                    placeholder="Cuántas veces por día sale a pasear" readonly>
+            </div>
 
 
             <div class="form-group my-3">

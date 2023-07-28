@@ -42,17 +42,13 @@
                         <td th:text="${tutor.direccion}" style="background-color: white;"></td>
                         <td th:text="${tutor.telefono}" style="background-color: white;"> </td>
                         <td style="background-color: white;">
-                            <button class="botonTablaM">
-                                <a style="background-color: #2d3365;" class="modificar" th:href="@{/tutor/modificar/__${tutor.idTutor}__}">
-                                    Modificar
-                                </a>
+                            <button class="botonHover">
+                                <a style="color: #000;" th:href="@{/tutor/modificar/__${tutor.idTutor}__}"><span class="box">Modificar</span></a>
                             </button>
                         </td>
                         <td style="background-color: white;">
-                            <button class="botonTablaM">
-                                <a style="background-color: #2d3365;" class="modificar" th:href="@{/perro/registrar/__${tutor.idTutor}__}">
-                                    Añadir Perro
-                                </a>
+                            <button class="botonHover">
+                                <a style="color: #000;" th:href="@{/perro/registrar/__${tutor.idTutor}__}"><span class="box">Añadir Perro</span></a>
                             </button>
                         </td>
                     </tr>

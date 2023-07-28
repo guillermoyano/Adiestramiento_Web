@@ -1,13 +1,17 @@
 *{
   margin: 0;
   padding: 0;
+  
+}
+
+body{
   background-color: #000;
 }
 
 .contenedorInput {
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 10px;
   margin-bottom: 20px;
 }
 
@@ -138,7 +142,7 @@
  .botonTablaM {
   display: inline-block;
   border-radius: 4px;
-  background-color: #ce6a28;
+  background-color: #dd0025;
   border: none;
   color: #FFFFFF;
   text-align: center;
@@ -148,6 +152,7 @@
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
+ font-weight: 900;
  }
  
  .botonTablaM .modificar {
@@ -178,3 +183,248 @@
  .modificar{
   text-decoration: none;
  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+ .coolinput {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  position: static;
+  max-width: 240px;
+  height: 40px;
+  border: 2px dashed white;
+  padding: 10px;
+  color: white;
+}
+
+.coolinput:hover{
+  border: 2px dashed red;
+}
+
+
+
+
+.divBoton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px;
+  flex-direction: column;
+  width: fit-content;
+  position: static;
+  max-width: 240px;
+}
+
+
+
+
+
+.botonSearch {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  background: none;
+  color: #0f1923;
+  cursor: pointer;
+  position: relative;
+  padding: 8px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  transition: all .15s ease;
+}
+
+.botonSearch::before,
+.botonSearch::after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: calc(50% - 5px);
+  border: 1px solid #7D8082;
+  transition: all .15s ease;
+}
+
+.botonSearch::before {
+  top: 0;
+  border-bottom-width: 0;
+}
+
+.botonSearch::after {
+  bottom: 0;
+  border-top-width: 0;
+}
+
+.botonSearch:active,
+.botonSearch:focus {
+  outline: none;
+}
+
+.botonSearch:active::before,
+.botonSearch:active::after {
+  right: 3px;
+  left: 3px;
+}
+
+.botonSearch:active::before {
+  top: 3px;
+}
+
+.botonSearch:active::after {
+  bottom: 3px;
+}
+
+.botonSearch_lg {
+  position: relative;
+  display: block;
+  padding: 10px 20px;
+  color: #fff;
+  background-color: #0f1923;
+  overflow: hidden;
+  box-shadow: inset 0px 0px 0px 1px transparent;
+}
+
+.botonSearch_lg::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 2px;
+  background-color: #0f1923;
+}
+
+.botonSearch_lg::after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 4px;
+  height: 4px;
+  background-color: #0f1923;
+  transition: all .2s ease;
+}
+
+.botonSearch_sl {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: -1px;
+  left: -8px;
+  width: 0;
+  background-color: #ff4655;
+  transform: skew(-15deg);
+  transition: all .2s ease;
+}
+
+.botonSearch_text {
+  position: relative;
+}
+
+.botonSearch:hover {
+  color: #0f1923;
+}
+
+.botonSearch:hover .botonSearch_sl {
+  width: calc(100% + 15px);
+}
+
+.botonSearch:hover .botonSearch_lg::after {
+  background-color: #fff;
+}
+
+
+
+
+.box {
+  width: 130px;
+  height:10px;
+  float: left;
+  transition: .5s linear;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  padding-bottom: 15px;
+  padding-top: 7px;
+  text-align: center;
+  margin: 2px;
+  background: transparent;
+  text-transform: uppercase;
+  font-weight: 900;
+  
+}
+
+.box:before {
+  position: absolute;
+  content: '';
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 100%;
+  border-bottom: 4px solid transparent;
+  border-left: 4px solid transparent;
+  box-sizing: border-box;
+  transform: translateX(100%);
+}
+
+.box:after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  border-top: 4px solid transparent;
+  border-right: 4px solid transparent;
+  box-sizing: border-box;
+  transform: translateX(-100%);
+}
+
+
+.box:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.box:hover:before {
+  border-color: #dd0025;
+  height: 100%;
+  transform: translateX(0);
+  transition: .3s transform linear, .3s height linear .3s;
+}
+
+.box:hover:after {
+  border-color: #dd0025;
+  height: 100%;
+  transform: translateX(0);
+  transition: .3s transform linear, .3s height linear .5s;
+}
+
+.botonHover {
+  border: #ff4655;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: transparent;
+}
+
+
+
+
+

@@ -15,28 +15,23 @@
     <nav th:replace="/fragments/navbar" :: nav> </nav>
     <h2 class="titulo">Lista de Perros</h2>
 
-    
-    <div class="container-fluid" style="max-width: 1500px; margin-left: 600px;">
-    <div class="my-3">
+
+    <div class="contenedorInput">
         <form th:action="@{/perro/lista}">
-            <div class="d-flex justify-content-center" style="width: 100%; height: 80px">
-                <div class="col-md-6 mt-2">
-                    <div class="d-flex align-items-center">
-                        <i class="fa fa-search"></i>
-                        <input id="keyword" type="search" name="keyword" th:value="${keyword}"
-                                    class="form--input" style="width: 150px; height: 40px;
-                                background-color: #343945; color: white; border-radius: 10px; text-align: center"
-                                    placeholder="Nombre del Can">
-                                <button type="submit" class="modificar" style="width: 100px; height: 40px; background-color: black; color: white; 
-                                    border-radius: 10px"><b>Buscar</b></button>
-                               <button onclick="limpiar()" class="modificar" style="width: 100px; height: 40px; background-color: black; color: white; 
-                                    border-radius: 10px"><b>Limpiar</b></button>
-                    </div>
-                </div>
+
+            <input type="text" id="keyword" name="keyword" class="coolinput" th:value="${keyword}" placeholder="Ingrese nombre del can" style="text-align: center;">
+            <div class="divBoton">
+                <button type="submit" class="botonSearch" style="width: 100px; height: 40px; background-color: black; color: white; 
+          border-radius: 10px"><b>Buscar</b></button>
+                <button onclick="limpiar()" class="botonSearch" style="width: 100px; height: 40px; background-color: black; color: white; 
+          border-radius: 10px"><b>Limpiar</b></button>
+            </div>
+            <div class="divBoton">
+
             </div>
         </form>
     </div>
-    </div>
+
     <div class="contenedorInput">
         <div class="table-wrapper">
             <table class="fl-table" >
@@ -65,37 +60,28 @@
                             <td th:text="${perro.tutor.nombre}" style="background-color: white;"></td>
                             <td th:text="${perro.tutor.telefono}" style="background-color: white;"></td>
                         <td style="background-color: white;">
-                            <button class="botonTabla">
-                                <a style="background-color: #2d3365;" class="modificar" th:href="@{/rutina/lista/__${perro.idPerro}__}"><i></i> Ver
-                                </a>
+                            <button class="botonHover">
+                                <a style="color: #000;" th:href="@{/rutina/lista/__${perro.idPerro}__}"><span class="box">Ver</span></a>
                             </button>
                         </td>
                         <td style="background-color: white;">
-                            <button class="botonTabla">
-                                <a style="background-color: #2d3365;" class="modificar" sec:authorize="hasRole('ADMIN')"
-                                th:href="@{/perro/modificar/__${perro.idPerro}__}"><i></i>
-                                Modificar
-                            </a>
+                            <button class="botonHover">
+                                <a style="color: #000;" th:href="@{/rutina/modificar/__${perro.idPerro}__}"><span class="box">Modificar</span></a>
                             </button>
                         </td>
                         <td style="background-color: white;">
-                            <button class="botonTabla">
-                                <a style="background-color: #2d3365;" class="modificar" sec:authorize="hasRole('ADMIN')"
-                                th:href="@{/clases/nuevaClase/__${perro.idPerro}__}"><i></i>
-                                Nueva
-                            </a>
+                            <button class="botonHover">
+                                <a style="color: #000;" th:href="@{/clases/nuevaClase/__${perro.idPerro}__}"><span class="box">Nueva</span></a>
                             </button>
                         </td>
-                        
                         <td style="background-color: white;">
-                            <button class="botonTabla">
-                                <a style="background-color: #2d3365;" class="modificar" th:href="@{/clases/lista/__${perro.idPerro}__}"><i></i> Listar
-                                </a>
+                            <button class="botonHover">
+                                <a style="color: #000;" th:href="@{/clases/lista/__${perro.idPerro}__}"><span class="box">Listar</span></a>
                             </button>
                         </td>
                         <td style="background-color: white;">
                             <button class="botonTablaM">
-                                <a style="background-color: #ce6a28;" class="modificar" th:href="@{/perro/modificar/__${perro.idPerro}__}"><i></i> Datos
+                                <a style="background-color: #dd0025;" class="modificar" th:href="@{/perro/modificar/__${perro.idPerro}__}">Datos
                                 </a>
                             </button>
                         </td>

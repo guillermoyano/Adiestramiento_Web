@@ -102,23 +102,24 @@ public class RutinaControlador {
 
     }
 
-    @GetMapping("modificar/{idRutina}")
-    public String modificar(@PathVariable Integer idRutina, ModelMap modelo) {
+    @GetMapping("/modificar/{idPerro}")
+    public String modificar(@PathVariable Integer idPerro, ModelMap modelo, ModelMap modelin) {
 
-        modelo.put("rutina", rutinaServicio.getOne(idRutina));
+        modelin.put("perro", perroServicio.getOne(idPerro));
+        modelo.put("rutina", rutinaRepositorio.buscarRutinaPorIdPerro(idPerro));
 
         return "rutina_modificar.html";
     }
 
-    @PostMapping("modificar/{idRutina}")
-    public String modificar(@PathVariable Integer idRutina, String paseo,
+    @PostMapping("modificar/{idPerro}")
+    public String modificar(@PathVariable Integer idPerro, String paseo,
             String frecPaseo, String herramientas, String salida, String observacionesPaseo, String calle, String comida,
             String frecComida, String observacionesComida, String juego, String juegaCon, String dispoJuguetes,
             String frecJuego, String observacionesJuego, String duerme, String frecDuerme, String dondePasaDia,
             String educacionPrevia, String motivoContratacion, String observacionesEducacion,
             ModelMap modelo) {
         try {
-            rutinaServicio.modificarRutina(idRutina, paseo, frecPaseo, herramientas, salida, observacionesPaseo, calle, comida,
+            rutinaServicio.modificarRutina(idPerro, paseo, frecPaseo, herramientas, salida, observacionesPaseo, calle, comida,
                     frecComida, observacionesComida, juego, juegaCon, dispoJuguetes,
                     frecJuego, observacionesJuego, duerme, frecDuerme, dondePasaDia,
                     educacionPrevia, motivoContratacion, observacionesEducacion);
@@ -129,5 +130,7 @@ public class RutinaControlador {
             return "rutina_modificar.html";
         }
     }
+    
+    
 
 }
