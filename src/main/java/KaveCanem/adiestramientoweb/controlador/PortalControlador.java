@@ -4,6 +4,7 @@ import KaveCanem.adiestramientoweb.entidad.Usuario;
 import KaveCanem.adiestramientoweb.excepciones.MiException;
 import KaveCanem.adiestramientoweb.repositorios.UsuarioRepositorio;
 import KaveCanem.adiestramientoweb.servicios.UsuarioServicio;
+import java.io.IOException;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -42,7 +43,7 @@ public class PortalControlador {
 
     @PostMapping("/registro")
     public String registro(@RequestParam String nombre, @RequestParam String email, @RequestParam String password,
-            String password2, ModelMap modelo, MultipartFile archivo) {
+            String password2, ModelMap modelo, MultipartFile archivo) throws IOException {
 
         try {
             usuarioServicio.registrar(archivo, nombre, email, password, password2);

@@ -7,6 +7,7 @@ import KaveCanem.adiestramientoweb.repositorios.PerroRepositorio;
 import KaveCanem.adiestramientoweb.repositorios.TutorRepositorio;
 import KaveCanem.adiestramientoweb.servicios.PerroServicio;
 import KaveCanem.adiestramientoweb.servicios.TutorServicio;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,7 +68,7 @@ public class PerroControlador {
             @RequestParam(required = false) String salud, @RequestParam(required = false) Integer idTutor,
             RedirectAttributes redirect, ModelMap modelo,
              MultipartFile archivo
-    ) {
+    ) throws IOException {
 
         try {
             perroServicio.crearPerro(archivo, nombre, edad, raza, salud, cantPerros, idTutor);
