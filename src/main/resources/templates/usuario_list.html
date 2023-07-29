@@ -37,7 +37,7 @@
                         <th>Foto de Perfil</th>
                         <th>Rol</th>
                         <th>Cambiar Rol</th>
-                        <th>Modificar</th>
+                        <!-- <th>Modificar</th> -->
                     </tr>
                 </thead>
                 <tbody th:each="usuario : ${usuarios}">
@@ -55,12 +55,12 @@
                                         Rol</span></a>
                             </button>
                         </td>
-                        <td>
+                        <!-- <td>
                             <button class="botonHover">
                                 <a sec:authorize="hasRole('ADMIN')" style="color: #000;"
                                     th:href="@{/perfilAdmin/__${usuario.id}__}"><span class="box">Modificar</span></a>
                             </button>
-                        </td>
+                        </td> -->
                     </tr>
                 <tbody>
             </table>

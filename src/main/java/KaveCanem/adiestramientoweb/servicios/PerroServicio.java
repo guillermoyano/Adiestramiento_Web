@@ -94,11 +94,15 @@ public class PerroServicio {
 
             if (perro.getImagen() != null) {
                 idImagen = perro.getImagen().getIdImagen();
+
             }
+            if (!archivo.isEmpty()) {
 
-            Imagen imagen = imagenServicio.actualizar(archivo, idImagen);
+             Imagen imagen = imagenServicio.actualizar(archivo, idImagen);
 
-            perro.setImagen(imagen);
+                perro.setImagen(imagen);
+        }
+            
             perroRepositorio.save(perro);
         }
     }

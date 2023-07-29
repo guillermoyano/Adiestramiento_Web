@@ -60,10 +60,7 @@ public class UsuarioServicio implements UserDetailsService {
     }
     
     @Transactional
-    public void actualizar(MultipartFile archivo, 
-            Integer id, 
-            String nombre
-            ) throws MiException {
+    public void actualizar(MultipartFile archivo, Integer id, String nombre) throws MiException {
 
         validar2(nombre);
 
@@ -73,15 +70,18 @@ public class UsuarioServicio implements UserDetailsService {
             Usuario usuario = respuesta.get();
             usuario.setNombre(nombre);
             
-            Integer idImagen = null;
-            
+           Integer idImagen = null;
+
             if (usuario.getImagen() != null) {
                 idImagen = usuario.getImagen().getIdImagen();
+
             }
-            
-            Imagen imagen = imagenServicio.actualizar(archivo, idImagen);
-            
-            usuario.setImagen(imagen);
+            if (!archivo.isEmpty()) {
+
+             Imagen imagen = imagenServicio.actualizar(archivo, idImagen);
+
+                usuario.setImagen(imagen);
+        }
             
             usuarioRepositorio.save(usuario);
         }

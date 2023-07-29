@@ -15,95 +15,80 @@
   <nav th:replace="/fragments/navbar" :: nav> </nav>
 
   <div class="contenedorForm">
-      <div class="login-card">
+    <div class="login-card">
       <div class="card-header">
         <div class="log">Registrar Nuevo Perro</div>
       </div>
 
-    <form class="formulatio" action="/perro/registro" method="POST" enctype="Multipart/form-data">
+      <form class="formulatio" action="/perro/registro" method="POST" enctype="Multipart/form-data">
 
-      <input hidden th:value="${tutor.idTutor}" name="idTutor">
-                  <div class="form-group">
+        <input hidden th:value="${tutor.idTutor}" name="idTutor">
+        <div class="form-group">
 
-      <label>
-        <input th:value="'El nombre del tutor es: ' + ${tutor.nombre}" name="idTutor" type="text" class="inputForm"
-          readonly>
+          <label>
+            <input th:value="'El nombre del tutor es: ' + ${tutor.nombre}" name="idTutor" type="text" class="inputForm"
+              readonly>
             <br>
-      </label>
+          </label>
           <br>
-              </div>
-              <div class="form-group">
+        </div>
+        <div class="form-group">
 
-              <label>
-        <input required="" placeholder="" name="nombre" type="text" class="inputForm">
-        <span>Nombre del Can</span>
-      </label>
-                  </div>
-              <div class="form-group">
-
-                  <label>
-        <input required="" placeholder="" name="edad" type="number" class="inputForm">
-        <span>Edad del Can</span>
-      </label>
-                  </div>
-                          <div class="form-group">
-
-      <label>
-        <input required="" placeholder="" name="raza" type="text" class="inputForm">
-        <span>Raza del Can</span>
-      </label>
-                              </div>
-                                      <div class="form-group">
-
-      <label>
-        <input required="" placeholder="" name="cantPerros" type="number" class="inputForm">
-        <span>Vive con otros perros</span>
-      </label>
-                                          </div>
-                                                  <div class="form-group">
-
-      <label>
-        <input required="" placeholder="" name="salud" type="text" class="inputForm">
-        <span>Salud? Vacunas? Castrado/a?</span>
-      </label>
-      </div>
-                                                      <!-- <div class="contenedorFotoForm">
-        <div class="fotoForm">
-          <span class="foto">Foto del Can</span>
-          <p class="fotoTitulo">
-            Solo archivos .JPG
-          </p>
-          <label for="file-input" class="drop-container">
-            <span class="drop-title">Arrastra tú foto</span>
-            o
-            <input type="file" accept="image/*" required="" id="file-input">
+          <label>
+            <input required="" placeholder="" name="nombre" type="text" class="inputForm">
+            <span>Nombre del Can</span>
           </label>
         </div>
-      </div> -->
-              <div class="form-group">
+        <div class="form-group">
 
-      <div class="contenedorFotoForm">
-        <div class="fotoForm">
-          <span class="foto">Foto del Can</span>
-          <p class="fotoTitulo">
-            Solo archivos .JPG
-          </p>
-          <img style="width: 150px; border-radius: 35px; align-items: center;" id="image-preview"
-            src="/img/huella.png"
-            alt="Vista previa de la imagen">
-          <label for="file-input" class="drop-container">
-            <input type="file" accept="image/*" name="archivo" id="file-input">
+          <label>
+            <input required="" placeholder="" name="edad" type="number" class="inputForm">
+            <span>Edad del Can</span>
           </label>
         </div>
-      </div>
-              </div>
-          <div class="form-group">
-      <button class="submit">Enviar</button>
-      
+        <div class="form-group">
+
+          <label>
+            <input required="" placeholder="" name="raza" type="text" class="inputForm">
+            <span>Raza del Can</span>
+          </label>
+        </div>
+        <div class="form-group">
+
+          <label>
+            <input required="" placeholder="" name="cantPerros" type="number" class="inputForm">
+            <span>Vive con otros perros</span>
+          </label>
+        </div>
+        <div class="form-group">
+
+          <label>
+            <input required="" placeholder="" name="salud" type="text" class="inputForm">
+            <span>Salud? Vacunas? Castrado/a?</span>
+          </label>
+        </div>
+
+        <div class="form-group">
+
+          <div class="contenedorFotoForm">
+            <div class="fotoForm">
+              <span class="foto">Foto del Can</span>
+              <p class="fotoTitulo">
+                Solo archivos .JPG
+              </p>
+              <img style="width: 150px; border-radius: 35px; align-items: center;" id="image-preview"
+                src="/img/huella.png" alt="Vista previa de la imagen">
+              <label for="file-input" class="drop-container">
+                <input type="file" accept="image/*" name="archivo" id="file-input">
+              </label>
+            </div>
           </div>
-         
+        </div>
+        <div class="form-group">
+          <input value="Enviar" type="submit">
+        </div>
       </form>
-  </div>
+    </div>
   </div>
 
   <script>

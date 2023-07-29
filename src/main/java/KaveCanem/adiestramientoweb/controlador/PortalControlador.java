@@ -79,7 +79,7 @@ public class PortalControlador {
         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
 
         if (logueado.getRol().toString().equals("ADMIN")) {
-            return "redirect:/admin/dashboard";
+            return "panel.html";
         }
 
         return "inicio.html";
@@ -95,12 +95,25 @@ public class PortalControlador {
 
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @PostMapping("/perfil/{id}")
-    public String actualizar(MultipartFile archivo, @PathVariable Integer id, @RequestParam String nombre, ModelMap modelo) {
+    public String actualizar(MultipartFile archivo, @PathVariable Integer id, @RequestParam String nombre, ModelMap modelo, HttpSession session) {
 
+        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
         try {
+
             usuarioServicio.actualizar(archivo, id, nombre);
 
             modelo.put("exito", "Usuario actualizado correctamente!");
+
+//            if (logueado != null && logueado.getRol() != null && logueado.getRol().toString().equals("ADMIN")) {
+//            return "ADM_dashboard.html";
+//        } else if (proveedorlogueado != null && proveedorlogueado.getRol() != null && proveedorlogueado.getRol().toString().equals("PROVEEDOR")) {
+//            return "PROV_panelProveedor.html";
+//        } else {
+//            return "inicio.html";
+//        }
+            if (logueado.getRol().toString().equals("ADMIN")) {
+                return "redirect:../admin/dashboard";
+            }
 
             return "inicio.html";
         } catch (MiException ex) {
@@ -141,4 +154,20 @@ public class PortalControlador {
             return "usuario_modificar_admin.html";
         }
     }
+
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @GetMapping("/modificarPass")
+    public String modificarPass(ModelMap modelo, HttpSession session) {
+        Usuario usuario = (Usuario) session.getAttribute("usuariosession");
+        modelo.put("usuario", usuario);
+        return "usuario_modificar.html";
+    }
+
+//    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+//    @PostMapping("/perfil/{id}")
+//    public String actualizarPass(@PathVariable Integer id, @RequestParam String passowrd, ModelMap modelo, HttpSession session) {
+//
+//        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+//
+//    }
 }

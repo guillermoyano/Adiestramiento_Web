@@ -2,83 +2,97 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="http://www.thymelead.org/extras/spring-security">
 
-    <head>
-        <title>Modificar Perro</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/css/formulario.css">
-        <link rel="stylesheet" href="/css/index.css">
-        <link rel="stylesheet" href="/css/inicio.css">
-        <link rel="stylesheet" href="/css/navbar.css">
-        <link rel="stylesheet" href="/css/footer.css">
-        <link rel="stylesheet" href="/css/tabla.css">
-        <link rel="stylesheet" href="/css/style.css">
-    </head>
+<head>
+    <title>Modificar Perro</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/formularios.css">
+</head>
 
 <body>
 
 
     <nav th:replace="/fragments/navbar" :: nav> </nav>
 
-    <div class="container-fluid m-5 contenedor">
-
-        <form class="formulario" th:action="@{/perro/modificar/__${perro.idPerro}__}" method="POST" enctype="multipart/form-data">
-
-            <input hidden th:value="${perro.idPerro}" name="idPerro">
-            <input hidden th:value="${idTutor}" name="idTutor">
-            <input hidden th:value="${idImagen}" name="idImagen">
-
-
-            <div class="form-group my-3">
-                <label class="mb-2">Nombre del perro</label>
-                <input th:value="${perro.nombre}" type="text" class="form-control" name="nombre" placeholder="Nombre">
+    <div class="contenedorForm">
+        <div class="login-card">
+            <div class="card-header">
+                <div class="log">Modificar datos del can</div>
             </div>
-            <div class="form-group">
-                <label class="mb-2">Edad del perro</label>
-                <input th:value="${perro.edad}" type="text" class="form-control" name="edad" placeholder="edad">
-            </div>
-            <div class="form-group">
-                <label class="mb-2">Raza del perro</label>
-                <input th:value="${perro.raza}" type="text" class="form-control" name="raza" placeholder="raza">
-            </div>
-            <div class="form-group">
-                <label class="mb-2">Cantidad de perros en la vivienda</label>
-                <input th:value="${perro.cantPerros}" type="number" class="form-control" name="cantPerros"
-                    placeholder="cantPerros">
-            </div>
-            <div class="form-group">
-                <label class="mb-2">Salud</label>
-                <input th:value="${perro.salud}" type="text" class="form-control" name="salud" placeholder="salud">
-            </div>
-            <div class="form-group my-3">
-                <input type="file" class="form-control" name="archivo" >
-            </div> 
+            <form class="formulatio" th:action="@{/perro/modificar/__${perro.idPerro}__}" method="POST"
+                enctype="multipart/form-data">
 
+                <input hidden th:value="${perro.idPerro}" name="idPerro">
+                <input hidden th:value="${idTutor}" name="idTutor">
+                <input hidden th:value="${idImagen}" name="idImagen">
 
-            <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
-                <div class="card-body">
-                    <h5 class="card-title">Error</h5>
-                    <p class="card-text" th:text="${error}"></p>
+                <div class="form-group">
+                    <label>
+                        <input required="" th:value="${perro.nombre}" name="nombre" type="text" class="inputForm">
+                    </label>
                 </div>
-            </div>
-
-            <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
-                <div class="card-body">
-                    <h5 class="card-title">Exito!</h5>
-                    <p class="card-text" th:text="${exito}"></p>
+                <div class="form-group">
+                    <label>
+                        <label>Edad del can:</label>
+                        <input required="" th:value="${perro.edad}" name="edad" type="number" class="inputForm">
+                    </label>
                 </div>
-            </div>
-
-            <section class=" text-center container">
-                <div class="row mt-3">
-                    <div class="divVolver">
-                        <a th:href="@{/}" class="btn btn-secondary my-2 botonVolver botones">Volver</a>
+                <div class="form-group">
+                    <label>
+                        <label>Raza del Can:</label>
+                        <input required="" th:value="${perro.raza}" name="raza" type="text" class="inputForm">
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <label>Vive con otros perros:</label>
+                        <input required="" th:value="${perro.cantPerros}" name="cantPerros" type="number" class="inputForm">
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <label>Salud? Vacunas? Castrado/a?:</label>
+                        <input required="" th:value="${perro.salud}" name="salud" type="text" class="inputForm">
+                    </label>
+                </div>
+                <div class="form-group">
+                    <div class="contenedorFotoForm">
+                        <div class="fotoForm">
+                            <span class="foto">Foto del Can</span>
+                            <p class="fotoTitulo">
+                                Solo archivos .JPG
+                            </p>
+                            <img style="width: 150px; border-radius: 35px; align-items: center;" id="image-preview"
+                                th:src="@{/imagen/perfilperro/__${perro.idPerro}__}" alt="Vista previa de la imagen">
+                            <label for="file-input" class="drop-container">
+                                <input type="file" accept="image/*" name="archivo" id="file-input">
+                            </label>
+                        </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary mt-3 botones">Enviar</button>
-            </section>
-        </form>
+                <div class="form-group">
+                    <input value="Modificar" type="submit">
+                </div>
+
+            </form>
+        </div>
     </div>
+
+    <script>
+        const fileInput = document.getElementById('file-input');
+        const imagePreview = document.getElementById('image-preview');
+        fileInput.addEventListener('change', function () {
+            if (fileInput.files && fileInput.files[0]) {
+                const imageUrl = URL.createObjectURL(fileInput.files[0]);
+                imagePreview.src = imageUrl;
+                imagePreview.style.display = 'block';
+            } else {
+                imagePreview.src = '#';
+                imagePreview.style.display = 'none';
+            }
+        });
+    </script>
 
 </body>
 

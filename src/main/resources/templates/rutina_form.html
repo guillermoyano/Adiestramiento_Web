@@ -2,147 +2,177 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="http://www.thymelead.org/extras/spring-security">
 
-    <head>
-        <title>Rutina Form</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/css/formulario.css">
-        <link rel="stylesheet" href="/css/index.css">
-        <link rel="stylesheet" href="/css/inicio.css">
-        <link rel="stylesheet" href="/css/navbar.css">
-        <link rel="stylesheet" href="/css/footer.css">
-        <link rel="stylesheet" href="/css/tabla.css">
-        <link rel="stylesheet" href="/css/style.css">
-    </head>
+<head>
+    <title>Rutina Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/formularios.css">
+</head>
 
 <body>
 
     <nav th:replace="/fragments/navbar" :: nav> </nav>
 
-    <div class="container-fluid m-5 contenedor">
 
-        <form class="formulario" action="/rutina/registro" method="POST">
-
-            <input hidden th:value="${perro.idPerro}" name="idPerro">
-            <div class="form-group my-3">
-                <label class="mb-2">Nombre del perro</label>
-                <input type="text" class="form-control" th:value="${perro.nombre}" name="idPerro" readonly>
+    <div class="contenedorForm">
+        <div class="login-card">
+            <div class="card-header">
+                <div class="log">Registrar Rutina</div>
             </div>
 
+            <form class="formulatio" action="/rutina/registro" method="POST">
 
-            <div class="form-group my-3">
-                <label class="mb-2">Paseo</label>
-                <input type="text" class="form-control" name="paseo" placeholder="Cuántas veces por día sale a pasear">
-            </div>
-            <div class="form-group my-3">
-                <label class="mb-2">Tiempo de paseo</label>
-                <input type="number" class="form-control" name="frecPaseo" placeholder="Cuánto tiempo dura el paseo">
-            </div>
-            <div class="form-group my-3">
-                <label class="mb-2">Herramientas de paseo</label>
-                <input type="text" class="form-control" name="herramientas"
-                    placeholder="Qué usa al salir(pretal/collar fijo/ collar ahorque)">
-            </div>
-            <div class="form-group my-3">
-                <label class="mb-2">Qué hace cuando va a pasear?</label>
-                <input type="text" class="form-control" name="salida"
-                    placeholder="Cómo se pone cuando sabe que va a salir?">
-            </div>
-            <div class="form-group my-3">
-                <label class="mb-2">Observaciones</label>
-                <textarea rows="1" cols="100" class="form-control" name="observacionesPaseo"
-                    placeholder="Qué hace durante el paseo?"></textarea>
-            </div>
-            <div class="form-group my-3">
-                <label class="mb-2">Dónde hace sus necesidades?</label>
-                <input type="text" class="form-control" name="calle" placeholder="Micción/defecación en la calle?">
-            </div>
-            <div class="form-group my-3">
-                <label class="mb-2">Disposición de comida</label>
-                <input type="text" class="form-control" name="comida"
-                    placeholder="Tiene a disposición durante todo el día?">
-            </div>
-            <div class="form-group my-3">
-                <label class="mb-2">Frecuencia de comida</label>
-                <input type="number" class="form-control" name="frecComida" placeholder="Cuántas veces por día come?">
-            </div>
-            <div class="form-group my-3">
-                <label class="mb-2">Observaciones</label>
-                <textarea rows="1" cols="100" class="form-control" name="observacionesComida"
-                    placeholder="Qué hacen si no come?"></textarea>
-            </div>
-            <div class="form-group my-3">
-                <label class="mb-2">Es juguetón?</label>
-                <input type="text" class="form-control" name="juego" placeholder="Suele juegar?">
-            </div>
-            <div class="form-group my-3">
-                <label class="mb-2">Con quién juega?</label>
-                <input type="text" class="form-control" name="juegaCon" placeholder="Solo? con tutor? otros perros?">
-            </div>
-            <div class="form-group my-3">
-                <label class="mb-2">Disposición de juguetes</label>
-                <input type="text" class="form-control" name="dispoJuguetes" placeholder="Siempre a disposición?">
-            </div>
-            <div class="form-group my-3">
-                <label class="mb-2">Frecuencia de juego</label>
-                <input type="number" class="form-control" name="frecJuego" placeholder="Cuántas veces por día juega?">
-            </div>
-            <div class="form-group my-3">
-                <label class="mb-2">Observaciones</label>
-                <textarea rows="1" cols="100" class="form-control" name="observacionesJuego"
-                    placeholder="Con qué juguetes juega?"></textarea>
-            </div>
-            <div class="form-group my-3">
-                <label class="mb-2">Dónde duerme</label>
-                <input type="text" class="form-control" name="duerme" placeholder="Dónde duerme?">
-            </div>
-            <div class="form-group my-3">
-                <label class="mb-2">Cuántas veces por día duerme?</label>
-                <input type="text" class="form-control" name="frecDuerme" placeholder="Cuántas veces por día duerme?">
-            </div>
-            <div class="form-group my-3">
-                <label class="mb-2">Dónde pasa el día?</label>
-                <input type="text" class="form-control" name="dondePasaDia" placeholder="Dónde pasa el día?">
-            </div>
-            <div class="form-group my-3">
-                <label class="mb-2">Educación previa</label>
-                <input type="text" class="form-control" name="educacionPrevia"
-                    placeholder="Tuvo algún tipo de educación">
-            </div>
-            <div class="form-group my-3">
-                <label class="mb-2">Motivo de contratación</label>
-                <input type="textarea" class="form-control" name="motivoContratacion" placeholder="Motivo contratación">
-            </div>
-            <div class="form-group my-3">
-                <label class="mb-2">Observaciones</label>
-                <textarea rows="1" cols="100" class="form-control" name="observacionesEducacion"
-                    placeholder="Qué educación tuvo y de qué tipo?"></textarea>
-            </div>
+                <input hidden th:value="${perro.idPerro}" name="idPerro">
 
-            <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
-                <div class="card-body">
-                    <h5 class="card-title">Error</h5>
-                    <p class="card-text" th:text="${error}"></p>
+                <div class="form-group">
+                    <label>
+                        <input th:value="${perro.nombre}" name="idPerro" type="text" class="inputForm" readonly>
+                        <span>Nombre del can</span>
+                    </label>
+                    <br>
                 </div>
-            </div>
-
-            <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
-                <div class="card-body">
-                    <h5 class="card-title">Exito!</h5>
-                    <p class="card-text" th:text="${exito}"></p>
+                <div class="form-group">
+                    <label>
+                        <input required="" placeholder="" name="paseo" type="text" class="inputForm">
+                        <span>Cuántas veces por día sale a pasear?</span>
+                    </label>
                 </div>
-            </div>
-
-            <section class=" text-center container">
-                <div class="row mt-3">
-                    <div class="divVolver">
-                        <a th:href="@{/}" class="btn btn-secondary my-2 botonVolver botones">Volver</a>
-                    </div>
+                <div class="form-group">
+                    <label>
+                        <input required="" placeholder="" name="frecPaseo" type="number" class="inputForm">
+                        <span>Cuánto tiempo dura el paseo?</span>
+                    </label>
                 </div>
-                <button type="submit" class="btn btn-primary mt-3 botones">Enviar</button>
-            </section>
-        </form>
+                <div class="form-group">
+                    <label>
+                        <input required="" placeholder="" name="herramientas" type="text" class="inputForm">
+                        <span>Qué usa al salir(pretal/collar fijo/ collar ahorque)</span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input required="" placeholder="" name="salida" type="text" class="inputForm">
+                        <span>Qué hace cuando va a pasear?</span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input required="" placeholder="" name="observacionesPaseo" type="text" class="inputForm">
+                        <span>Observaciones</span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input required="" placeholder="" name="calle" type="text" class="inputForm">
+                        <span>Dónde hace sus necesidades?</span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input required="" placeholder="" name="comida" type="text" class="inputForm">
+                        <span>Disposición de comida</span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input required="" placeholder="" name="frecComida" type="text" class="inputForm">
+                        <span>Frecuencia de comida</span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input required="" placeholder="" name="observacionesComida" type="text" class="inputForm">
+                        <span>Observaciones</span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input required="" placeholder="" name="juego" type="text" class="inputForm">
+                        <span>Suele juegar?</span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input required="" placeholder="" name="juegaCon" type="text" class="inputForm">
+                        <span>Con quién juega?</span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input required="" placeholder="" name="dispoJuguetes" type="text" class="inputForm">
+                        <span>Disposición de juguetes</span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input required="" placeholder="" name="frecJuego" type="text" class="inputForm">
+                        <span>Frecuencia de juego</span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input required="" placeholder="" name="observacionesJuego" type="text" class="inputForm">
+                        <span>Observaciones</span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input required="" placeholder="" name="duerme" type="text" class="inputForm">
+                        <span>Dónde duerme</span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input required="" placeholder="" name="frecDuerme" type="text" class="inputForm">
+                        <span>Cuántas veces por día duerme?</span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input required="" placeholder="" name="dondePasaDia" type="text" class="inputForm">
+                        <span>Dónde pasa el día?</span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input required="" placeholder="" name="educacionPrevia" type="text" class="inputForm">
+                        <span>Educación previa</span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input required="" placeholder="" name="motivoContratacion" type="text" class="inputForm">
+                        <span>Motivo de contratación</span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input required="" placeholder="" name="observacionesEducacion" type="text" class="inputForm">
+                        <span>Observaciones</span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <input value="Enviar" type="submit">
+                  </div>
+            </form>
+        </div>
     </div>
+
+    <!-- <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
+        <div class="card-body">
+            <h5 class="card-title">Error</h5>
+            <p class="card-text" th:text="${error}"></p>
+        </div>
+    </div>
+
+    <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
+        <div class="card-body">
+            <h5 class="card-title">Exito!</h5>
+            <p class="card-text" th:text="${exito}"></p>
+        </div>
+    </div> -->
+
 
 </body>
 
