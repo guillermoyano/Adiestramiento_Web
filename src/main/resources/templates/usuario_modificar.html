@@ -6,20 +6,88 @@
     <title>Modificar Usuario</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <link rel="stylesheet" href="/css/tabla.css">
-    <link rel="stylesheet" href="/css/editar.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/formularios.css">
 </head>
 
 <body>
     <nav th:replace="/fragments/navbar" :: nav> </nav>
 
 
+
+    <div class="contenedorForm">
+        <div class="login-card">
+            <div class="card-header">
+                <div class="log">Editar Usuario</div>
+            </div>
+            <form id="miFormulario" th:action="@{/perfil/__${usuario.id}__}" method="POST"
+                enctype="multipart/form-data">
+
+                <input hidden th:value="${id}" name="id">
+
+                <div class="form-group">
+                    <label>Nombre y Apellido:</label>
+                    <input required="" id="campo" name="nombre" type="text">
+                </div>
+
+                <div class="contenedorFotoForm">
+                    <div class="fotoForm">
+                        <span class="foto">Cambiá tú Foto</span>
+                        <p class="fotoTitulo">
+                            Solo archivos .JPG
+                        </p>
+                        <img style="width: 150px; border-radius: 35px; align-items: center;" id="image-preview"
+                            src="/img/perfil.jpg" alt="Vista previa de la imagen">
+                        <label for="file-input" class="drop-container">
+                            <input type="file" accept="image/*" name="archivo" id="file-input">
+                        </label>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <input value="Modificar" type="submit">
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="containerForm">
-        
-        <form class="editar" th:action="@{/perfil/__${usuario.id}__}" method="POST" enctype="multipart/form-data">>
+
+        <form class="editar" th:action="@{/perfil/__${usuario.id}__}" method="POST" enctype="multipart/form-data">
             <div class="text">
                 Editar Usuariossss
             </div>
@@ -50,7 +118,7 @@
             </div>
             <div class="form-row">
                 <div class="input-data textarea">
-                    
+
                     <div class="form-row submit-btn">
                         <div class="input-data">
                             <div class="inner"></div>
@@ -62,15 +130,13 @@
 
     <div class="container-fluid m-5 contenedor">
 
-        <form class="formulario" 
-
-            <input hidden th:value="${id}" name="id">
+        <form class="formulario" <input hidden th:value="${id}" name="id">
 
             <div class="form-group my-3">
                 <h3 class="card-title">Editar Usuario</h3>
             </div>
             <div class="form-group my-3">
-                <input type="text" class="form-control" name="nombre" >
+                <input type="text" class="form-control" name="nombre">
             </div>
             <div class="form-group my-3">
                 <input type="file" class="form-control" name="archivo">
@@ -82,6 +148,22 @@
 
 
     </div>
+
+
+    <script>
+        const fileInput = document.getElementById('file-input');
+        const imagePreview = document.getElementById('image-preview');
+        fileInput.addEventListener('change', function () {
+            if (fileInput.files && fileInput.files[0]) {
+                const imageUrl = URL.createObjectURL(fileInput.files[0]);
+                imagePreview.src = imageUrl;
+                imagePreview.style.display = 'block';
+            } else {
+                imagePreview.src = '#';
+                imagePreview.style.display = 'none';
+            }
+        });
+    </script>
 
 </body>
 

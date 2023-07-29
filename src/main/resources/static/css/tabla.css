@@ -206,6 +206,7 @@ body{
   border: 2px dashed white;
   padding: 10px;
   color: white;
+  border-radius: 35px;
 }
 
 .coolinput:hover{
