@@ -20,12 +20,11 @@
             <div class="card-header">
                 <div class="log">Editar Usuario</div>
             </div>
-            <form id="miFormulario" th:action="@{/perfil/__${usuario.id}__}" method="POST"
-                enctype="multipart/form-data">
-                <input hidden th:value="${id}" name="id">
+            <form id="miFormulario" th:action="@{/perfil}" method="POST" enctype="multipart/form-data">
+                    <input hidden th:value="${session.usuariosession.id}" name="id" >
                 <div class="form-group">
                     <label>Nombre y Apellido:</label>
-                    <input th:value="${usuario.nombre}" required="" id="campo" name="nombre" type="text">
+                    <input th:value="${usuario.nombre}" id="campo" name="nombre" type="text">
                 </div>
                 <div class="contenedorFotoForm">
                     <div class="fotoForm">

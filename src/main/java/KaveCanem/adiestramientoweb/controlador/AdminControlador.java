@@ -3,6 +3,7 @@ package KaveCanem.adiestramientoweb.controlador;
 import KaveCanem.adiestramientoweb.entidad.Usuario;
 import KaveCanem.adiestramientoweb.servicios.UsuarioServicio;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,7 +23,9 @@ public class AdminControlador {
     private UsuarioServicio usuarioServicio;
 
     @GetMapping("/dashboard")
-    public String panelAdministrativo() {
+    public String panelAdministrativo(HttpSession session, ModelMap modelo) {
+        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+        modelo.addAttribute("logueado", usuarioServicio.getOne(logueado.getId()));
         return "panel.html";
     }
 

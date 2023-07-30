@@ -35,6 +35,8 @@ public class UsuarioServicio implements UserDetailsService {
     private UsuarioRepositorio usuarioRepositorio;
     @Autowired
     private ImagenServicio imagenServicio;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Transactional
     public void registrar(MultipartFile archivo, String nombre, String email, String password, String password2) throws MiException, IOException {
@@ -58,7 +60,7 @@ public class UsuarioServicio implements UserDetailsService {
         }
         usuarioRepositorio.save(usuario);
     }
-    
+
     @Transactional
     public void actualizar(MultipartFile archivo, Integer id, String nombre) throws MiException {
 
@@ -66,11 +68,12 @@ public class UsuarioServicio implements UserDetailsService {
 
         Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
         if (respuesta.isPresent()) {
-
             Usuario usuario = respuesta.get();
-            usuario.setNombre(nombre);
-            
-           Integer idImagen = null;
+            if (!nombre.isEmpty()) {
+
+                usuario.setNombre(nombre);
+            }
+            Integer idImagen = null;
 
             if (usuario.getImagen() != null) {
                 idImagen = usuario.getImagen().getIdImagen();
@@ -78,21 +81,21 @@ public class UsuarioServicio implements UserDetailsService {
             }
             if (!archivo.isEmpty()) {
 
-             Imagen imagen = imagenServicio.actualizar(archivo, idImagen);
+                Imagen imagen = imagenServicio.actualizar(archivo, idImagen);
 
                 usuario.setImagen(imagen);
-        }
-            
+            }
+
             usuarioRepositorio.save(usuario);
         }
 
     }
-    
-    public Usuario getOne(Integer id){
+
+    public Usuario getOne(Integer id) {
         return usuarioRepositorio.getOne(id);
     }
-    
-    @Transactional(readOnly=true)
+
+    @Transactional(readOnly = true)
     public List<Usuario> listarUsuarios() {
 
         List<Usuario> usuarios = new ArrayList();
@@ -101,23 +104,23 @@ public class UsuarioServicio implements UserDetailsService {
 
         return usuarios;
     }
-    
+
     @Transactional
-    public void cambiarRol(Integer id){
+    public void cambiarRol(Integer id) {
         Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
-    	
-    	if(respuesta.isPresent()) {
-    		
-    		Usuario usuario = respuesta.get();
-    		
-    		if(usuario.getRol().equals(Rol.USER)) {
-    			
-    		usuario.setRol(Rol.ADMIN);
-    		
-    		}else if(usuario.getRol().equals(Rol.ADMIN)) {
-    			usuario.setRol(Rol.USER);
-    		}
-    	}
+
+        if (respuesta.isPresent()) {
+
+            Usuario usuario = respuesta.get();
+
+            if (usuario.getRol().equals(Rol.USER)) {
+
+                usuario.setRol(Rol.ADMIN);
+
+            } else if (usuario.getRol().equals(Rol.ADMIN)) {
+                usuario.setRol(Rol.USER);
+            }
+        }
     }
 
     private void validar(String nombre, String email, String password, String password2) throws MiException {
@@ -138,7 +141,7 @@ public class UsuarioServicio implements UserDetailsService {
             throw new MiException("Las contraseñas ingresadas deben ser iguales");
         }
     }
-    
+
     private void validar2(String nombre) throws MiException {
 
         if (nombre.isEmpty() || nombre == null) {
@@ -168,6 +171,39 @@ public class UsuarioServicio implements UserDetailsService {
             return new User(usuario.getEmail(), usuario.getPassword(), permisos);
         } else {
             return null;
+        }
+
+    }
+
+    @javax.transaction.Transactional
+    public void cambiarClave(String claveActual, Integer id, String clave, String clave2) throws Exception {
+
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+
+        if (respuesta.isPresent()) {
+
+            if (clave.isEmpty() || clave == null) {
+                throw new Exception("La contraseña no puede ser vacía.");
+            }
+            if (clave.length() <= 5) {
+                throw new Exception("La contraseña nueva debe tener al menos 6 caracteres");
+            }
+            if (!clave.equals(clave2)) {
+                throw new Exception("Las contraseñas no coinciden. Por favor introduzcalas correctamente.");
+            }
+
+            Usuario usuario = respuesta.get();
+
+            String encodedPassword = usuario.getPassword();
+
+            if (bCryptPasswordEncoder.matches(claveActual, encodedPassword)) {
+                usuario.setPassword(new BCryptPasswordEncoder().encode(clave));
+
+                usuarioRepositorio.save(usuario);
+            } else {
+                throw new Exception("La contraseña actual no es válida.");
+            }
+
         }
 
     }

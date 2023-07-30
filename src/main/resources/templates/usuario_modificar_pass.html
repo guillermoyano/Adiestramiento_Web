@@ -12,40 +12,86 @@
 
 <body>
     <nav th:replace="/fragments/navbar" :: nav> </nav>
+    
 
 
 
     <div class="contenedorForm">
         <div class="login-card">
             <div class="card-header">
-                <div class="log">Editar Usuario</div>
+                
+                <div class="log">Editar Password</div>
             </div>
-            <form id="miFormulario" th:action="@{/perfil/__${usuario.id}__}" method="POST"
-                enctype="multipart/form-data">
-                <input hidden th:value="${id}" name="id">
+            <form id="miFormulario" th:action="@{/modificarPass}" method="POST">
+                <input hidden th:value="${session.usuariosession.id}" name="id">
 
                 <div class="form-group">
                     <label>Contraseña actual:</label>
-                    <input th:value="${usuario.nombre}" required="" id="campo" name="nombre" type="password">
+                                        <input type="password" id="campo" class="form-control" name="claveActual"
+                                               placeholder="********" />
                 </div>
 
                 <div class="form-group">
                     <label>Nueva contraseña:</label>
-                    <input th:value="${usuario.nombre}" required="" id="campo" name="nombre" type="password">
+                    <input type="password" id="campo" class="form-control" name="clave"
+                                               placeholder="********" />
                 </div>
                 
                 <div class="form-group">
                     <label>Repetir contraseña:</label>
-                    <input th:value="${usuario.nombre}" required="" id="campo" name="nombre" type="password">
+                    <input type="password" id="campo" class="form-control" name="clave2"
+                                               placeholder="********" />
                 </div>
 
                 <div class="form-group">
                     <input value="Modificar" type="submit">
                 </div>
             </form>
+            <div class="card-header">
+        <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
+        <div class="card-body">
+            <h5 class="card-title" style="">Error!</h5>
+            <p class="card-text" th:text="${error}"></p>
         </div>
     </div>
+    <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
+        <div class="card-body">
+            <h5 class="card-title">Exito!</h5>
+            <p class="card-text" th:text="${exito}"></p>
+            <p class="card-text" th:text="'Tendras que loguearte nuevamente para confirmar que los cambios surtan efecto'"></p>
+             <div class="form-group">
+                 <button type="button" style="background-color: black; width: 100px; height: 40px; border-radius: 10px;
+                         "onmouseover="this.style.backgroundColor='red'" 
+                         onmouseout="this.style.backgroundColor='black'">
+                     <a href="/logout" style="text-decoration: none">Reiniciar</a></button>
+             </div>
+        </div>
+    </div>
+            </div>
+        </div>
+    </div>
+<!--<form class="formulario" th:action="@{/perfil/changePassword}" method="POST">
+                                    <input hidden th:value= "${session.usuariosession.id}" name="id">
+                                    <div class="form-group mb-4">
+                                        <label class="form-label" for="claveActual">Contraseña actual</label>
+                                        <input type="password" id="claveActual" class="form-control" name="claveActual"
+                                               placeholder="********" />
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="form-label" for="clave">Contraseña nueva</label>
+                                        <input type="password" id="clave" class="form-control" name="clave"
+                                               placeholder="********" />
+                                    </div>
 
+                                    <div class="form-group mb-4">
+                                        <label class="form-label" for="clave2">Repite la contraseña nueva</label>
+                                        <input type="password" id="clave2" class="form-control" name="clave2"
+                                               placeholder="********" />
+                                    </div>
+                                    <div class="form-group mb-4 text-center">
+                                        <button type="submit" class="btn btn-primary mb-3">Actualizar contraseña</button>
+                                    </div>
+                                </form>-->
 
 
 </body>

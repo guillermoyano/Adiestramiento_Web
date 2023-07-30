@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
  *
  * @author Guillote
  */
+
 @Controller
 @RequestMapping("/")
 public class PortalControlador {
@@ -72,30 +73,28 @@ public class PortalControlador {
         return "login.html";
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/inicio")
-    public String inicio(HttpSession session) {
+    public String inicio(HttpSession session, ModelMap modelo ) {
 
         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
-
+        modelo.put("logueado", usuarioServicio.getOne(logueado.getId()));
+        
         if (logueado.getRol().toString().equals("ADMIN")) {
-            return "panel.html";
+            return "redirect:/admin/dashboard";
         }
 
         return "inicio.html";
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
         Usuario usuario = (Usuario) session.getAttribute("usuariosession");
-        modelo.put("usuario", usuario);
+        modelo.put("usuario", usuarioServicio.getOne(usuario.getId()));
         return "usuario_modificar.html";
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
-    @PostMapping("/perfil/{id}")
-    public String actualizar(MultipartFile archivo, @PathVariable Integer id, @RequestParam String nombre, ModelMap modelo, HttpSession session) {
+    @PostMapping("/perfil")
+    public String actualizar(MultipartFile archivo, @RequestParam(required = false) Integer id, @RequestParam(required = false) String nombre, ModelMap modelo, HttpSession session) {
 
         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
         try {
@@ -104,70 +103,40 @@ public class PortalControlador {
 
             modelo.put("exito", "Usuario actualizado correctamente!");
 
-//            if (logueado != null && logueado.getRol() != null && logueado.getRol().toString().equals("ADMIN")) {
-//            return "ADM_dashboard.html";
-//        } else if (proveedorlogueado != null && proveedorlogueado.getRol() != null && proveedorlogueado.getRol().toString().equals("PROVEEDOR")) {
-//            return "PROV_panelProveedor.html";
-//        } else {
-//            return "inicio.html";
-//        }
             if (logueado.getRol().toString().equals("ADMIN")) {
-                return "redirect:../admin/dashboard";
+                return "redirect:/admin/dashboard";
             }
 
-            return "inicio.html";
+            return "redirect:/inicio";
         } catch (MiException ex) {
 
             modelo.put("error", ex.getMessage());
             modelo.put("nombre", nombre);
 
-            return "usuario_modificar.html";
+            return "redirect:/perfil";
         }
 
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
-    @GetMapping("/perfilAdmin/{id}")
-    public String perfilAdmin(ModelMap modelo, @PathVariable Integer id) {
-
-        Usuario usuario = usuarioServicio.getOne(id);
-        modelo.put("usuario", usuario);
-
-        return "usuario_modificar_admin.html";
-    }
-
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
-    @PostMapping("/perfilAdmin/{id}")
-    public String actualizarAdmin(MultipartFile archivo, @PathVariable Integer id, @RequestParam String nombre, ModelMap modelo) {
-
-        try {
-            usuarioServicio.actualizar(archivo, id, nombre);
-
-            modelo.put("exito", "Usuario actualizado correctamente!");
-
-            return "inicio.html";
-        } catch (MiException ex) {
-
-            modelo.put("error", ex.getMessage());
-            modelo.put("nombre", nombre);
-
-            return "usuario_modificar_admin.html";
-        }
-    }
-
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/modificarPass")
-    public String modificarPass(ModelMap modelo, HttpSession session) {
+    public String perfilCambiar(ModelMap modelo, HttpSession session) {
+
         Usuario usuario = (Usuario) session.getAttribute("usuariosession");
-        modelo.put("usuario", usuario);
-        return "usuario_modificar.html";
+        Usuario usuarioActualizado = usuarioServicio.getOne(usuario.getId());
+        modelo.addAttribute("usuarioActualizado", usuarioActualizado);
+        return "usuario_modificar_pass.html";
     }
 
-//    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
-//    @PostMapping("/perfil/{id}")
-//    public String actualizarPass(@PathVariable Integer id, @RequestParam String passowrd, ModelMap modelo, HttpSession session) {
-//
-//        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
-//
-//    }
+    @PostMapping("/modificarPass")
+    public String perfilCambiar(@RequestParam String claveActual, @RequestParam Integer id, @RequestParam String clave,
+            @RequestParam String clave2, ModelMap model) {
+        try {
+            usuarioServicio.cambiarClave(claveActual, id, clave, clave2);
+            model.put("exito", "La contraseña ha sido actualizada correctamente.");
+            return "usuario_modificar_pass.html";
+        } catch (Exception e) {
+            model.put("error", e.getMessage());
+            return "usuario_modificar_pass.html";
+        }
+    }
 }
