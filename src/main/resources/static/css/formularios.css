@@ -14,10 +14,7 @@ body{
   box-shadow: 2px 2px 10px #ccc;
 }
 
-.card-header {
-  text-align: center;
-  margin-bottom: 20px
-}
+
 
 .card-header .log {
   margin: 0;
@@ -35,6 +32,17 @@ label {
 }
 
 input[type="text"], input[type="password"], input[type="number"] {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 16px;
+  color:#dd0025;
+  border: 1px solid #000;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: 0.5s;
+}
+
+textarea {
   width: 100%;
   padding: 12px 20px;
   font-size: 16px;

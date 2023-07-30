@@ -21,7 +21,6 @@ import org.springframework.web.multipart.MultipartFile;
  *
  * @author Guillote
  */
-
 @Controller
 @RequestMapping("/")
 public class PortalControlador {
@@ -73,12 +72,13 @@ public class PortalControlador {
         return "login.html";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER')")
     @GetMapping("/inicio")
-    public String inicio(HttpSession session, ModelMap modelo ) {
+    public String inicio(HttpSession session, ModelMap modelo) {
 
         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
         modelo.put("logueado", usuarioServicio.getOne(logueado.getId()));
-        
+
         if (logueado.getRol().toString().equals("ADMIN")) {
             return "redirect:/admin/dashboard";
         }
@@ -86,6 +86,7 @@ public class PortalControlador {
         return "inicio.html";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
         Usuario usuario = (Usuario) session.getAttribute("usuariosession");
@@ -93,6 +94,7 @@ public class PortalControlador {
         return "usuario_modificar.html";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @PostMapping("/perfil")
     public String actualizar(MultipartFile archivo, @RequestParam(required = false) Integer id, @RequestParam(required = false) String nombre, ModelMap modelo, HttpSession session) {
 
@@ -118,6 +120,7 @@ public class PortalControlador {
 
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/modificarPass")
     public String perfilCambiar(ModelMap modelo, HttpSession session) {
 
@@ -127,6 +130,7 @@ public class PortalControlador {
         return "usuario_modificar_pass.html";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @PostMapping("/modificarPass")
     public String perfilCambiar(@RequestParam String claveActual, @RequestParam Integer id, @RequestParam String clave,
             @RequestParam String clave2, ModelMap model) {

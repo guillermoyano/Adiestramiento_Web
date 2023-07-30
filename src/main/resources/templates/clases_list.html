@@ -6,20 +6,15 @@
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/css/formulario.css">
-        <link rel="stylesheet" href="/css/index.css">
-        <link rel="stylesheet" href="/css/inicio.css">
         <link rel="stylesheet" href="/css/navbar.css">
-        <link rel="stylesheet" href="/css/footer.css">
-        <link rel="stylesheet" href="/css/tabla.css">
-        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/tablaRutina.css">
     </head>
 
 <body>
 
     <nav th:replace="/fragments/navbar" :: nav> </nav>
 
-    <div class="contenedor">
+    <div class="contenedorInput">
         <div class="table-wrapper">
             <table class="fl-table">
                 <thead>
@@ -27,7 +22,7 @@
                         <th class="auto-width-td">Perro</th>
                         <th class="auto-width-td">Fecha</th>
                         <th class="auto-width-td">Comentarios</th>
-                        <th class="auto-width-td">Acciones</th>
+                        <th class="auto-width-td" sec:authorize="hasRole('ADMIN')">Acciones</th>
                     </tr>
                 </thead>
                 <tbody th:each="clases : ${clases}">
@@ -35,34 +30,27 @@
                         <td class="auto-width-td" th:text="${perro.nombre}"></td>
                         <td class="auto-width-td" th:text="${clases.fechaClase}"></td>
                         <td class="auto-width-td" th:text="${clases.comentario}"></td>
-                        <td>
-                            <a class="modificar" sec:authorize="hasRole('ADMIN')"
-                                th:href="@{/clases/modificar/__${clases.idClases}__}"><i></i>
-                                Modificar
-                            </a>
+                        <!-- <td style="background-color: white;">
+                            <button sec:authorize="hasRole('ADMIN')" class="botonHover"> 
+                                <a style="color: #000;" ><span
+                                        class="box">
+                                        Modificar
+                                    </span></a>
+                            </button>
+                        </td> -->
+                        <td sec:authorize="hasRole('ADMIN')" style="background-color: white;">
+                            <button class="botonTablaM">
+                                <a style="background-color: #dd0025;" class="modificar" th:href="@{/clases/modificar/__${clases.idClases}__}">Modificar
+                                </a>
+                            </button>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito">
-            <div class="card-body">
-                <h5 class="card-title">Exito ð</h5>
-                <p class="card-text" th:text="${exito}"></p>
-            </div>
-        </div>
-        <div th:if="${error}!=null" class="card text-white bg-danger mb-3 mensajeError">
-            <div class="card-body">
-                <h5 class="card-title">Error ð</h5>
-                <p class="card-text" th:text="${error}"></p>
-            </div>
-        </div>
-
     </div>
     
-    <!-- <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script> -->
 </body>
 
 </html>

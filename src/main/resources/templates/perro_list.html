@@ -64,12 +64,12 @@
                                 <a style="color: #000;" th:href="@{/rutina/lista/__${perro.idPerro}__}"><span class="box">Ver</span></a>
                             </button>
                         </td>
-                        <td style="background-color: white;">
+                        <td sec:authorize="hasRole('ADMIN')" style="background-color: white;">
                             <button class="botonHover">
                                 <a style="color: #000;" th:href="@{/rutina/modificar/__${perro.idPerro}__}"><span class="box">Modificar</span></a>
                             </button>
                         </td>
-                        <td style="background-color: white;">
+                        <td sec:authorize="hasRole('ADMIN')" style="background-color: white;">
                             <button class="botonHover">
                                 <a style="color: #000;" th:href="@{/clases/nuevaClase/__${perro.idPerro}__}"><span class="box">Nueva</span></a>
                             </button>
@@ -79,7 +79,7 @@
                                 <a style="color: #000;" th:href="@{/clases/lista/__${perro.idPerro}__}"><span class="box">Listar</span></a>
                             </button>
                         </td>
-                        <td style="background-color: white;">
+                        <td sec:authorize="hasRole('ADMIN')" style="background-color: white;">
                             <button class="botonTablaM">
                                 <a style="background-color: #dd0025;" class="modificar" th:href="@{/perro/modificar/__${perro.idPerro}__}">Datos
                                 </a>

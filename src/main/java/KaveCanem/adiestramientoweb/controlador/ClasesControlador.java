@@ -47,10 +47,8 @@ public class ClasesControlador {
         return "clases_form.html";
     }
 
-    @PostMapping("/nuevaClase/{idPerro}")
-    public String nuevaClase(HttpSession session, @RequestParam String comentario, @PathVariable Integer idPerro, ModelMap modelo, RedirectAttributes redirect) {
-
-        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+    @PostMapping("/nuevaClase")
+    public String nuevaClase(@RequestParam String comentario,@RequestParam(required = false) String nombre, @RequestParam Integer idPerro, ModelMap modelo, RedirectAttributes redirect) {
 
         try {
             clasesServicio.guardar(comentario, idPerro);
@@ -61,17 +59,13 @@ public class ClasesControlador {
 
         } catch (MiException ex) {
             List<Perro> perros = perroServicio.listarPerros();
-
             modelo.addAttribute("perros", perros);
             modelo.put("error", ex.getMessage());
 
             return "clases_form.html";
         }
 
-        if (logueado != null && logueado.getRol() != null && logueado.getRol().toString().equals("ADMIN")) {
-            return "panel.html";
-        }
-        return "inicio.html";
+        return "index.html";
 
     }
 
@@ -95,9 +89,7 @@ public class ClasesControlador {
     }
 
     @PostMapping("modificar/{idClases}")
-    public String modificar(HttpSession session, @PathVariable Integer idClases, String comentario, ModelMap modelo, RedirectAttributes redirect) throws MiException {
-
-        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+    public String modificar(@PathVariable Integer idClases, String comentario, ModelMap modelo, RedirectAttributes redirect) throws MiException {
 
         try {
 
@@ -111,10 +103,7 @@ public class ClasesControlador {
             return "clases_modificar.html";
         }
 
-        if (logueado != null && logueado.getRol() != null && logueado.getRol().toString().equals("ADMIN")) {
-            return "panel.html";
-        }
-        return "inicio.html";
+       return "index.html";
     }
 
 }

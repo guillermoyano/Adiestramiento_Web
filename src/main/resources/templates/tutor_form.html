@@ -19,7 +19,7 @@
       <div class="card-header">
         <div class="log">Registrar Nuevo Tutor</div>
       </div>
-      <form id="miFormulario" action="/tutor/registro" method="POST">
+      <form class="formulatio" action="/tutor/registro" method="POST">
 
         <div class="form-group">
           <label>DNI del tutor:</label>
@@ -47,89 +47,16 @@
         </div>
 
         <div class="form-group">
-          <input value="Login" type="submit">
+          <input value="Enviar" type="submit">
         </div>
       </form>
     </div>
   </div>
 
-
-
-  <!--   <div class="contenedorForm">
-    <form id="miFormulario" class="formulatio" action="/tutor/registro" method="POST">
-      <p class="titleForm">Registrar Nuevo Tutor</p>
-          <div id="paso1">-->
-  <!--   <label>
-        <input required="" placeholder="" id="campo" name="dni" class="inputForm" readonly>
-        <span></span>
-        <button class="submit" style="background-color: green; margin-left: 500px; margin-top:5px" onclick="mostrarPaso(2)">Siguiente</button>-->
-  <!--    </label>
-          </div>
-      <div id="paso2" style="display: none;">-->
-  <!--  <label>
-        <input required="" placeholder="" name="nombre" type="text" class="inputForm">
-        <span>Nombre del tutor</span>
-        <button class="submit" style="background-color: green; margin-left: 500px; margin-top:5px" onclick="mostrarPaso(3)">Siguiente</button>-->
-  <!--   </label>
-            </div>
-      <div id="paso3" style="display: none;">-->
-  <!--  <label>
-        <input required="" placeholder="" name="apellido" type="text" class="inputForm">
-        <span>Apellido del tutor</span>
-        <button class="submit" style="background-color: green; margin-left: 500px; margin-top:5px" onclick="mostrarPaso(4)">Siguiente</button>-->
-  <!--   </label>
-            </div>
-      <div id="paso4" style="display: none;">-->
-  <!--  <label>
-        <input required="" placeholder="" name="telefono" type="number" class="inputForm">
-        <span>Teléfono del tutor</span>
-      <button class="submit" style="background-color: green; margin-left: 500px; margin-top:5px" onclick="mostrarPaso(5)">Siguiente</button>-->
-  <!--    </label>
-            </div>
-      <div id="paso5" style="display: none;">-->
-  <!--   <label>
-        <input required="" placeholder="" name="direccion" type="text" class="inputForm">
-        <span>Dirección del tutor</span>
-        <br>
-        <button class="submit">Enviar</button>
-      </label>
-      <p class="signin">Volver al <a style="padding-left: -5px;" th:href="@{/}">INICIO</a> </p>
-          </div>
-    </form>
-  </div>-->
+  <script>
+    var valor = localStorage.getItem('valor');
+    document.getElementById('campo').value = valor;
+  </script>
 </body>
 
-<!--    <script>
-function mostrarPaso(paso) {
-  // Ocultar todos los pasos anteriores
-  for (let i = 1; i <= 4; i++) {
-    document.getElementById("paso" + i).style.display = "none";
-  }
-
-  // Mostrar el paso actual
-  document.getElementById("paso" + paso).style.display = "block";
-}
-</script>-->
-<script>
-  var valor = localStorage.getItem('valor');
-  document.getElementById('campo').value = valor;
-</script>
-
 </html>
-
-
-
-<!--
-      <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
-        <div class="card-body">
-          <h5 class="card-title">Error</h5>
-          <p class="card-text" th:text="${error}"></p>
-        </div>
-      </div>
-
-      <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
-        <div class="card-body">
-          <h5 class="card-title">Exito!</h5>
-          <p class="card-text" th:text="${exito}"></p>
-        </div>
-      </div> -->

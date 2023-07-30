@@ -3,16 +3,11 @@
     xmlns:sec="http://www.thymelead.org/extras/spring-security">
 
     <head>
-        <title>Modificar Perro</title>
+        <title>Modificar Clase</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/css/formulario.css">
-        <link rel="stylesheet" href="/css/index.css">
-        <link rel="stylesheet" href="/css/inicio.css">
         <link rel="stylesheet" href="/css/navbar.css">
-        <link rel="stylesheet" href="/css/footer.css">
-        <link rel="stylesheet" href="/css/tabla.css">
-        <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/formularios.css">
     </head>
 
 <body>
@@ -20,39 +15,29 @@
 
     <nav th:replace="/fragments/navbar" :: nav> </nav>
 
-    <div class="container-fluid m-5 contenedor">
-        <form class="formulario" th:action="@{/clases/modificar/__${clases.idClases}__}" method="POST">
-            <input hidden th:value="${clases.idClases}" name="idClases">
-            <div class="form-group my-3">
-                <label class="mb-2">Comentario</label>
-                <textarea name="comentario" id="" cols="30" rows="10"></textarea>
-                <!-- <input th:value="${clases.comentario}" type="text" class="form-control" name="comentario" placeholder="Comentario"> -->
+    <div class="contenedorForm">
+        <div class="login-card">
+            <div class="card-header">
+                <div class="log">Modificar el comentario</div>
             </div>
-            <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
-                <div class="card-body">
-                    <h5 class="card-title">Error</h5>
-                    <p class="card-text" th:text="${error}"></p>
+            <form class="formulatio" th:action="@{/clases/modificar/__${clases.idClases}__}" method="POST">
+
+                <input hidden th:value="${clases.idClases}" name="idClases">
+
+                <div class="form-group">
+                    <label>
+                        <label>Comentario:</label>
+                        <textarea name="comentario" id="" cols="30" rows="10"></textarea>
+                        
+                    </label>
                 </div>
-            </div>
-            <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
-                <div class="card-body">
-                    <h5 class="card-title">Exito!</h5>
-                    <p class="card-text" th:text="${exito}"></p>
+                <div class="form-group">
+                    <input value="Modificar" type="submit">
                 </div>
-            </div>
-            <section class=" text-center container">
-                <div class="row mt-3">
-                    <div class="divVolver">
-                        <a th:href="@{/}" class="btn btn-secondary my-2 botonVolver botones">Volver</a>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary mt-3 botones">Enviar</button>
-            </section>
-        </form>
+            </form>
+        </div>
     </div>
-    
-    <!-- <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script> -->
+
 </body>
 
 </html>

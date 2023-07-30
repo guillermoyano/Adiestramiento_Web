@@ -70,7 +70,7 @@ public class ClasesServicio {
 
     private void validarClases(String comentario) throws MiException {
 
-        if (comentario.isEmpty()) {
+        if (comentario == null || comentario.isEmpty()) {
             throw new MiException("El campo comentario debe estar completado");
         }
 
