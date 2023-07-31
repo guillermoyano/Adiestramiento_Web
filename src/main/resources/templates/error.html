@@ -6,7 +6,7 @@
     <title>Error</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/navbar.css">
     <link rel="stylesheet" href="/css/index.css">
     
 </head>
@@ -14,12 +14,11 @@
 <body>
     <nav th:replace="/fragments/navbar" :: nav> </nav>
 
-        <h1 class="fancy"><a th:text="'Error ' + ${codigo}"></a></h1>
+        <h1 class="fancy" ><a style="color: #000;" th:text="'Error ' + ${codigo}"></a></h1>
 
-        <p th:text="${mensaje}"></p>
+        <p  style="color: #000;" th:text="${mensaje}"></p>
 
     </div>
-    <footer th:replace="/fragments/footer" :: footer> </footer>
 
 </body>
 
