@@ -1,5 +1,4 @@
 package KaveCanem.adiestramientoweb.controlador;
-
 import KaveCanem.adiestramientoweb.entidad.Usuario;
 import KaveCanem.adiestramientoweb.servicios.UsuarioServicio;
 import java.util.List;
