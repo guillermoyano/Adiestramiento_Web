@@ -22,11 +22,9 @@
                 Como usuario tendrás la posibilidad de ver tus datos y modificarlos.
                 También vas a poder ver las clases de tú mascota.
             </p>
-
             <h2 class="fancy" style="--w: 50vw;--c: #8A9B0F;--b:4px;--g:-5px;">
                 <p style="background-color: #8A9B0F;" th:if="${session.usuariosession != null}"
                     th:text=" 'Bienvenido '+ ${logueado.nombre} "></p>
-
             </h2>
             <div class="centrar">
                 <a th:if="${session.usuariosession.imagen != null}">

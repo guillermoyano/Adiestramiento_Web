@@ -30,14 +30,6 @@
                         <td class="auto-width-td" th:text="${perro.nombre}"></td>
                         <td class="auto-width-td" th:text="${clases.fechaClase}"></td>
                         <td class="auto-width-td" th:text="${clases.comentario}"></td>
-                        <!-- <td style="background-color: white;">
-                            <button sec:authorize="hasRole('ADMIN')" class="botonHover"> 
-                                <a style="color: #000;" ><span
-                                        class="box">
-                                        Modificar
-                                    </span></a>
-                            </button>
-                        </td> -->
                         <td sec:authorize="hasRole('ADMIN')" style="background-color: white;">
                             <button class="botonTablaM">
                                 <a style="background-color: #dd0025;" class="modificar" th:href="@{/clases/modificar/__${clases.idClases}__}">Modificar

@@ -7,47 +7,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/loginForm.css">
-    <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/exitoError.css">
+    <link rel="stylesheet" href="/css/login.css">
 </head>
 
-<body>
+<body style="background-color: black;">
 
     <nav th:replace="/fragments/navbar" :: nav> </nav>
-
-    <div class="contenedorGeneral">
-        <div class="containerForm">
+    <div class="contenedorInput">
+        <!-- <div class="containerForm">
             <form class="formLogin" th:action="@{/logincheck}" method="POST">
-
                 <span class="input-span">
-
                     <label for="email" class="label">Email</label>
                     <input type="email" name="email" id="email" required></span>
-
                 <span class="input-span">
-
                     <label for="password" class="label">Password</label>
                     <input type="password" name="password" id="password" required></span>
-
                 <input class="submit" type="submit" value="Ingresar">
+            </form>
+        </div> -->
+
+        <div class="form-structor">
+            <form th:action="@{/registro}" method="POST" enctype="multipart/form-data">
+                <div class="signup" >
+                    <h2 class="form-title" id="signup"><span>o</span>Registrate</h2>
+                    <div class="form-holder">
+                        <input type="text" class="input" name="nombre" placeholder="Nombre" />
+                        <input type="email" class="input" name="email" placeholder="Email" />
+                        <input type="password" class="input" name="password" placeholder="Password" />
+                        <input type="password" class="input" name="password2" placeholder="Password" />
+                        <input hidden type="file" accept="image/*" name="archivo" id="file-input">
+                    </div>
+                    <button class="submit-btn">Registrate</button>
+                </div>
+            </form>
+            <form th:action="@{/logincheck}" method="POST">
+                <div class="login slide-up">
+                    <div class="center">
+                        <h2 class="form-title" id="login"><span>o</span>Logueate</h2>
+                        <div class="form-holder">
+                            <input type="email" class="input" name="email" placeholder="Email" />
+                            <input type="password" class="input" name="password" placeholder="Password" />
+                        </div>
+                        <button class="submit-btn">Ingresá</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
 
-    <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
-        <div class="card-body">
-            <h5 class="card-title">Error!</h5>
-            <p class="card-text" th:text="${error}"></p>
-        </div>
-    </div>
-    <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
-        <div class="card-body">
-            <h5 class="card-title">Exito!</h5>
-            <p class="card-text" th:text="${exito}"></p>
+
+    <!-- <div th:if="${error != null}" class="card1">
+        <div class="card_image"> <img src="/img/sadDog.jpg" /> </div>
+        <div class="card_title title-white">
+            <h5>Hubo un error!</h5>
+            <p th:text="${error}"></p>
         </div>
     </div>
 
+    <div th:if="${exito != null}" class="card1">
+        <div class="card_image"> <img src="/img/perrofeliz.jpg" /> </div>
+        <div class="card_title title-white">
+            <h5>Se realizó con éxito!</h5>
+            <p th:text="${exito}"></p>
+        </div>
+    </div> -->
+
+    <script src="/script/login.js"></script>
 </body>
 
 </html>

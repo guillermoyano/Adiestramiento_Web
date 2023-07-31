@@ -21,14 +21,11 @@
                 <div class="log">Modificar el comentario</div>
             </div>
             <form class="formulatio" th:action="@{/clases/modificar/__${clases.idClases}__}" method="POST">
-
                 <input hidden th:value="${clases.idClases}" name="idClases">
-
                 <div class="form-group">
                     <label>
                         <label>Comentario:</label>
                         <textarea name="comentario" id="" cols="30" rows="10"></textarea>
-                        
                     </label>
                 </div>
                 <div class="form-group">

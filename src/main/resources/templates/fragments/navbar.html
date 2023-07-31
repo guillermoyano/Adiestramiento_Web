@@ -6,10 +6,9 @@
             <label for="drop" class="toggle">Menu</label>
             <input type="checkbox" id="drop" />
             <ul class="menu">
-
                 <li>
                     <label for="drop-1" class="toggle">Nuevo Cliente +</label>
-                    <a th:if="${session.usuariosession != null}" href="#">Nuevo Cliente</a>
+                    <a sec:authorize="hasAnyRole('ADMIN', 'USER')" href="#">Nuevo Cliente</a>
                     <input type="checkbox" id="drop-1" />
                     <ul>
                         <li><a th:href="@{/tutor/buscarTutor}">Cargar Cliente</a></li>
@@ -17,7 +16,7 @@
                 </li>
                 <li>
                     <label for="drop-2" class="toggle">Tutores +</label>
-                    <a th:if="${session.usuariosession != null}" href="#">Tutores</a>
+                    <a sec:authorize="hasAnyRole('ADMIN', 'USER')" href="#">Tutores</a>
                     <input type="checkbox" id="drop-2" />
                     <ul>
                         <li><a th:href="@{/tutor/lista}">Listar Tutores</a></li>
@@ -25,7 +24,7 @@
                 </li>
                 <li>
                     <label for="drop-2" class="toggle">Perros +</label>
-                    <a th:if="${session.usuariosession != null}" href="#">Perros</a>
+                    <a sec:authorize="hasAnyRole('ADMIN', 'USER')" href="#">Perros</a>
                     <input type="checkbox" id="drop-2" />
                     <ul>
                         <li><a th:href="@{/perro/lista}">Listar Perros</a></li>
@@ -41,7 +40,7 @@
                 </li>
                 <li>
                     <label for="drop-2" class="toggle">Perfil +</label>
-                    <a th:if="${session.usuariosession != null}" href="#">Perfil</a>
+                    <a sec:authorize="hasAnyRole('ADMIN', 'USER')" href="#">Perfil</a>
                     <input type="checkbox" id="drop-2" />
                     <ul>
                         <li><a th:href="@{/perfil}">Editar Perfil</a></li>

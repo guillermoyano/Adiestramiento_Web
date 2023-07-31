@@ -33,7 +33,7 @@ public class PortalControlador {
     @GetMapping("/")
     public String index() {
 
-        return "index.html";
+        return "login.html";
     }
 
     @GetMapping("/registrar")
@@ -59,7 +59,6 @@ public class PortalControlador {
 
             return "registro.html";
         }
-
     }
 
     @GetMapping("/login")
