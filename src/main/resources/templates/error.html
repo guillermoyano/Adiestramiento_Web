@@ -8,18 +8,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/navbar.css">
     <link rel="stylesheet" href="/css/index.css">
+        <style>
+            body{
+            background-color: black;
+            }
+        </style>
     
 </head>
 
 <body>
     <nav th:replace="/fragments/navbar" :: nav> </nav>
+    
+    <div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">
+        <h1 class="fancy" style="text-align: center; font-size: 80px "><a style="color: red; " th:text="'Error ' + ${codigo}"></a></h1>
 
-        <h1 class="fancy" ><a style="color: #000;" th:text="'Error ' + ${codigo}"></a></h1>
-
-        <p  style="color: #000;" th:text="${mensaje}"></p>
+        <p  style="color: brown; text-align: center; font-size: 30px" th:text="${mensaje}"></p>
+        
+        <img src="/img/perro.gif" alt="Descripción del GIF" style="width: 100%;">
 
     </div>
-
 </body>
 
 </html>

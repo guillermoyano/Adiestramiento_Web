@@ -1,5 +1,4 @@
 package KaveCanem.adiestramientoweb.controlador;
-
 import KaveCanem.adiestramientoweb.entidad.Usuario;
 import KaveCanem.adiestramientoweb.excepciones.MiException;
 import KaveCanem.adiestramientoweb.repositorios.UsuarioRepositorio;
@@ -11,11 +10,11 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -71,14 +70,15 @@ public class PortalControlador {
         return "login.html";
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_USER')")
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/inicio")
-    public String inicio(HttpSession session, ModelMap modelo) {
+    public String inicio(HttpSession session, ModelMap modelo, RedirectAttributes redirectAttributes) {
 
         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
         modelo.put("logueado", usuarioServicio.getOne(logueado.getId()));
 
         if (logueado.getRol().toString().equals("ADMIN")) {
+            redirectAttributes.addFlashAttribute("exito", "Usuario Logueado!!!");
             return "redirect:/admin/dashboard";
         }
 

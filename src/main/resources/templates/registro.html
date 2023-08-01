@@ -7,9 +7,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/loginForm.css">
-    <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/exitoError.css">
+    <link rel="stylesheet" href="/css/login.css">
 </head>
 
 <body>
@@ -28,8 +29,37 @@
             <p class="card-text" th:text="${exito}"></p>
         </div>
     </div>
-
-    <div class="contenedorGeneral">
+ <div class="contenedorInput">
+        
+        <div class="form-structor">
+            <form th:action="@{/registro}" method="POST" enctype="multipart/form-data">
+                <div class="signup ">
+                    <h2 class="form-title" id="signup"><span>o</span>Registrate</h2>
+                    <div class="form-holder">
+                        <input type="text" class="input" name="nombre" placeholder="Nombre" />
+                        <input type="email" class="input" name="email" placeholder="Email" />
+                        <input type="password" class="input" name="password" placeholder="Password" />
+                        <input type="password" class="input" name="password2" placeholder="Password" />
+                        <input hidden type="file" accept="image/*" name="archivo" id="file-input">
+                    </div>
+                    <button class="submit-btn">Registrate</button>
+                </div>
+            </form>
+            <form th:action="@{/logincheck}" method="POST">
+                <div class="login slide-up">
+                    <div class="center">
+                        <h2 class="form-title" id="login"><span>o</span>Logueate</h2>
+                        <div class="form-holder">
+                            <input type="email" class="input" name="email" placeholder="Email" />
+                            <input type="password" class="input" name="password" placeholder="Password" />
+                        </div>
+                        <button class="submit-btn">Ingresá</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+<!--    <div class="contenedorGeneral">
         <div class="containerForm">
             <form class="formLogin" th:action="@{/registro}" method="POST" enctype="multipart/form-data">
                 <span class="input-span">
@@ -51,8 +81,8 @@
 
             </form>
         </div>
-    </div>
+    </div>-->
 
 </body>
-
+<script src="/script/login.js"></script>
 </html>

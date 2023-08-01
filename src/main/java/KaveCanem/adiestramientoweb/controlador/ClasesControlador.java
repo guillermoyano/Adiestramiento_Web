@@ -2,14 +2,12 @@ package KaveCanem.adiestramientoweb.controlador;
 
 import KaveCanem.adiestramientoweb.entidad.Clases;
 import KaveCanem.adiestramientoweb.entidad.Perro;
-import KaveCanem.adiestramientoweb.entidad.Usuario;
 import KaveCanem.adiestramientoweb.excepciones.MiException;
 import KaveCanem.adiestramientoweb.repositorios.ClasesRepositorio;
 import KaveCanem.adiestramientoweb.repositorios.PerroRepositorio;
 import KaveCanem.adiestramientoweb.servicios.ClasesServicio;
 import KaveCanem.adiestramientoweb.servicios.PerroServicio;
 import java.util.List;
-import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
