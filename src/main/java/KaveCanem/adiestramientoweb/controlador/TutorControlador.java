@@ -42,93 +42,92 @@ public class TutorControlador {
     private TutorRepositorio tutorRepositorio;
 
     @GetMapping("/buscarTutor")
-    public String buscarTutor(ModelMap modelo){
-             return "buscarTutor.html";
-            
+    public String buscarTutor(ModelMap modelo) {
+        return "buscarTutor.html";
+
     }
-    
-    
+
     @PostMapping("/buscarTutor")
     public String buscarTutorPorDni(@RequestParam Long dni, RedirectAttributes redirect, ModelMap modelo) {
         Tutor tutor = tutorServicio.buscarPorDni(dni);
-        
+
         if (tutor != null) {
             return "redirect:../tutor/listaUnico/" + tutor.getIdTutor();
         } else {
-           return "tutor_form.html";
+            return "tutor_form.html";
         }
     }
-    
+
     @GetMapping("/registrar")
     public String registrar() {
-        
+
         return "tutor_form.html";
     }
 
     @PostMapping("/registro")
     public String registro(@RequestParam(required = false) String nombre, @RequestParam(required = false) String apellido,
-           @RequestParam(required = false) Long dni, @RequestParam(required = false) Long telefono,  @RequestParam(required = false) String direccion, 
-             RedirectAttributes redirect, ModelMap modelo) {
+            @RequestParam(required = false) Long dni, @RequestParam(required = false) Long telefono, @RequestParam(required = false) String direccion,
+            RedirectAttributes redirect, ModelMap modelo) {
         try {
-            if(tutorServicio.buscarPorDni(dni)==null){
-            tutorServicio.crearTutor(nombre, apellido, dni, telefono, direccion);
-            redirect.addFlashAttribute("exito", "salió todo bien");
-            return "redirect:../perro/registrar1";
+            if (tutorServicio.buscarPorDni(dni) == null) {
+                tutorServicio.crearTutor(nombre, apellido, dni, telefono, direccion);
+                redirect.addFlashAttribute("exito", "salió todo bien");
+                return "redirect:../perro/registrar1";
             }
         } catch (MiException ex) {
-            
+
             modelo.put("error", ex.getMessage());
             return "tutor_form.html";
         }
-         return "tutor_list.html";
+        return "redirect:../perro/registrar1";
     }
-    
-      @GetMapping("/lista")
-    public String listar(ModelMap modelo, @Param("keyword")Long keyword){
-        try{
+
+    @GetMapping("/lista")
+    public String listar(ModelMap modelo, @Param("keyword") Long keyword) {
+        try {
             List<Tutor> tutores = new ArrayList<>();
 
-            if(keyword==null){
+            if (keyword == null) {
                 tutorRepositorio.findAll().forEach(tutores::add);
-            }else{
+            } else {
                 tutorRepositorio.buscarTutorPorDni1(keyword).forEach(tutores::add);
                 modelo.addAttribute("keyword", keyword);
             }
             modelo.addAttribute("tutores", tutores);
-        }catch(Exception e){
+        } catch (Exception e) {
             modelo.addAttribute("error", e.getMessage());
         }
         return "tutor_list.html";
-        
+
     }
-    
+
     @GetMapping("/listaUnico/{idTutor}")
-    public String listarunico(ModelMap modelo, @PathVariable Integer idTutor){
+    public String listarunico(ModelMap modelo, @PathVariable Integer idTutor) {
         Tutor tutores = tutorServicio.getOne(idTutor);
         modelo.addAttribute("tutores", tutores);
-        
+
         return "tutor_unico.html";
-        
+
     }
-    
-     @GetMapping("/modificar/{idTutor}")
+
+    @GetMapping("/modificar/{idTutor}")
     public String modificar(@PathVariable Integer idTutor, ModelMap modelo) {
 
         modelo.put("tutor", tutorServicio.getOne(idTutor));
-        
+
         return "tutor_modificar.html";
     }
-    
+
     @PostMapping("modificar/{idTutor}")
-     public String modificar(@PathVariable Integer idTutor, 
-             String nombre, String apellido, Long dni, Long telefono, String direccion, ModelMap modelo) {
+    public String modificar(@PathVariable Integer idTutor,
+            String nombre, String apellido, Long dni, Long telefono, String direccion, ModelMap modelo) {
         try {
             tutorServicio.modificarTutor(idTutor, nombre, apellido, dni, telefono, direccion);
-            return  "redirect:../lista";
+            return "redirect:../lista";
         } catch (MiException ex) {
             modelo.put("error", ex.getMessage());
             return "tutor_modificar.html";
         }
-     }
+    }
 
 }

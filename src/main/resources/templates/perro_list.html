@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/tabla.css">
     <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/error1.css">
 </head>
 
 <body>
@@ -19,12 +20,13 @@
     <div class="contenedorInput">
         <form th:action="@{/perro/lista}">
 
-            <input type="text" id="keyword" name="keyword" class="coolinput" th:value="${keyword}" placeholder="Ingrese nombre del can" style="text-align: center;">
+            <input type="text" id="keyword" name="keyword" class="coolinput" th:value="${keyword}"
+                placeholder="Ingrese nombre del can" style="text-align: center;">
             <div class="divBoton">
                 <button type="submit" class="botonSearch" style="width: 100px; height: 40px; color: white; 
-          border-radius: 10px"><b>Buscar</b></button>
+            border-radius: 10px"><b>Buscar</b></button>
                 <button onclick="limpiar()" class="botonSearch" style="width: 100px; height: 40px; background-color: black; color: white; 
-          border-radius: 10px"><b>Limpiar</b></button>
+            border-radius: 10px"><b>Limpiar</b></button>
             </div>
             <div class="divBoton">
 
@@ -34,10 +36,10 @@
 
     <div class="contenedorInput">
         <div class="table-wrapper">
-            <table class="fl-table" >
-                <thead >
+            <table class="fl-table">
+                <thead>
                     <tr style="background-color: white;">
-                        <th >Foto</th>
+                        <th>Foto</th>
                         <th>Perro</th>
                         <th>Edad</th>
                         <th>Raza</th>
@@ -52,36 +54,42 @@
                 </thead>
                 <tbody th:each="perro : ${perros}">
                     <tr>
-                        <td style="background-color: white;"><img style="width: 70px; border-radius: 20px;" th:if="${perro.imagen != null}"
-                            th:src="@{/imagen/perfilperro/__${perro.idPerro}__}"></td>
-                            <td th:text="${perro.nombre}" style="background-color: white;"></td>
-                            <td th:text="${perro.edad}" style="background-color: white;"></td>
-                            <td th:text="${perro.raza}" style="background-color: white;"></td>
-                            <td th:text="${perro.tutor.nombre}" style="background-color: white;"></td>
-                            <td th:text="${perro.tutor.telefono}" style="background-color: white;"></td>
+                        <td style="background-color: white;"><img style="width: 70px; border-radius: 20px;"
+                                th:if="${perro.imagen != null}" th:src="@{/imagen/perfilperro/__${perro.idPerro}__}">
+                        </td>
+                        <td th:text="${perro.nombre}" style="background-color: white;"></td>
+                        <td th:text="${perro.edad}" style="background-color: white;"></td>
+                        <td th:text="${perro.raza}" style="background-color: white;"></td>
+                        <td th:text="${perro.tutor.nombre}" style="background-color: white;"></td>
+                        <td th:text="${perro.tutor.telefono}" style="background-color: white;"></td>
                         <td style="background-color: white;">
                             <button class="botonHover">
-                                <a style="color: #000;" th:href="@{/rutina/lista/__${perro.idPerro}__}"><span class="box">Ver</span></a>
+                                <a style="color: #000;" th:href="@{/rutina/lista/__${perro.idPerro}__}"><span
+                                        class="box">Ver</span></a>
                             </button>
                         </td>
                         <td sec:authorize="hasRole('ADMIN')" style="background-color: white;">
                             <button class="botonHover">
-                                <a style="color: #000;" th:href="@{/rutina/modificar/__${perro.idPerro}__}"><span class="box">Modificar</span></a>
+                                <a style="color: #000;" th:href="@{/rutina/modificar/__${perro.idPerro}__}"><span
+                                        class="box">Modificar</span></a>
                             </button>
                         </td>
                         <td sec:authorize="hasRole('ADMIN')" style="background-color: white;">
                             <button class="botonHover">
-                                <a style="color: #000;" th:href="@{/clases/nuevaClase/__${perro.idPerro}__}"><span class="box">Nueva</span></a>
+                                <a style="color: #000;" th:href="@{/clases/nuevaClase/__${perro.idPerro}__}"><span
+                                        class="box">Nueva</span></a>
                             </button>
                         </td>
                         <td style="background-color: white;">
                             <button class="botonHover">
-                                <a style="color: #000;" th:href="@{/clases/lista/__${perro.idPerro}__}"><span class="box">Listar</span></a>
+                                <a style="color: #000;" th:href="@{/clases/lista/__${perro.idPerro}__}"><span
+                                        class="box">Listar</span></a>
                             </button>
                         </td>
                         <td sec:authorize="hasRole('ADMIN')" style="background-color: white;">
                             <button class="botonTablaM">
-                                <a style="background-color: #dd0025;" class="modificar" th:href="@{/perro/modificar/__${perro.idPerro}__}">Datos
+                                <a style="background-color: #dd0025;" class="modificar"
+                                    th:href="@{/perro/modificar/__${perro.idPerro}__}">Datos
                                 </a>
                             </button>
                         </td>
@@ -91,10 +99,61 @@
         </div>
     </div>
 
-</body>
-<script>
-    function limpiar() {
-    document.getElementById("keyword").value = "";
-    }
+    <div id="successPopup" class="popup">
+        <div th:if="${error != null}" class="card1">
+            <div class="card_image"> <img src="/img/sadDog.jpg" /> </div>
+            <div class="card_title title-white">
+                <h5 style="color: red">** ERROR **</h5>
+                <h5 th:text="${error}"></h5>
+            </div>
+        </div>
+    </div>
+    <div id="errorPopup" class="popup">
+        <div th:if="${exito != null}" class="card1">
+            <div class="card_image"> <img src="/img/perrofeliz.jpg" /> </div>
+            <div class="card_title title-white">
+                <h5>** EXITO **</h5>
+                <p th:text="${exito}"></p>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function limpiar() {
+            document.getElementById("keyword").value = "";
+        }
     </script>
+
+    <script>
+        function showSuccessPopup() {
+            var successPopup = document.getElementById("successPopup");
+            successPopup.style.display = "block";
+
+            // Ocultar el popup después de 5 segundos
+            setTimeout(function () {
+                successPopup.style.display = "none";
+            }, 5000);
+        }
+
+        // Función para mostrar el popup de error
+        function showErrorPopup() {
+            var errorPopup = document.getElementById("errorPopup");
+            errorPopup.style.display = "block";
+
+            // Ocultar el popup después de 5 segundos
+            setTimeout(function () {
+                errorPopup.style.display = "none";
+            }, 5000);
+        }
+
+        // Ejemplo de uso: Mostrar popup de éxito después de un evento exitoso
+        showSuccessPopup();
+
+        // Ejemplo de uso: Mostrar popup de error después de un evento fallido
+        showErrorPopup();
+    </script>
+</body>
+
+
 </html>

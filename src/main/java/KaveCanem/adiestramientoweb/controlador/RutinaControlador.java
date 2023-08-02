@@ -78,18 +78,16 @@ public class RutinaControlador {
                     calle, comida, frecComida, observacionesComida, juego, juegaCon, dispoJuguetes,
                     frecJuego, observacionesJuego, duerme, frecDuerme, dondePasaDia, educacionPrevia, motivoContratacion, observacionesEducacion, idPerro);
 
-            modelo.put("exito", "La rutina fue cargada correctamente");
+            redirect.addFlashAttribute("exito", "La rutina fue cargada correctamente");
+            return "redirect:../admin/dashboard";
 
         } catch (MiException ex) {
             modelo.put("perro", perroRepositorio.buscarPerroPorIdPerro());
 
-            
             modelo.put("error", ex.getMessage());
-
             return "rutina_form.html";
         }
 
-        return "index.html";
     }
 
     @GetMapping("/lista/{idPerro}")
@@ -117,14 +115,16 @@ public class RutinaControlador {
             String frecComida, String observacionesComida, String juego, String juegaCon, String dispoJuguetes,
             String frecJuego, String observacionesJuego, String duerme, String frecDuerme, String dondePasaDia,
             String educacionPrevia, String motivoContratacion, String observacionesEducacion,
-            ModelMap modelo) {
+            ModelMap modelo, RedirectAttributes redirect) {
         try {
             rutinaServicio.modificarRutina(idPerro, paseo, frecPaseo, herramientas, salida, observacionesPaseo, calle, comida,
                     frecComida, observacionesComida, juego, juegaCon, dispoJuguetes,
                     frecJuego, observacionesJuego, duerme, frecDuerme, dondePasaDia,
                     educacionPrevia, motivoContratacion, observacionesEducacion);
 
+            redirect.addFlashAttribute("exito", "La rutina fue modificada correctamente");
             return "redirect:/perro/lista";
+            
         } catch (MiException ex) {
             modelo.put("error", ex.getMessage());
             return "rutina_modificar.html";
