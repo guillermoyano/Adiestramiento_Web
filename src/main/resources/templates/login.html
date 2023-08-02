@@ -6,31 +6,17 @@
     <title>Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/loginForm.css">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/navbar.css">
-<!--    <link rel="stylesheet" href="/css/exitoError.css">-->
     <link rel="stylesheet" href="/css/login.css">
     <link rel="stylesheet" href="/css/error1.css">
-     
+
 </head>
 
 <body style="background-color: black;">
 
     <nav th:replace="/fragments/navbar" :: nav> </nav>
     <div class="contenedorInput">
-        <!-- <div class="containerForm">
-            <form class="formLogin" th:action="@{/logincheck}" method="POST">
-                <span class="input-span">
-                    <label for="email" class="label">Email</label>
-                    <input type="email" name="email" id="email" required></span>
-                <span class="input-span">
-                    <label for="password" class="label">Password</label>
-                    <input type="password" name="password" id="password" required></span>
-                <input class="submit" type="submit" value="Ingresar">
-            </form>
-        </div> -->
-
         <div class="form-structor">
             <form th:action="@{/registro}" method="POST" enctype="multipart/form-data">
                 <div class="signup slide-up">
@@ -61,54 +47,54 @@
     </div>
 
     <div id="successPopup" class="popup">
-     <div th:if="${error != null}" class="card1">
-        <div class="card_image"> <img src="/img/sadDog.jpg" /> </div>
-        <div class="card_title title-white">
-            <h5 style="color: red">** ERROR **</h5>
-            <h5 th:text="${error}"></h5>
+        <div th:if="${error != null}" class="card1">
+            <div class="card_image"> <img src="/img/sadDog.jpg" /> </div>
+            <div class="card_title title-white">
+                <h5 style="color: red">** ERROR **</h5>
+                <h5 th:text="${error}"></h5>
+            </div>
         </div>
     </div>
-    </div>
-<div id="errorPopup" class="popup">
-    <div th:if="${exito != null}" class="card1">
-        <div class="card_image"> <img src="/img/perrofeliz.jpg" /> </div>
-        <div class="card_title title-white">
-            <h5>** EXITO **</h5>
-            <p th:text="${exito}"></p>
+    <div id="errorPopup" class="popup">
+        <div th:if="${exito != null}" class="card1">
+            <div class="card_image"> <img src="/img/perrofeliz.jpg" /> </div>
+            <div class="card_title title-white">
+                <h5>** EXITO **</h5>
+                <p th:text="${exito}"></p>
+            </div>
         </div>
-    </div> 
-</div>
+    </div>
 
     <script>
-        
+
         function showSuccessPopup() {
-    var successPopup = document.getElementById("successPopup");
-    successPopup.style.display = "block";
+            var successPopup = document.getElementById("successPopup");
+            successPopup.style.display = "block";
 
-    // Ocultar el popup después de 5 segundos
-    setTimeout(function () {
-        successPopup.style.display = "none";
-    }, 5000);
-}
+            // Ocultar el popup después de 5 segundos
+            setTimeout(function () {
+                successPopup.style.display = "none";
+            }, 5000);
+        }
 
-// Función para mostrar el popup de error
-function showErrorPopup() {
-    var errorPopup = document.getElementById("errorPopup");
-    errorPopup.style.display = "block";
+        // Función para mostrar el popup de error
+        function showErrorPopup() {
+            var errorPopup = document.getElementById("errorPopup");
+            errorPopup.style.display = "block";
 
-    // Ocultar el popup después de 5 segundos
-    setTimeout(function () {
-        errorPopup.style.display = "none";
-    }, 5000);
-}
+            // Ocultar el popup después de 5 segundos
+            setTimeout(function () {
+                errorPopup.style.display = "none";
+            }, 5000);
+        }
 
-// Ejemplo de uso: Mostrar popup de éxito después de un evento exitoso
-showSuccessPopup();
+        // Ejemplo de uso: Mostrar popup de éxito después de un evento exitoso
+        showSuccessPopup();
 
-// Ejemplo de uso: Mostrar popup de error después de un evento fallido
-showErrorPopup();
+        // Ejemplo de uso: Mostrar popup de error después de un evento fallido
+        showErrorPopup();
     </script>
-    
+
     <script src="/script/login.js"></script>
 </body>
 

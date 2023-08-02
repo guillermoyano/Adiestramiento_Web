@@ -48,11 +48,11 @@
                         <li><a href="/logout">Cerrar Sesión</a></li>
                     </ul>
                 </li>
-                <li><a th:if="${session.usuariosession == null && !#httpServletRequest.requestURI.endsWith('/registrar')}"
+                <!-- <li><a th:if="${session.usuariosession == null && !#httpServletRequest.requestURI.endsWith('/registrar')}"
                         href="/registrar">Registrate</a></li>
                 <li><a th:if="${session.usuariosession == null && !#httpServletRequest.requestURI.endsWith('/login')}"
-                        href="/login">Logueate</a></li>
-                <li><a th:href="@{/}">Home</a></li>
+                        href="/login">Logueate</a></li> -->
+                <li><a sec:authorize="hasAnyRole('ADMIN', 'USER')" th:href="@{/}">Home</a></li>
             </ul>
         </div>
     </div>
